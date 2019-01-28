@@ -5,9 +5,10 @@ from BadDb import badDb
 def parseDbLine(line):
     """
     gets line from DB, returns stateType object from data
-    :param line:
+    :param line: int<id>;int,int,int;String<response>;String<word>:int<hits>,...;String<origin Sentence>
     :return:
     """
+    print("line:",line)
     try:
         data = ";".split(line)
         incoming_states = {}
@@ -19,9 +20,11 @@ def parseDbLine(line):
         for word in words_raw:
             raw_word = ":".split(word)
             words[raw_word[0]] = int(raw_word[1])
+        print("data:",data)
+        return State(data[0], incoming_states, data[2], words, data[4])
     except Exception as e:
         print("<<<Error: Corrupt file>>>.\n",e)
-    return State(data[0],incoming_states,data[2],words)
+
 
 def searchNextId():
     counter = 0
@@ -72,7 +75,7 @@ def removeBadList(user_words):
     for word in user_words:
         if word in badDb:
             user_words.remove(word)
-
+\
 def removeDoubleBlanks(user_input):
     while ("  " in user_input):
         user_input = user_input.replace("  "," ")
@@ -92,7 +95,7 @@ def sortStates(currentInput):
     """
     gets input returns best matches for it
     :param currentInput:
-    :return: returns [state,state,state...] ordered by hits, then by score
+    :return: returns [state,state,state...] list of stateType ordered by hits, then by score
     """
     tempStatesDb = []
     rslt = [] #[state12,state34,state1,...,state98]
@@ -129,5 +132,3 @@ def calcScore(state,words):
         if word in words:
             score += state.words[word]
     return score
-
-def userClueless():
