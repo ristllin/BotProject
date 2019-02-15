@@ -1,10 +1,9 @@
-from StateFunctions import *
-from Main import *
+#from StateFunctions import *
+from constants import *
 
-class State():
-    """
-    states are not added to DB automatically! must use writeState to add, and also use it after updates.
-    """
+
+class State:
+    #states are not added to DB automatically! must use writeState to add, and also use it after updates.
     def __init__(self,id,incomingStates={0},response="Undefined",words={},origin=""):
         self.id = id #int
         self.words = words #{"word1":#Hits,"word2":#Hits,...,"wordN":#Hits}
@@ -13,23 +12,29 @@ class State():
         self.response = response #"this is the message you should respond"
 
     def __repr__(self):
-        return "ID: "+str(self.id)+"; Response: "+self.response+"\n; Origin Sentance:"+self.origin
+        return "ID: "+str(self.id)+"; Response: "+self.response+";\nOrigin Sentance:"+self.origin
 
     def printFullState(self):
-        print("ID: "+str(self.id)+"; Response: "+self.response+"\n; Origin Sentance:"+self.origin+";\n Words:"+str(self.words)+"\n Incoming State:"+str(self.incomingStates))
+        print("ID: "+str(self.id)+"; Response: "+self.response+";\n Origin Sentance:"+self.origin+";\n Words:"+str(self.words)+"\n Incoming State:"+str(self.incomingStates))
 
     def updateStateResponse(self,response):
         print("response changed from: ",self.response," to:",response)
         self.response = response
 
     def updateStateIncoming(self,state_id):
-        print("added ",state_id," to: ",self.id)
+        print("added\ updated incoming state:",state_id," to: ",self.id)
         self.incomingStates.add(state_id)
 
     def updateStateWords(self,words):
-        print("adding words")
+        print("adding words: ",words)
+        # print("---debug updating words---") #debug
+        # print("debug, current words: ",self.words) #debug
+        words = words.split(" ")
+        # print("new words: ", words)  # debug
         for word in words:
             if self.words.get(word) != None: #word exists
                 self.words[word] += 1
             else: #create new key
                 self.words[word] = 1
+        # print("updated: ",self.words) #debug
+        # print("-------------------------") #debug

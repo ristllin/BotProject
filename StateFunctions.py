@@ -1,29 +1,29 @@
 from StateType import *
-from Main import *
+from constants import *#Consts
 from BadDb import badDb
 
 def parseDbLine(line):
     """
     gets line from DB, returns stateType object from data
     :param line: int<id>;int,int,int;String<response>;String<word>:int<hits>,...;String<origin Sentence>
+    id,origins,response,words,origin sentance
     :return:
     """
-    print("line:",line)
     try:
-        data = ";".split(line)
-        incoming_states = {}
-        incoming_states_raw = ",".split(data[1])
+        data = line.split(";")
+        incoming_states = set()
+        incoming_states_raw = data[1].split(",")
         for state in incoming_states_raw:
             incoming_states.add(state)
-        words_raw = ",".split(data[3])
+        words_raw = data[3].split(",")
         words = {}
         for word in words_raw:
-            raw_word = ":".split(word)
+            raw_word = word.split(":")
             words[raw_word[0]] = int(raw_word[1])
-        print("data:",data)
         return State(data[0], incoming_states, data[2], words, data[4])
     except Exception as e:
-        print("<<<Error: Corrupt file>>>.\n",e)
+        print("<<<Error: (parseDbLine) Corrupt file>>>.\n",e)
+        return None
 
 
 def searchNextId():
@@ -31,43 +31,53 @@ def searchNextId():
     with open(FILEPATH, "r+") as f:
         for line in f:
             counter+= 1
-    return counter + 1
+    return counter
 
 def writeState(state):
     """
     <<<<<<needs to be testes!!!>>>>
     """
+    stringified = str(state.id)+";"+str(state.incomingStates).replace(" ","")+";"+state.response+";"+str(state.words)+";"+state.origin
+    stringified = stringified.replace("}", "").replace("{", "").replace("'", "")
+    stringified = removeDoubleBlanks(stringified)
+    update = False
+
     with open(FILEPATH, "r+") as f:
-        for line in f:
+        states = f.readlines()
+        for line in states:
             current_state = parseDbLine(line)
             if state.id == current_state.id: #update state
-                f.write(str(state.id) + ";" + str(state.incomingStates) + ";" + state.response + ";" + str(state.words))
-                return True
-        f.write(str(state.id)+";"+str(state.incomingStates)+";"+state.response+";"+str(state.words))
-        return True
+                update = True
+        if not update:
+            f.write("\n"+stringified)
+            return True
+    f.close()
+    if update:
+        for i in range(len(states)):
+            if state.id == parseDbLine(states[i]).id:
+                states[i] = stringified
+                break
+        with open (FILEPATH, "w+") as f:
+            f.writelines(states)
+            return True
     return False
 
 def getState(state_id):
     with open(FILEPATH, "r+") as f:
         for line in f:
             current_state = parseDbLine(line)
+            if current_state == None:
+                print("<<<Error: (getState) skipping: ",line,">>>")
+                continue
             if str(state_id) == str(current_state.id):
                 return current_state
     return None
-
-def setState(new_state_id):
-    global CurrentState
-    new_state = getState(new_state_id)
-    if new_state != None:
-        CURRENTSTATE = new_state
-    else:
-        print("Error: state '",new_state_id,"' was not found in DB.")
 
 def parseInput(user_input):
     user_input = user_input.lower()
     user_input = removeChars(user_input)
     user_input = removeDoubleBlanks(user_input)
-    user_words = " ".split(user_input)
+    user_words = user_input.split(" ")
     removeBadList(user_words)
     return user_input
 
@@ -75,7 +85,7 @@ def removeBadList(user_words):
     for word in user_words:
         if word in badDb:
             user_words.remove(word)
-\
+
 def removeDoubleBlanks(user_input):
     while ("  " in user_input):
         user_input = user_input.replace("  "," ")
@@ -85,11 +95,14 @@ def removeChars(user_input):
     for char in user_input:
         if not(char.isalnum()):
             if char == "?": #keep ? as word
-                user_input.reaplce("?"," ? ")
-            if char == " ": #keep spaces
+                user_input = user_input.replace("?"," ? ")
+            elif char == " ": #keep spaces
+                continue
+            elif char.isalpha():
                 continue
             else: #remove char
-                user_input.replace(char,"")
+                user_input = user_input.replace(char,"")
+    return user_input
 
 def sortStates(currentInput):
     """
@@ -117,7 +130,11 @@ def sortStates(currentInput):
                         inserted = True
             if not inserted:
                 rslt.append(new_state)
-    return rslt
+    tmp = []
+    for index in rslt: #cancel doubles
+        if index not in tmp:
+            tmp.append(index)
+    return tmp
 
 def calcHits(state,words):
     count = 0
