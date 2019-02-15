@@ -22,14 +22,18 @@ class State:
         self.response = response
 
     def updateStateIncoming(self,state_id):
-        print("added\ updated incoming state:",state_id," to: ",self.id)
+        # print("added or updated incoming state:",state_id," to state: ",self.id)
         self.incomingStates.add(state_id)
 
     def updateStateWords(self,words):
-        print("adding words: ",words)
         # print("---debug updating words---") #debug
+        # print("adding words: ",words) #debug
         # print("debug, current words: ",self.words) #debug
         words = words.split(" ")
+        for word in words:
+            word.replace(" ","")
+        if "" in words:
+            words.remove("")
         # print("new words: ", words)  # debug
         for word in words:
             if self.words.get(word) != None: #word exists

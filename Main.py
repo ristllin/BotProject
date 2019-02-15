@@ -14,7 +14,7 @@ def main():
         print("<<<Error>>>> Empty DB")
         quit()
     while True:
-        try:
+        # try:
             print("<<<",CurrentState.response)
             CurrentInput = parseInput(input(">>> ")) #result updates CURRENTINPUT
             RESPONSEOPTIONS = sortStates(CurrentInput) #list of stateType [state34,state21...]
@@ -29,7 +29,10 @@ def main():
                     command = input(">>")
                     if command == "create": #creates new state
                         response = input("Enter response:")
-                        new_state = State(searchNextId(),origin=CurrentInput)
+                        # print("debug:",CurrentInput)
+                        new_state = State(searchNextId(),words={},origin=CurrentInput)
+                        # print("Debug: ----")
+                        # new_state.printFullState() #debug
                         new_state.updateStateIncoming(CurrentState.id)
                         new_state.updateStateResponse(response)
                         new_state.updateStateWords(CurrentInput)
@@ -66,16 +69,17 @@ def main():
                             RESPONSEOPTIONS[0] = getState(int(stateNum))
                         else:
                             RESPONSEOPTIONS.append(getState(int(stateNum)))
-                    elif command == "full debug":
+                    elif command == "full debug" or command == "debug full":
                         print("___________________________")
-                        print("Current State: ",CurrentState)
-                        print("Current Input:",CurrentInput)
-                        print("Response Options: ",RESPONSEOPTIONS)
+                        print("*Current State: ",CurrentState)
+                        print("\n*Current Input:",CurrentInput)
+                        print("\n*Response Options: ",RESPONSEOPTIONS)
                         print("___________________________")
                     elif command == "debug":
                         print("___________________________")
                         for state in RESPONSEOPTIONS:
-                            print(state.id+",", end="")
+                            score = calcScore(state,CurrentInput) + calcHits(state,CurrentInput) * 2
+                            print(state.id+": "+str(score)+" ,", end="")
                         print("\n___________________________")
                     else:
                         print("---Unknown command---")
@@ -87,11 +91,10 @@ def main():
                     if "restart" in command:
                         CurrentState = getState(0)
                 else:
-                    print(RESPONSEOPTIONS[0].response)
                     CurrentState = getState(RESPONSEOPTIONS[0].id)
-        except Exception as e:
-            print("<<<Error: Main crashed >_< >>>",e)
-            quit()
+        # except Exception as e:
+        #     print("<<<Error: Main crashed >_< >>>",e)
+        #     quit()
             #print("Something went wrong, lets restart")
 
 

@@ -15,7 +15,7 @@ def parseDbLine(line):
         incoming_states_raw = data[1].split(",")
         for state in incoming_states_raw:
             incoming_states.add(state)
-        words_raw = data[3].split(",")
+        words_raw = data[3].replace(" ","").split(",")
         words = {}
         for word in words_raw:
             raw_word = word.split(":")
@@ -37,7 +37,7 @@ def writeState(state):
     """
     <<<<<<needs to be testes!!!>>>>
     """
-    stringified = str(state.id)+";"+str(state.incomingStates).replace(" ","")+";"+state.response+";"+str(state.words)+";"+state.origin
+    stringified = str(state.id)+";"+str(state.incomingStates).replace(" ","")+";"+state.response+";"+str(state.words).replace(" ","")+";"+state.origin
     stringified = stringified.replace("}", "").replace("{", "").replace("'", "")
     stringified = removeDoubleBlanks(stringified)
     update = False
@@ -118,16 +118,23 @@ def sortStates(currentInput):
     first_element = tempStatesDb.pop(0)
     rslt.append(first_element)
     for new_state in tempStatesDb: #insert all good states
-        if calcHits(new_state,currentInput) > 0:
+        hits = calcHits(new_state,currentInput)
+        score = calcScore(new_state, currentInput)
+        final_score = score + (hits * 2)
+        if hits > 0:
             inserted = False
             for i in range(len(rslt)): #insert ordered
-                if calcHits(new_state,currentInput) > calcHits(rslt[i],currentInput):
+                other_final_score = calcScore(rslt[i],currentInput) + calcHits(rslt[i],currentInput) * 2
+                if final_score > other_final_score:
                     rslt.insert(i,new_state)
                     inserted = True
-                elif (calcHits(new_state,currentInput) == calcHits(rslt[i],currentInput)):
-                    if calcScore(new_state,currentInput) > calcHits(rslt[i],currentInput):
-                        rslt.insert(i, new_state)
-                        inserted = True
+                # if calcHits(new_state,currentInput) > calcHits(rslt[i],currentInput):
+                #     rslt.insert(i,new_state)
+                #     inserted = True
+                # elif (calcHits(new_state,currentInput) == calcHits(rslt[i],currentInput)):
+                #     if calcScore(new_state,currentInput) > calcHits(rslt[i],currentInput):
+                #         rslt.insert(i, new_state)
+                #         inserted = True
             if not inserted:
                 rslt.append(new_state)
     tmp = []
@@ -139,8 +146,9 @@ def sortStates(currentInput):
 def calcHits(state,words):
     count = 0
     for word in state.words:
-        if word[0] in words:
-            count +=1
+        if word != []:
+            if word[0] in words:
+                count +=1
     return count
 
 def calcScore(state,words):
