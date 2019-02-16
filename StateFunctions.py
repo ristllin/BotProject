@@ -104,7 +104,7 @@ def removeChars(user_input):
                 user_input = user_input.replace(char,"")
     return user_input
 
-def sortStates(currentInput):
+def sortStates(currentInput,former_state):
     """
     gets input returns best matches for it
     :param currentInput:
@@ -119,11 +119,11 @@ def sortStates(currentInput):
     rslt.append(first_element)
     for new_state in tempStatesDb: #insert all good states
         hits = calcHits(new_state,currentInput)
-        final_score = calcTotalScore(new_state,currentInput)
+        final_score = calcTotalScore(new_state,currentInput,former_state)
         if hits > 0:
             inserted = False
             for i in range(len(rslt)): #insert ordered
-                other_final_score = calcTotalScore(rslt[i],currentInput)
+                other_final_score = calcTotalScore(rslt[i],currentInput,former_state)
                 if final_score > other_final_score:
                     rslt.insert(i,new_state)
                     inserted = True
@@ -157,6 +157,11 @@ def calcScore(state,words):
             score += state.words[word]
     return score
 
-def calcTotalScore(state,currentInput):
+def calcTotalScore(state,currentInput,former_state):
     HITSCONST = 3
-    return calcScore(state,curregitntInput) + (calcHits(state,currentInput) * HITSCONST)
+    RELATIONCONST = 3
+    nonrelative_score = calcScore(state, currentInput) + (calcHits(state, currentInput) * HITSCONST)
+    if former_state != None:
+        if str(former_state.id) in state.incomingStates:
+            return nonrelative_score * RELATIONCONST
+    return nonrelative_score

@@ -17,7 +17,7 @@ def main():
         # try:
             print("<<<",CurrentState.response)
             CurrentInput = parseInput(input(">>> ")) #result updates CURRENTINPUT
-            RESPONSEOPTIONS = sortStates(CurrentInput) #list of stateType [state34,state21...]
+            RESPONSEOPTIONS = sortStates(CurrentInput,CurrentState) #list of stateType [state34,state21...]
             if LEARNINGMODE:
                 command = ""
                 while command != 'fix' or command != 'restart' or command != 'y':
@@ -78,7 +78,7 @@ def main():
                     elif command == "debug":
                         print("___________________________")
                         for state in RESPONSEOPTIONS:
-                            score = calcScore(state,CurrentInput) + calcHits(state,CurrentInput) * 3
+                            score = calcTotalScore(state,CurrentInput,CurrentState)
                             print(state.id+": "+str(score)+" ,", end="")
                         print("\n___________________________")
                     else:
