@@ -24,7 +24,7 @@ def main():
                     if RESPONSEOPTIONS == []: #no options
                         print("I'm ClueLess...\n'fix' text, 'restart', 'connect #' to add a known state or 'create' new state?")
                     else:
-                        print("<<<",RESPONSEOPTIONS[0].response,"\nIs State: ",RESPONSEOPTIONS[0].id," good?")
+                        print("<<<",RESPONSEOPTIONS[0].response,"\nIs State: ",RESPONSEOPTIONS[0].id," good? Origin: ",RESPONSEOPTIONS[0].origin)
                         print("<y>-yes,<n>-no/next,<r>-fix response,'create'-create new state, 'connect #' to add a known state")
                     command = input(">>")
                     if command == "create": #creates new state
@@ -78,7 +78,7 @@ def main():
                     elif command == "debug":
                         print("___________________________")
                         for state in RESPONSEOPTIONS:
-                            score = calcScore(state,CurrentInput) + calcHits(state,CurrentInput) * 2
+                            score = calcScore(state,CurrentInput) + calcHits(state,CurrentInput) * 3
                             print(state.id+": "+str(score)+" ,", end="")
                         print("\n___________________________")
                     else:

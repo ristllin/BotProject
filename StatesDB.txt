@@ -1,26 +1,38 @@
-0;9,7,11,24,4,18,5,1,2,0,6,13,3;Hello Agent;restart:1030,lets:2,the:2,conversation:2;restart
-1;8,0;How may I help?;hi:42,hello:3;hi
-2;1,0;Cards... I love playing cards.;what:6,do:12,you:6,in:5,your:5,spare:5,time:5,?:6,like:1,to:1;what do you do in your spare time ? 
+0;0,7,5,9,24,18,13,2,11,28,1,3,6,4;Hello Agent;restart:1032,lets:2,the:2,conversation:2;restart
+1;0,8;How may I help?;hi:48,hello:4,there:1;hi
+2;1,0,35;Cards... I love playing cards.;what:7,do:13,you:7,in:5,your:5,spare:5,time:5,?:7,like:2,to:1;what do you do in your spare time ? 
 3;0,1,2,4;42;what:10,is:10,the:10,meaning:10,of:10,life:10,?:10;what is the meaning of life ? 
-4;3,1,0;Check yourself, I am not your slave...;what:6,day:5,is:6,it:6,?:6,time:1;what day is it ? 
-5;0,1;Roy;who:1,made:1,you:1,?:1;who made you ? 
-6;13,0,1;Nombot;what:2,is:2,your:4,name:5,?:5,whats:3,you:1;what is your name ? 
-7;2,7,1,13,0;Mostly talk and answer questions;what:10,can:10,you:10,do:10,?:10;what can you do ? 
+4;0,4,3,1,7;Check yourself, I am not your slave...;what:8,day:50,is:8,it:8,?:9,time:2,can:1,you:1,tell:1,me:1,the:1;what day is it ?
+5;1,0;Roy;who:2,made:2,you:2,?:2;who made you ? 
+6;0,17,6,13,1;Nombot;what:3,is:3,your:7,name:9,?:9,whats:6,you:2,again:1;what is your name ? 
+7;0,2,13,17,23,1,7;Mostly talk and answer questions;what:16,can:13,you:16,do:17,?:15,like:1,to:1,so:1,are:1,doing:1,today:1,for:1,me:1;what can you do ? 
 8;0,3,1;That is up to you to decide. Make it into whatever you want it to be.;what:1,should:1,i:1,do:1,with:1,my:1,life:1,?:1;what should i do with my life ? 
-9;3,7,1,0,9;Thats not really important is it?;do:1,you:3,like:1,bananas:1,?:5,how:2,old:2,are:2,what:2,is:2,your:2,favourite:2,food:2;do you like bananas ? 
+9;0,3,9,7,6,13,1,22;Thats not really important is it?;do:3,you:8,like:2,bananas:1,?:13,how:4,old:2,are:6,what:3,is:3,your:5,favourite:2,food:2,ol:1,whats:1,age:2,today:1,have:1,friends:2,pizza:1,who:1,cool:1;do you like bananas ? 
 10;0,3,1;Bits of data;what:1,do:1,you:1,like:1,to:1,eat:1,?:1;what do you like to eat ? 
 11;0,3,6,1;Some things...;do:1,you:1,remember:1,things:1,?:1;do you remember things ? 
 12;0,3,1,0,6;bla bla yourself;bla:3;bla bla bla
-13;3,7,1,0,9,6;Thats classified;where:4,are:4,you:4,from:4,?:4;where are you from ? 
+13;0,3,9,7,6,13,29,1;Thats classified;where:8,are:6,you:8,from:6,?:10,do:1,live:1,what:1,is:1,your:1,proffesion:1,did:1,study:1,ok:1,with:1,who:1;where are you from ? 
 14;0,3,7,1,0,9,6;yeah i guess;do:1,you:1,like:1,ananas:1,?:1;do you like ananas ? 
 15;0,3,7,1,0,9,6;You know your name... thats a weired question.;what:1,is:1,my:1,name:1,?:1;what is my name ? 
-16;0,3,7,1,0,9,6;Farrokh Bulsara;who:1,is:1,your:1,favourite:1,singer:1,?:1;who is your favourite singer ? 
-17;0,3,7,1,0,9,6;...;no:1,its:1,not:1;no its not
+16;0,1,7,16,9,6,3;Farrokh Bulsara;who:3,is:4,your:4,favourite:50,singer:50,?:4,artist:50,wh:1;who is your favourite singer ?
+17;0,17,3,9,7,6,1,2;...;no:3,its:3,not:3,i:2,guess:2,thats:3,cool:5,that:2,is:1;no its not
 18;3,7,1,0,9,6;You know the answer... thats a weired question.;who:2,am:2,i:2,?:2;who am i ? 
 19;0,3,7,1,0,9,6;God;why:1,does:1,it:1,rain:1,?:1;why does it rain ? 
 20;0,3,7,1,0,9,6;Thank you;this:1,is:1,a:1,beautiful:1,name:1;this is a beautiful name
 21;0,3,7,1,0,9,6;Mostly to talk and answer questions;why:1,were:1,you:1,created:1,?:1;why were you created ? 
-22;0,3,7,1,0,9,6;no;do:1,you:1,have:1,a:1,question:1,for:1,me:1,?:1;do you have a question for me ? 
-23;0,3,7,1,0,9,6;I can try;can:1,you:1,help:1,me:1,?:1;can you help me ? 
+22;0,3,9,7,6,1;no;do:2,you:2,have:1,a:1,question:1,for:1,me:2,?:2,hate:1;do you have a question for me ? 
+23;0,7,9,13,1,3,6;I can try;can:1,you:3,help:3,me:3,?:3,will:2,at:1,work:1;can you help me ? 
 24;3,7,1,0,9,6;Yes, but it is not available at this moment;what:2,information:2,do:2,you:2,have:2,for:2,me:2,?:2;what information do you have for me ? 
-25;0,3,7,1,0,9,6;yes;do:1,you:1,remember:1,me:1,?:1;do you remember me ? 
+25;0,9,26,13,3,6,1,7;yes;do:3,you:3,remember:1,me:1,?:3,have:2,memory:2;do you remember me ? 
+26;0,4;no;do:1,you:2,have:1,an:1,internetconnection:1,?:2,are:1,connected:1,to:1,the:1,internet:1;do you have an internetconnection ? 
+27;0;I dont think that it is important;do:2,you:2,know:2,me:2,?:2;do you know me ? 
+28;27,0;you are a bit sensitive, arent you...?;to:2,me:2,it:2,is:2;to me it is
+29;9,13,0;My creator;who:1,gave:1,you:2,your:1,name:1,?:2,do:1,have:1,parents:1;who gave you your name ? 
+30;0,13;Only English;what:1,languages:1,do:1,you:1,speak:1,?:1;what languages do you speak ? 
+31;0,13,7;ofcourse...;can:1,you:1,understand:1,me:1,?:1;can you understand me ? 
+32;0,13,7;Proffesional stuff;what:1,is:1,your:1,favourite:1,topic:1,?:1;what is your favourite topic ? 
+33;0,13,7,25;In a way, yes.;can:1,you:2,remember:1,what:1,im:1,telling:1,?:1;can you remember what im telling you ? 
+34;0,13,7,25;not like you mean me to.;can:1,you:1,remember:1,a:1,number:1,?:1;can you remember a number ? 
+35;0,17,7,13,25,1;What ever you want;what:3,can:1,we:2,talk:3,about:3,?:3,would:1,you:1,like:1,to:2,so:1,are:1,going:1;what can we talk about ? 
+36;0,35;no;ok:1,do:1,you:1,like:1,soccer:1,?:1;ok do you like soccer ? 
+37;0,35,9;no;do:1,you:1,hate:1,me:1,?:1;do you hate me ? 

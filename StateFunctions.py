@@ -119,12 +119,11 @@ def sortStates(currentInput):
     rslt.append(first_element)
     for new_state in tempStatesDb: #insert all good states
         hits = calcHits(new_state,currentInput)
-        score = calcScore(new_state, currentInput)
-        final_score = score + (hits * 2)
+        final_score = calcTotalScore(new_state,currentInput)
         if hits > 0:
             inserted = False
             for i in range(len(rslt)): #insert ordered
-                other_final_score = calcScore(rslt[i],currentInput) + calcHits(rslt[i],currentInput) * 2
+                other_final_score = calcTotalScore(rslt[i],currentInput)
                 if final_score > other_final_score:
                     rslt.insert(i,new_state)
                     inserted = True
@@ -157,3 +156,7 @@ def calcScore(state,words):
         if word in words:
             score += state.words[word]
     return score
+
+def calcTotalScore(state,currentInput):
+    HITSCONST = 3
+    return calcScore(state,curregitntInput) + (calcHits(state,currentInput) * HITSCONST)
