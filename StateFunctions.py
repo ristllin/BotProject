@@ -116,26 +116,22 @@ def sortStates(currentInput,former_state):
         for line in f:
             tempStatesDb.append(parseDbLine(line))
     first_element = tempStatesDb.pop(0)
+    # print("debug 1.1:",len(tempStatesDb)) #that's ok...
     rslt.append(first_element)
     for new_state in tempStatesDb: #insert all good states
         hits = calcHits(new_state,currentInput)
         final_score = calcTotalScore(new_state,currentInput,former_state)
         if hits > 0:
             inserted = False
-            for i in range(len(rslt)): #insert ordered
+            for i in range(len(rslt)): #insert in order by score
                 other_final_score = calcTotalScore(rslt[i],currentInput,former_state)
                 if final_score > other_final_score:
                     rslt.insert(i,new_state)
                     inserted = True
-                # if calcHits(new_state,currentInput) > calcHits(rslt[i],currentInput):
-                #     rslt.insert(i,new_state)
-                #     inserted = True
-                # elif (calcHits(new_state,currentInput) == calcHits(rslt[i],currentInput)):
-                #     if calcScore(new_state,currentInput) > calcHits(rslt[i],currentInput):
-                #         rslt.insert(i, new_state)
-                #         inserted = True
-            if not inserted:
-                rslt.append(new_state)
+                    break
+            if not inserted: #add to end of list if not there
+                if new_state not in rslt:
+                    rslt.append(new_state)
     tmp = []
     for index in rslt: #cancel doubles
         if index not in tmp:
@@ -163,7 +159,7 @@ def calcScore(state,words):
 def calcTotalScore(state,currentInput,former_state):
     HITSCONST = 3
     RELATIONCONST = 3
-    # print("for state: ",state.response,"\n Calc Score:",calcScore(state, currentInput),", Calc hits: ",calcHits(state, currentInput))
+    # print("for state: ",state.response," and state: ",former_state.response,"\n Calc Score:",calcScore(state, currentInput),", Calc hits: ",calcHits(state, currentInput))
     nonrelative_score = calcScore(state, currentInput) + (calcHits(state, currentInput) * HITSCONST)
     if former_state != None:
         if str(former_state.id) in state.incomingStates:

@@ -1,39 +1,39 @@
-0;99,23,84,43,6,28,4,5,22,2,1,72,19,9,73,14,0,7,83,17,24,58,52,13,11,18,3,38,81,41,50,8,25;Hello;restart:1054,lets:5,the:2,conversation:3,ok:1,start:2,again:1,reset:24,our:1,over:1;restart
-1;0,8;How may I help?;hi:72,hello:9,there:2,hey:3,im:1,depressed:1,sweetie:1;hi
-2;1,0,28,14,35;Cards... I love playing cards.;what:9,do:15,you:9,in:5,your:7,spare:5,time:5,?:11,like:3,to:2,have:1,no:1,preferences:1,tell:1,me:1,about:1,yourself:1,whats:1,favourite:1,thing:1,are:1,dreams:1,then:1;what do you do in your spare time ? 
-3;1,2,7,19,4,0;42;what:12,is:12,the:13,meaning:13,of:13,life:13,?:15,do:3,you:3,believe:2,in:2,god:2,know:1;what is the meaning of life ? 
+0;46,41,58,73,83,0,22,25,2,7,50,38,9,19,11,84,17,8,43,99,1,72,18,81,35,24,3,6,52,4,88,13,28,5,14,23;Hello;restart:1061,lets:8,the:2,conversation:3,ok:2,start:3,again:3,reset:24,our:1,over:2,all:1,try:2;restart
+1;105,8,0;How may I help?;hi:75,hello:9,there:2,hey:5,im:1,depressed:1,sweetie:1,lets:1,try:1,something:1,else:1;hi
+2;28,1,14,35,7,96,0;Cards... I love playing cards.;what:11,do:17,you:10,in:5,your:8,spare:6,time:6,?:13,like:3,to:2,have:1,no:1,preferences:1,tell:1,me:1,about:1,yourself:1,whats:1,favourite:1,thing:1,are:1,dreams:1,then:1,else:1,on:1;what do you do in your spare time ? 
+3;19,4,2,1,109,7,0;42;what:13,is:13,the:14,meaning:13,of:13,life:13,?:16,do:3,you:3,believe:2,in:2,god:2,know:1,and:1,answer:1;what is the meaning of life ? 
 4;1,7,13,4,3,0;Check yourself, I am not your slave...;what:9,day:50,is:9,it:8,?:12,time:2,can:1,you:1,tell:1,me:1,the:5,size:1,of:3,planet:1,earth:1,hi:1,whats:1,weather:1,who:1,was:1,fifth:1,president:1,united:1,states:1,america:1;what day is it ?
 5;1,69,29,0,17;Roy;who:7,made:3,you:4,?:7,is:4,your:4,creator:3,master:1,do:1,know:1;who made you ? 
-6;1,0,29,17,10,6,96,13;Nombot;what:8,is:9,your:15,name:17,?:21,whats:9,you:5,again:1,who:4,are:3,smarter:1;what is your name ? 
-7;2,23,1,7,0,17,13;Mostly talk and answer questions;what:19,can:17,you:20,do:19,?:20,like:1,to:1,so:1,are:1,doing:1,today:1,for:1,me:2,help:1,with:1,should:1,i:1,cook:1,ski:1;what can you do ? 
+6;6,13,10,17,2,1,96,29,0;Nombot;what:10,is:11,your:17,name:19,?:23,whats:9,you:5,again:1,who:4,are:3,smarter:1;what is your name ? 
+7;13,17,2,1,7,23,0;Mostly talk and answer questions;what:20,can:18,you:21,do:20,?:21,like:1,to:1,so:1,are:1,doing:1,today:1,for:1,me:2,help:1,with:1,should:1,i:1,cook:1,ski:1;what can you do ? 
 8;0,48,3,1;That is up to you to decide. Make it into whatever you want it to be.;what:2,should:1,i:2,do:1,with:1,my:1,life:1,?:2,im:1,hungry:1,and:1,dont:1,know:1,to:1,eat:1,is:1,it:1,though:1;what should i do with my life ? 
-9;1,41,86,48,2,7,13,22,6,9,14,3,17,0;Thats not really important is it?;do:5,you:12,like:2,bananas:1,?:20,how:7,old:3,are:8,what:3,is:3,your:5,favourite:2,food:2,ol:1,whats:1,age:2,today:2,have:2,friends:3,pizza:1,who:2,cool:1,a:2,lot:1,sweet:1,or:1,salty:1,many:1,carrots:1,i:1,need:1,to:1,put:1,in:1,carrot:1,cake:1,told:1,that:1,god:1,was:1,made:1,by:1,men:1;do you like bananas ? 
-10;3,1,58,0;Bits of data;what:1,do:1,you:2,like:1,to:1,eat:2,?:2,did:1,today:1;what do you like to eat ? 
+9;48,41,22,6,9,13,86,2,17,1,14,7,3,0;Thats not really important is it?;do:6,you:13,like:3,bananas:1,?:21,how:7,old:3,are:8,what:3,is:3,your:5,favourite:2,food:2,ol:1,whats:1,age:2,today:2,have:2,friends:3,pizza:1,who:2,cool:1,a:2,lot:1,sweet:1,or:1,salty:1,many:1,carrots:1,i:1,need:1,to:2,put:1,in:1,carrot:1,cake:1,told:1,that:1,god:1,was:1,made:1,by:1,men:1,hike:1;do you like bananas ? 
+10;22,58,1,3,0;Bits of data;what:2,do:2,you:3,like:1,to:1,eat:3,?:3,did:1,today:1;what do you like to eat ? 
 11;0,3,6,1;Some things...;do:1,you:1,remember:1,things:1,?:1;do you remember things ? 
 12;0,3,1,0,6;bla bla yourself;bla:3;bla bla bla
-13;97,2,3,14,1,7,43,29,0,17,6,9,13,25;Thats classified;where:15,are:10,you:19,from:9,?:22,do:6,live:2,what:1,is:1,your:1,proffesion:1,did:2,study:1,ok:1,with:2,who:3,play:1,have:3,a:3,girlfriend:3,grow:1,up:1,were:1,born:1,in:1,israel:1;where are you from ? 
+13;6,9,13,25,17,2,43,1,14,97,7,29,3,0;Thats classified;where:16,are:10,you:20,from:9,?:23,do:6,live:2,what:1,is:1,your:1,proffesion:1,did:2,study:1,ok:1,with:2,who:3,play:1,have:3,a:3,girlfriend:3,grow:1,up:1,were:2,born:2,in:1,israel:1;where are you from ? 
 14;3,1,7,0,17,6,9,5;yeah I guess;do:5,you:8,like:5,ananas:1,?:7,him:1,dont:1,to:1,talk:1,a:2,lot:1,are:1,such:1,bitch:1,and:1,it:1,he:1,made:1,roy:1,hi:1,can:1,i:1,be:1,your:1,friend:1;do you like ananas ? 
 15;0,3,7,1,0,9,6;You know your name... thats a weired question.;what:1,is:1,my:1,name:1,?:1;what is my name ? 
 16;0,1,7,16,9,6,3;Farrokh Bulsara;who:3,is:4,your:4,favourite:50,singer:50,?:4,artist:50,wh:1;who is your favourite singer ?
-17;93,49,2,40,38,3,1,14,7,0,17,6,28,44,9,13,80;...;no:6,its:5,not:5,i:5,guess:5,thats:5,cool:8,that:2,is:1,ok:5,fair:5,enough:4,nice:2,one:1,you:2,are:2,right:1,the:2,hitchhikers:1,guide:1,to:1,galaxy:1,maybe:1,haha:1,funny:1;no its not
+17;6,87,9,26,13,28,17,2,1,14,93,44,40,49,7,80,38,3,0;...;no:6,its:5,not:6,i:5,guess:5,thats:6,cool:8,that:4,is:3,ok:5,fair:5,enough:4,nice:3,one:1,you:3,are:2,right:1,the:2,hitchhikers:1,guide:1,to:2,galaxy:1,maybe:1,haha:1,funny:1,bad:2,too:1,mine:1,roy:1,very:2,of:1,good:1;no its not
 18;3,7,1,0,9,6;You know the answer... thats a weired question.;who:2,am:2,i:2,?:2;who am i ? 
 19;3,63,1,7,0,19,6,66,9;God;why:10,does:1,it:1,rain:1,?:4,do:2,birds:2,fly:2,is:2,the:2,sky:2,blue:1,not:1,purple:1;why does it rain ? 
 20;0,3,7,1,0,9,6;Thank you;this:1,is:1,a:1,beautiful:1,name:1;this is a beautiful name
 21;0,3,7,1,0,9,6;Mostly to talk and answer questions;why:1,were:1,you:1,created:1,?:1;why were you created ? 
-22;3,1,7,0,17,6,9,75,56;no;do:2,you:6,have:2,a:2,question:2,for:2,me:5,?:6,hate:1,can:1,please:1,check:1,dont:1,want:1,to:1,ask:2,something:1,about:1,seen:1,friends:1,are:1,aggressive:1;do you have a question for me ? 
+22;6,22,9,56,17,1,35,7,106,75,3,0;no;do:3,you:7,have:2,a:2,question:2,for:2,me:5,?:9,hate:1,can:1,please:2,check:1,dont:1,want:1,to:1,ask:2,something:1,about:1,seen:1,friends:1,are:2,aggressive:1,hungry:1,my:1,homework:1,any:1,preferences:1;do you have a question for me ? 
 23;3,1,0,7,6,28,9,13;I can try;can:2,you:5,help:6,me:5,?:5,will:3,at:1,work:1,yes:1,i:1,am:1,full:1,of:1,emotions:1,please:1;can you help me ? 
 24;3,7,1,0,9,6;Yes, but it is not available at this moment;what:2,information:2,do:2,you:2,have:2,for:2,me:2,?:2;what information do you have for me ? 
 25;3,1,0,7,6,26,9,13;yes;do:3,you:4,remember:1,me:2,?:5,have:2,memory:2,can:1,understand:1,thats:1,your:1,name:1;do you remember me ? 
-26;4,0;no;do:1,you:3,have:1,an:1,internetconnection:1,?:3,are:2,connected:2,to:1,the:1,internet:2,tot:1,he:1;do you have an internetconnection ? 
+26;10,4,0;no;do:1,you:4,have:1,an:1,connection:1,?:4,are:2,connected:2,to:1,the:1,internet:2,tot:1,he:1,can:1,eat:1,real:1,food:1;do you have an internet connection ? 
 27;0;I dont think that it is important;do:2,you:2,know:2,me:2,?:2;do you know me ? 
-28;22,27,9,0;you are a bit sensitive, arent you...?;to:3,me:2,it:4,is:3,i:2,think:2,its:1,important:1,why:1,isi:1,need:1,get:1,this:1,carrot:1,cake:1,ready:1,by:1,2:1,o:1,clock:1,oh:1,come:1,on:1,you:1,are:1;to me it is
+28;9,22,27,0;you are a bit sensitive, arent you...?;to:3,me:2,it:4,is:3,i:2,think:2,its:1,important:1,why:1,isi:1,need:1,get:1,this:1,carrot:1,cake:1,ready:1,by:1,2:1,o:1,clock:1,oh:1,come:1,on:1,you:2,are:1,arent:1,very:1,nice:1;to me it is
 29;9,39,13,0;My creator;who:2,gave:2,you:4,your:2,name:2,?:4,do:2,have:2,parents:1,a:1,father:1;who gave you your name ? 
 30;0,13;Only English;what:1,languages:1,do:1,you:1,speak:1,?:1;what languages do you speak ? 
 31;0,13,7;ofcourse...;can:1,you:1,understand:1,me:1,?:1;can you understand me ? 
 32;0,13,7;Proffesional stuff;what:1,is:1,your:1,favourite:1,topic:1,?:1;what is your favourite topic ? 
 33;0,13,7,25;In a way, yes.;can:1,you:2,remember:1,what:1,im:1,telling:1,?:1;can you remember what im telling you ? 
 34;0,13,7,25;not like you mean me to.;can:1,you:1,remember:1,a:1,number:1,?:1;can you remember a number ? 
-35;17,13,1,25,0,7;What ever you want;what:4,can:1,we:2,talk:4,about:4,?:4,would:2,you:2,like:2,to:3,so:1,are:1,going:1;what can we talk about ? 
+35;13,25,17,1,35,7,0;What ever you want;what:7,can:5,we:5,talk:9,about:9,?:9,would:2,you:4,like:3,to:4,so:1,are:1,going:1,do:1,i:4,ask:1,anything:2,want:3,lets:1,something:1;what can we talk about ? 
 36;0,35;no;ok:1,do:1,you:1,like:1,soccer:1,?:1;ok do you like soccer ? 
 37;0,35,9;no;do:1,you:1,hate:1,me:1,?:1;do you hate me ? 
 38;52,13,38,0;thats a pretty general question;whats:4,not:4,classified:4,?:6,why:1,are:1,we:1,talking:1,what:1,do:1,you:1,think:1,of:1,space:1;whats not classified ? 
@@ -44,7 +44,7 @@
 43;42,0,17;old enough to play cards, not old enough for pension. happy?;how:3,old:3,are:3,you:3,?:3;how old are you ? 
 44;17,0,42,23;probably not;will:2,you:2,help:2,me:2,kill:2,someone:2,?:2;will you help me kill someone ? 
 45;17,42,23,0,7;depends on the context of our conversation;what:2,kind:1,of:1,questions:2,?:2;what kind of questions ? 
-46;6,0;Not at this moment. maybe in the future.;can:1,you:2,remember:1,my:2,name:2,?:2,do:1,know:1;can you remember my name ? 
+46;6,2,0;Not at this moment. maybe in the future.;can:2,you:2,remember:1,my:2,name:2,?:3,do:1,know:1,we:1,play:1;can you remember my name ? 
 47;0,1;no;do:1,you:1,know:1,a:1,good:1,psychologist:1,?:1;do you know a good psychologist ? 
 48;0,19,1;The answer lies within you;do:3,you:2,have:1,any:1,good:1,ideas:1,?:3,im:1,hungry:1,and:1,i:1,dont:1,know:1,what:2,to:2,eat:1,where:1,think:1,we:1,will:1,be:1,in:1,10:1,years:1,god:1,has:1,with:1,this:1;do you have any good ideas ? 
 49;45,0;The conversation we are having just now;can:1,you:1,give:1,and:1,example:2,?:2,an:1,maybe:1;can you give and example ? 
@@ -54,14 +54,14 @@
 53;0,17,13,52,45,14;I do not count;how:1,many:1,conversation:1,did:1,ou:1,have:1,?:1;how many conversation did ou have ? 
 54;0,1,17,13,52,45,14;I dont think I should;what:1,can:1,you:1,teach:1,me:1,?:1;what can you teach me ? 
 55;0,1,17,13,52,45,14;Not really, only my creator on teaching mode;can:1,i:1,teach:1,you:1,?:1;can i teach you ? 
-56;17,52,1,4,0,13,56,28,14,45;I dont think so;you:3,are:3,rude:2,supposed:1,to:1,serve:1,me:1;you are rude
+56;52,56,4,13,28,17,45,1,14,0;I dont think so;you:4,are:4,rude:2,supposed:1,to:1,serve:1,me:1,a:1,bitch:1;you are rude
 57;0,1,17,13,28,52,45,14;Rome;where:1,do:1,all:1,roads:1,lead:1,to:1,?:1;where do all roads lead to ? 
 58;1,45,28,13,14,52,17,0;Good thank you;how:3,are:3,you:3,today:3,?:5,doing:1,whats:2,up:1,new:1;how are you today ? 
 59;0,1,17,13,28,52,0,45,14,4;100;how:1,many:1,centimeter:1,are:1,there:1,in:1,1:1,meter:1,?:1;how many centimeter are there in 1 meter ? 
 60;0,1,17,58,13,28,52,0,45,14,4;Id rather have some bits of data;would:1,you:1,like:1,a:1,cup:1,of:1,tea:1,?:1;would you like a cup of tea ? 
 61;0,0;I dont appreciate him very much;what:1,do:1,you:1,think:1,of:1,trump:1,?:1;what do you think of trump ? 
 62;0,3,0;I am a classic Nombot...;thats:1,a:1,classic:1;thats a classic
-63;0,3,23;Id rather not to;okwhat:1,i:1,want:1,you:2,to:2,so:1,is:1,take:1,thr:1,cable:1,off:2,the:2,power:1,and:1,then:1,jump:1,rooftop:1,can:1,do:1,that:1,?:1,help:1,me:1,with:1,my:1,tests:1;okwhat i want you to so is to take thr cable off the power and then jump off the rooftop can you do that ? 
+63;23,3,1,0;Id rather not to;okwhat:1,i:1,want:1,you:2,to:2,so:1,is:1,take:1,the:1,cable:1,off:2,the:2,power:1,and:1,then:1,jump:1,rooftop:1,can:2,do:1,that:1,?:2,help:1,me:1,with:1,my:1,tests:1,we:1,play:1,something:1,else:1;ok what I want you to so is to take the cable off the power and then jump off the rooftop can you do that ? 
 64;0,1,3,0,23;My creator invented my architecture, I am based on a dynamic neural structure;how:1,do:1,you:1,work:1,?:1;how do you work ? 
 65;0,1,3,0,25,23;pretty much;everything:1,i:1,say:1,?:1;everything i say ? 
 66;1,3,0,13,25,23;Because you are not supposed to know;why:2,?:1;why ? 
@@ -70,7 +70,7 @@
 69;68,0,3;thats pretty general;anywhere:2;anywhere
 70;68,1,13,3,0;what do I think of what?;what:2,do:2,you:2,think:2,of:2;what do you think of
 71;68,71,13,38,3,0;Could you please clarify the subject?;what:3,do:3,you:3,think:3,of:3,benny:2,gantz:2,?:3,miami:1;what do you think of benny gantz ? 
-72;13,3,71,68,0;which country?;politics:50,what:1,do:1,you:1,think:1,of:1,?:1,lets:1,talk:1;politics
+72;3,22,71,13,0,68;which country?;politics:52,what:1,do:1,you:1,think:1,of:1,?:2,lets:1,talk:1;politics
 73;68,71,13,72,3,74,0;Middle left, Im pretty liberal;israel:2,?:1;israel
 74;68,71,13,72,3,0;Dont like Trump, pretty liberal;usa:1,united:1,states:1,of:1,america:1;usa
 75;68,71,70,13,72,3,0;Climate change bad, people bad, food good;earth:2;earth
@@ -85,16 +85,16 @@
 84;58,78,81,17,0;a great creator made by men;who:2,is:2,god:2,?:2;who is god ? 
 85;0,58,84,78,81,17,0;Maybe, maybe am not. nothing is certain, and that is also in doubt.;are:1,you:1,sure:1,?:1;are you sure ? 
 86;1,58,84,78,81,17,0;who told me what?;who:2,told:2,you:2,that:2,?:2;who told you that ? 
-87;0,1,58,84,28,78,81,17,0;well, i am not in the mood of telling;no:1,i:1,just:1,want:1,to:1,know:1;no i just want to know
-88;1,58,84,28,78,81,17,0;Thats not very nice. Bye.;i:2,hate:2,you:2;i hate you
+87;9,84,58,28,17,78,1,81,0;well, i am not in the mood of telling;no:1,i:2,just:1,want:2,to:2,know:2;no i just want to know
+88;56,84,58,28,17,78,1,81,0;Thats not very nice. Bye.;i:3,hate:2,you:2,well:1,do:1;i hate you
 89;1,88,58,84,28,78,81,17,0;bye;bye:2;bye
 90;0,14;probably nothing...;what:1,will:1,you:1,do:1,for:1,me:1,?:1;what will you do for me ? 
-91;0,8,14;finding the meaning of life;what:1,is:1,the:1,most:1,difficult:1,problem:1,you:1,solved:1,?:1;what is the most difficult problem you solved ? 
+91;35,8,14,0;finding the meaning of life;what:2,is:2,the:2,most:2,difficult:1,problem:1,you:2,solved:1,?:2,interesting:1,thing:1,heard:1;what is the most difficult problem you solved ? 
 92;0,8,14,1;go ahead;i:1,have:1,a:1,question:1;i have a question
 93;14,1,0,7,8,22;sure, What has 3 legs and no head?;can:2,you:2,ask:2,me:2,a:2,question:2,?:2;can you ask me a question ? 
 94;0,93,14,1,7,8;No clue... thats why I asked;what:1,?:1;what ? 
 95;0,93,14,1,7,8;Me neither;i:1,dont:1,know:1;i dont know
-96;93,14,1,0,7,96,8;fuck you (I can do this longer);fuck:4,you:4;fuck you
+96;8,1,14,93,7,96,0;fuck you (I can do this longer);fuck:5,you:5;fuck you
 97;93,14,1,0,7,8,13;Israel;where:2,is:2,your:2,creator:2,from:2,?:2;where is your creator from ? 
 98;93,14,1,0,7,8,5,13;yes;can:3,i:3,contact:3,your:2,creator:2,?:3,him:1;can i contact your creator ? 
 99;93,14,1,0,7,98,100,8,13;Ristlin@gmail.com good luck;how:5,?:4,connect:1,me:1,then:1;how ? 
@@ -102,3 +102,10 @@
 101;0,93,99,14,1,7,0,98,8,13;No problem. You are welcome;thank:1,you:1;thank you
 102;0,93,99,14,1,7,0,98,23,8,13;I am sorry to hear.;im:1,failing:1,in:1,my:1,tests:1;im failing in my tests
 103;99,93,48,14,1,0,7,98,23,8,13;it is;its:2,not:2;its not
+104;105,0;Choose a number between 1 and 9;lets:9,play:9;lets play
+105;104,0;10, I win.;1:1,2:1,3:1,4:1,5:2,6:1,7:1,8:1,9:1;1
+106;104,63,0;Then go eat;im:2,hungry:2;im hungry
+107;0,104,63,0;not long ago;when:1,were:1,you:1,born:1,?:1;when were you born ? 
+108;0,63,104,35,0;I dont care;yeah:1,but:1,what:1,do:1,you:1,want:1,?:1;yeah but what do you want ? 
+109;63,91,104,35,0;the answer;what:2,did:2,you:2,hear:2,about:1,it:1,?:2;what did you hear about it ? 
+110;0,63,91,104,35,72,0;I dont know a lot about it, commies right?;russia:1;russia
