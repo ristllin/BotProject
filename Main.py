@@ -81,6 +81,17 @@ def main():
                             score = calcTotalScore(state,CurrentInput,CurrentState)
                             print(state.id+": "+str(score)+" ,", end="")
                         print("\n___________________________")
+                    elif "search" in command:
+                        search_string = command[7:]
+                        print("___________________________")
+                        tempStatesDb = []
+                        with open(FILEPATH, "r+") as f:
+                            for line in f:
+                                tempStatesDb.append(parseDbLine(line))
+                        for state in tempStatesDb:
+                            if search_string in state.response:
+                                print("id: ",state.id,": "+state.response)
+                        print("___________________________")
                     else:
                         print("---Unknown command---")
 
