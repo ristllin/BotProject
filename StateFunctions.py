@@ -125,7 +125,7 @@ def sortStates(currentInput,former_state):
             inserted = False
             for i in range(len(rslt)): #insert in order by score
                 other_final_score = calcTotalScore(rslt[i],currentInput,former_state)
-                if final_score > other_final_score:
+                if final_score > other_final_score or currentInput == new_state.origin:
                     rslt.insert(i,new_state)
                     inserted = True
                     break
