@@ -146,8 +146,11 @@ def calcHits(state,words):
     count = 0
     for word in state.words:
         if word != []:
-            if word[0] in words:
+            if word in words:
                 count +=1
+                # print("debug 1.0 state words:", state.words)
+                # print("debug 1.1 comp words:", words)
+                # print("debug: ",word[0])
     return count
 
 def calcScore(state,words):
@@ -160,6 +163,7 @@ def calcScore(state,words):
 def calcTotalScore(state,currentInput,former_state):
     HITSCONST = 3
     RELATIONCONST = 3
+    # print("for state: ",state.response,"\n Calc Score:",calcScore(state, currentInput),", Calc hits: ",calcHits(state, currentInput))
     nonrelative_score = calcScore(state, currentInput) + (calcHits(state, currentInput) * HITSCONST)
     if former_state != None:
         if str(former_state.id) in state.incomingStates:

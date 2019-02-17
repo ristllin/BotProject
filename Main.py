@@ -39,7 +39,7 @@ def main():
                         writeState(new_state)
                         print("I'm smarter now, try me again.")
                         break
-                    elif command == "restart":
+                    elif command == "restart" or command == "reset":
                         CurrentState = getState(0)
                         break
                     elif command == "y" and RESPONSEOPTIONS != []:
