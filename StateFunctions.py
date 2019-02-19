@@ -23,6 +23,7 @@ def parseDbLine(line):
         return State(data[0], incoming_states, data[2], words, data[4])
     except Exception as e:
         print("<<<Error: (parseDbLine) Corrupt file>>>.\n",e)
+        print("on Line:",line)
         return None
 
 
@@ -125,7 +126,7 @@ def sortStates(currentInput,former_state):
             inserted = False
             for i in range(len(rslt)): #insert in order by score
                 other_final_score = calcTotalScore(rslt[i],currentInput,former_state)
-                if final_score > other_final_score or currentInput == new_state.origin:
+                if final_score > other_final_score or currentInput == new_state.origin.replace(" ?","?"):
                     rslt.insert(i,new_state)
                     inserted = True
                     break
