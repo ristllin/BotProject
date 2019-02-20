@@ -5,22 +5,26 @@ from BadDb import badDb
 def parseDbLine(line):
     """
     gets line from DB, returns stateType object from data
-    :param line: int<id>;int,int,int;String<response>;String<word>:int<hits>,...;String<origin Sentence>
+    :param line: int<id>;int,int,int;String<response>;String<word>:int<hits>,...;String<origin Sentence>;special
     id,origins,response,words,origin sentance
     :return:
     """
     try:
         data = line.split(";")
+        state_id = data[0]
         incoming_states = set()
         incoming_states_raw = data[1].split(",")
         for state in incoming_states_raw:
             incoming_states.add(state)
+        response = data[2]
         words_raw = data[3].replace(" ","").split(",")
         words = {}
         for word in words_raw:
             raw_word = word.split(":")
             words[raw_word[0]] = int(raw_word[1])
-        return State(data[0], incoming_states, data[2], words, data[4])
+        origin = data[4]
+        special = data[5]
+        return State(state_id, incomingStates=incoming_states, response=response, words=words, special=special, origin=origin)
     except Exception as e:
         print("<<<Error: (parseDbLine) Corrupt file>>>.\n",e)
         print("on Line:",line)
@@ -36,13 +40,14 @@ def searchNextId():
 
 def writeState(state):
     """
-    <<<<<<needs to be testes!!!>>>>
+    returns true if managed to write file.
+    recognizes if it should update or add new state.
     """
-    stringified = str(state.id)+";"+str(state.incomingStates).replace(" ","")+";"+state.response+";"+str(state.words).replace(" ","")+";"+state.origin
+    # print("working on state: ",state)
+    stringified = str(state.id)+";"+str(state.incomingStates).replace(" ","")+";"+state.response+";"+str(state.words).replace(" ","")+";"+state.origin+";"+str(state.special)
     stringified = stringified.replace("}", "").replace("{", "").replace("'", "")
     stringified = removeDoubleBlanks(stringified)
     update = False
-
     with open(FILEPATH, "r+") as f:
         states = f.readlines()
         for line in states:
@@ -51,6 +56,7 @@ def writeState(state):
                 update = True
         if not update:
             f.write("\n"+stringified)
+            # print("adding new:",stringified) #debug
             return True
     f.close()
     if update:
@@ -60,6 +66,7 @@ def writeState(state):
                 break
         with open (FILEPATH, "w+") as f:
             f.writelines(states)
+            # print("updating, new:",str(states)) #debug
             return True
     return False
 
@@ -137,6 +144,7 @@ def sortStates(currentInput,former_state):
     for index in rslt: #cancel doubles
         if index not in tmp:
             tmp.append(index)
+    # print("debug:",tmp)
     return tmp
 
 def calcHits(state,words):

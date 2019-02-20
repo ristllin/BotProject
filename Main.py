@@ -23,6 +23,28 @@ def create():
     writeState(new_state)
     print("I'm smarter now, try me again.")
 
+def createSpecial():
+    """
+    creates new active node and updates DB
+    :param CurrentInput: getting parsed user input
+    :param CurrentState: getting current state
+    :return: None
+    """
+    global CurrentState
+    global CurrentInput
+    global RESPONSEOPTIONS
+    response = input("Enter response:")
+    api = input("Enter api (e.g. 'internet'):")
+    command = input("Enter command (e.g. 'search'):")
+    data = input("Enter data (as required by the API):")
+    special = api+":"+command+":"+data
+    new_state = State(searchNextId(), words={}, origin=CurrentInput, special=special)
+    new_state.updateStateIncoming(CurrentState.id)
+    new_state.updateStateResponse(response)
+    new_state.updateStateWords(CurrentInput)
+    writeState(new_state)
+    print("I'm smarter now, try me again.")
+
 def fullDebug():
     """
     prints out in full all dynamic variables
@@ -99,8 +121,10 @@ def yes():
     global CurrentInput
     global RESPONSEOPTIONS
     state = RESPONSEOPTIONS[0]
+    # print("state under update:",state)
     state.updateStateIncoming(CurrentState.id)
     state.updateStateWords(CurrentInput)
+    # print("writing state:",state)
     writeState(state)
     CurrentState = getState(state.id)
 
@@ -120,19 +144,22 @@ def correct():
     RESPONSEOPTIONS[0].updateStateResponse(response)
     writeState(RESPONSEOPTIONS[0])
 
-def executeSpecial(command):
+def executeSpecial(command,userInput):
     """
     gets String "<API>:<Command>:<data>" passes command to relevant api
     :param command:
     :return: None
     """
     parsed = command.split(":") #parsed = [API,COMMAND,DATA]
-    if parsed[0] == "internet":
-        internet(parsed[1],parsed[2])
+    if "internet" in parsed[0]:
+        internet(parsed[1],parsed[2],userInput)
 
-def internet(command,data):
+def internet(command,data,userInput):
     if command == "search":
-
+        try:
+            print("lets say now we search google for: ",userInput," and print it")
+        except Exception as e:
+            print("Failed") #interconnection problems e.g.?
 
 def main():
     global CurrentState
@@ -146,8 +173,8 @@ def main():
     while True:
         try:
             print("<<<",CurrentState.response)
-            if CurrentState.special != None:
-                executeSpecial(CurrentState.special)
+            if CurrentState.special != "" and CurrentInput != None:
+                executeSpecial(CurrentState.special,CurrentInput)
             CurrentInput = parseInput(input(">>> ")) #result updates CURRENTINPUT
             if CurrentInput == "":
                 continue
@@ -163,6 +190,9 @@ def main():
                     command = input(">")
                     if command == "create": #creates new state
                         create()
+                        break
+                    if command == "create special": #creates new active state
+                        createSpecial()
                         break
                     elif command == "restart" or command == "reset":
                         CurrentState = getState(0)

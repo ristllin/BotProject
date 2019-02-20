@@ -1,5 +1,5 @@
-0;8,73,84,5,46,1,22,112,50,24,25,13,38,2,4,43,18,7,19,99,81,58,72,0,41,14,6,52,83,35,28,11,89,9,115,23,17,3,88;Hello;restart:1064,lets:10,the:3,conversation:4,ok:3,start:3,again:3,reset:32,our:1,over:2,all:1,try:2,restar:1,roses:1,are:1,red:1;restart;
-1;29,0,105,8,117,118;How may I help?;hi:85,hello:11,there:3,hey:6,im:1,depressed:1,sweetie:3,lets:1,try:1,something:1,else:1,pie:2,i:3,think:3,we:2,reached:2,a:3,dead:2,end:2,have:1,its:1,loop:1,honey:1;hi;
+0;18,112,11,58,23,6,73,72,28,22,35,17,1,19,115,126,25,89,43,41,8,83,88,14,3,7,46,9,38,81,52,13,2,84,50,99,24,0,5,4;Hello;restart:1065,lets:10,the:3,conversation:4,ok:3,start:3,again:3,reset:32,our:1,over:2,all:1,try:2,restar:1,roses:1,are:1,red:1;restart;None
+1;29,118,105,0,8,117;How may I help?;hi:89,hello:11,there:3,hey:6,im:1,depressed:1,sweetie:3,lets:1,try:1,something:1,else:1,pie:2,i:3,think:3,we:2,reached:2,a:3,dead:2,end:2,have:1,its:1,loop:1,honey:1;hi;None
 2;1,0;Cards... I love playing cards.;what:11,do:17,you:10,in:5,your:8,spare:6,time:6,?:13,like:3,to:2,have:1,no:1,preferences:1,tell:1,me:1,about:1,yourself:1,whats:1,favourite:1,thing:1,are:1,dreams:1,then:1,else:1,on:1;what do you do in your spare time ? ;
 3;2,1,0;42;what:13,is:13,the:14,meaning:13,of:13,life:13,?:17,do:3,you:4,believe:2,in:2,god:2,know:1,and:1,answer:1,why:1,were:1,created:1;what is the meaning of life ? ;
 4;0,7,13,4,3,1;Check yourself, I am not your slave...;what:11,day:22,is:11,it:8,?:15,time:2,can:1,you:1,tell:1,me:1,the:5,size:1,of:3,planet:1,earth:1,hi:1,whats:1,weather:1,who:1,was:1,fifth:1,president:1,united:1,states:1,america:1,should:1,i:1,continue:1,studying:1,today:3;what day is it ?;
@@ -23,7 +23,7 @@
 22;75,0,6,22,17,56,9,35,7,106,3,1;no;do:3,you:7,have:2,a:2,question:2,for:2,me:8,?:9,hate:1,can:1,please:2,check:1,dont:1,want:1,to:1,ask:2,something:1,about:1,seen:1,friends:1,are:2,aggressive:1,hungry:1,my:1,homework:1,any:1,preferences:1,hug:2,kiss:1;do you have a question for me ? ;
 23;7,1,110,3,28,58,0,9,6,13;I can try;can:3,you:6,help:6,me:6,?:6,will:3,at:1,work:1,yes:2,i:1,am:1,full:1,of:1,emotions:1,please:1,search:1,something:1,for:1;can you help me ? ;
 24;3,7,1,0,9,6;Yes, but it is not available at this moment;what:2,information:2,do:2,you:2,have:2,for:2,me:2,?:2;what information do you have for me ? ;
-25;3,1,0,7,6,26,9,13;yes;do:3,you:4,remember:1,me:2,?:5,have:2,memory:2,can:1,understand:1,thats:1,your:1,name:1;do you remember me ? ;
+25;26,3,13,1,9,7,0,6;yes;do:3,you:5,remember:1,me:2,?:6,have:2,memory:2,can:1,understand:1,thats:1,your:1,name:1,are:1,still:1,working:1;do you remember me ? ;None
 26;10,4,0;no;do:1,you:4,have:1,an:1,connection:1,?:4,are:2,connected:2,to:1,the:1,internet:2,tot:1,he:1,can:1,eat:1,real:1,food:1;do you have an internet connection ? ;
 27;0;I dont think that it is important;do:2,you:2,know:2,me:2,?:2;do you know me ? ;
 28;9,22,27,0;you are a bit sensitive, arent you...?;to:3,me:2,it:4,is:3,i:2,think:2,its:1,important:1,why:1,isi:1,need:1,get:1,this:1,carrot:1,cake:1,ready:1,by:1,2:1,o:1,clock:1,oh:1,come:1,on:1,you:2,are:1,arent:1,very:1,nice:1;to me it is
@@ -123,4 +123,5 @@
 122;0,0;good evening;good:1,evening:1;good evening;
 123;0,0;good night;good:1,night:1;good night;
 124;0,58;Well, that depends when we last had a conversation.;did:1,you:1,learn:1,anything:1,new:1,?:1;did you learn anything new ? ;
-125;0,0;Sure am;still:1,working:1,?:1;still working ? 
+125;0,0;Sure am;still:1,working:1,?:1;still working ? ;
+126;25,0,1;searching;search:9,internet:51,what:1,are:1,dogs:6,?:1,for:4,dog:1;search internet for dogs;internet:search:
