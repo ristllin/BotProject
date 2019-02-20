@@ -1,6 +1,11 @@
+#----------modules-----------
 from StateType import *
 from StateFunctions import *
 from constants import *
+#----------libraries----------
+import wikipedia
+import random
+#----------constants----------
 CurrentState = None #StateType
 CurrentInput = None
 RESPONSEOPTIONS = [] #[state123,state34...] ordered
@@ -151,15 +156,40 @@ def executeSpecial(command,userInput):
     :return: None
     """
     parsed = command.split(":") #parsed = [API,COMMAND,DATA]
-    if "internet" in parsed[0]:
-        internet(parsed[1],parsed[2],userInput)
+    if len(parsed) == 3:
+        command = parsed[1]
+        data = parsed[2]
+        if "internet" in parsed[0]:
+            internet(command, data, userInput)
+        elif "random" in parsed[0]:
+            randoms(command, data, userInput)
 
 def internet(command,data,userInput):
     if command == "search":
         try:
-            print("lets say now we search google for: ",userInput," and print it")
+            content = userInput.replace("search","").replace("internet","")
+            print("debug: searching internet for:",content)
+            info = wikipedia.summary(content, sentences=5)
+            print(info[:200])
         except Exception as e:
-            print("Failed") #interconnection problems e.g.?
+            print("Failed ",e) #interconnection problems e.g.?
+
+def randoms(command,data,userInput):
+    if command == "coin":
+        toss = random.randint(0, 1)
+        if toss == 0:
+            print("heads")
+        else:
+            print("tails")
+    elif command == "pass": #generates password
+        length = 10
+        if "length" in userInput:
+            num = 0
+            for char in userInput:
+                if not char.isalpha():
+                    num += char
+            length = int(num)
+        print("".join([chr(random.randint(33,126)) for i in range(int(length))]))
 
 def main():
     global CurrentState
@@ -171,9 +201,9 @@ def main():
         print("<<<Error>>>> Empty DB")
         quit()
     while True:
-        try:
+        # try:
             print("<<<",CurrentState.response)
-            if CurrentState.special != "" and CurrentInput != None:
+            if "Null" not in CurrentState.special and CurrentInput != None:
                 executeSpecial(CurrentState.special,CurrentInput)
             CurrentInput = parseInput(input(">>> ")) #result updates CURRENTINPUT
             if CurrentInput == "":
@@ -222,10 +252,10 @@ def main():
                         CurrentState = getState(0)
                 else:
                     CurrentState = getState(RESPONSEOPTIONS[0].id)
-        except Exception as e:
-            print("<<<Error: Main crashed >_< >>>",e)
-            quit()
-            print("Something went wrong, lets restart")
+        # except Exception as e:
+        #     print("<<<Error: Main crashed >_< >>>",e)
+        #     quit()
+        #     print("Something went wrong, lets restart")
 
 
 if __name__ == "__main__":

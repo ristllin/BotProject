@@ -89,7 +89,7 @@ def parseInput(user_input):
     removeBadList(user_words)
     return user_input
 
-def removeBadList(user_words):
+def removeBadList(user_words): #working????
     for word in user_words:
         if word in badDb:
             user_words.remove(word)
@@ -166,10 +166,11 @@ def calcScore(state,words):
     return score
 
 def calcTotalScore(state,currentInput,former_state):
-    HITSCONST = 3
-    RELATIONCONST = 3
+    HITSCONST = 3 #how many words match
+    RELATIONCONST = 2 #connection exists between nodes
+    SCORECONST = 1 #adding up matching words weight
     # print("for state: ",state.response," and state: ",former_state.response,"\n Calc Score:",calcScore(state, currentInput),", Calc hits: ",calcHits(state, currentInput))
-    nonrelative_score = calcScore(state, currentInput) + (calcHits(state, currentInput) * HITSCONST)
+    nonrelative_score = calcScore(state, currentInput) * SCORECONST + (calcHits(state, currentInput) * HITSCONST)
     if former_state != None:
         if str(former_state.id) in state.incomingStates:
             return nonrelative_score * RELATIONCONST
