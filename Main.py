@@ -11,6 +11,7 @@ import datetime
 CurrentState = None #StateType
 CurrentInput = None
 RESPONSEOPTIONS = [] #[state123,state34...] ordered
+TempMemory = [("name","user")] #saving temporary data
 
 def create():
     """
@@ -173,13 +174,31 @@ def time(command,data,userInput):
     if command == "time":
         print(str(datetime.datetime.now()))
 
-def memory():
+def memory(command,data,userInput):
     """
     saving temporary data for conversation
     saving it on computer...?
     :return:
     """
-    return True
+    global TempMemory
+    if command == "remember":
+        tmpdata = input("what should I remember?")
+        data_name = input("what is it? how do you want to call it?")
+        TempMemory.append((data_name,tmpdata)) #allows double saves
+    if command == "retrieve":
+        data_name = input("what is it called?")
+        for slot in TempMemory:
+            if slot[0] == data_name:
+                print(slot[1])
+                break
+    if command == "getName":
+        for slot in TempMemory:
+            if slot[0] == "name":
+                return slot[1]
+    if command == "setName":
+        for slot in TempMemory:
+            if slot[0] == "name":
+                slot[1] = userInput
 
 def internet(command,data,userInput):
     if command == "search":
@@ -190,6 +209,11 @@ def internet(command,data,userInput):
             # print("debug: searching internet for:",content)
             info = wikipedia.summary(content, sentences=5)
             print(info[:200])
+        except Exception as e:
+            print("Failed ",e) #interconnection problems e.g.?
+    if command == "weather":
+        try:
+            print("weather NA")
         except Exception as e:
             print("Failed ",e) #interconnection problems e.g.?
 

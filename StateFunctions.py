@@ -147,10 +147,11 @@ def sortStates(currentInput,former_state):
     # print("debug:",tmp)
     return tmp
 
-def calcHits(state,words):
+def calcHits(state,currentInput):
     count = 0
+    words = currentInput.split(" ")
     for word in state.words:
-        if word != []:
+        if words != []:
             if word in words:
                 count +=1
                 # print("debug 1.0 state words:", state.words)
@@ -158,8 +159,9 @@ def calcHits(state,words):
                 # print("debug: ",word[0])
     return count
 
-def calcScore(state,words):
+def calcScore(state,currentInput):
     score = 0
+    words = currentInput.split(" ")
     for word in state.words:
         if word in words:
             score += state.words[word]
