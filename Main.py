@@ -7,6 +7,7 @@ from BadDb import *
 import wikipedia
 import random
 import datetime
+import requests
 #----------constants----------
 CurrentState = None #StateType
 CurrentInput = None
@@ -202,20 +203,48 @@ def memory(command,data,userInput):
 
 def internet(command,data,userInput):
     if command == "search":
-        try:
-            content = userInput
-            for word in badsearchDb:
-                content = content.replace(" "+word+" "," ")
-            # print("debug: searching internet for:",content)
-            info = wikipedia.summary(content, sentences=5)
-            print(info[:200])
-        except Exception as e:
-            print("Failed ",e) #interconnection problems e.g.?
+        internetSearch(userInput)
     if command == "weather":
-        try:
-            print("weather NA")
-        except Exception as e:
-            print("Failed ",e) #interconnection problems e.g.?
+        internetWeather(command,data,userInput)
+
+def internetSearch(userInput):
+    try:
+        content = userInput
+        for word in badsearchDb:
+            content = content.replace(" " + word + " ", " ")
+        # print("debug: searching internet for:",content)
+        info = wikipedia.summary(content, sentences=5)
+        print(info[:200])
+    except Exception as e:
+        print("Failed ", e)  # interconnection problems e.g.?
+
+def internetWeather(command,special_data,userInput):
+        # openweatherapi key - 47c0157cd7e7c5cf1f19a97abc04edbc
+    try:
+        otherdays = {"tomorrow","week","sunday","monday","tuesday","wednesday","thursday","friday","saturday"}
+        for time in otherdays:
+            if time in userInput:
+                print("I can only tell the weather now...")
+        weather_data = requests.get('http://api.openweathermap.org/data/2.5/weather?q=Israel&APPID=47c0157cd7e7c5cf1f19a97abc04edbc').json()
+        temp = str(weather_data["main"]['temp'] - 273.15)
+        pressure = str(weather_data["main"]['temp'])
+        general = str(weather_data["weather"][0]['description'])
+        wind = str(weather_data["wind"]['speed'])
+        humidity = str(weather_data["main"]['humidity'])
+        if "wear" in special_data:
+            clothing = [(-50,0,"something very warm"),(1,14,"something warm"),(15,19,"a sweatshirt"),(20,24,"something light"),(25,100,"something short")]
+            decision = clothing[0][1]
+            for cloth in clothing:
+                if cloth[0]<=int(float(temp)) and cloth[1]>=int(float(temp)):
+                    decision = cloth[2]
+                    break
+            if int(float(temp)) < 15 and int(float(humidity)) > 90:
+                decision += " and take an umbrella."
+            print("with this weather, I'd go with "+decision)
+        else:
+            print("Weather: ", general, "\nTemp: ", temp + " deg C", "\nPressure: ", pressure + " Hg", "\nWind: ",wind + " Kmh", "\nHumidity: ", humidity + "%")
+    except Exception as e:
+        print("Failed ", e)  # interconnection problems e.g.?
 
 def randoms(command,data,userInput):
     if command == "coin":

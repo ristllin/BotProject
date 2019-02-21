@@ -1,8 +1,8 @@
 0;19,25,130,133,22,35,4,8,11,84,127,152,9,0,50,3,153,6,99,126,52,13,101,18,23,17,38,74,72,81,14,43,58,89,46,41,115,2,73,24,88,7,112,134,83,1,150,5,28;Hello;restart:1071,lets:11,the:3,conversation:4,ok:3,start:3,again:4,reset:43,our:1,over:2,all:1,try:3,restar:1,roses:1,are:1,red:1;restart;None
-1;0,29,8,117,118,105;How may I help?;hi:125,hello:13,there:3,hey:6,im:1,depressed:1,sweetie:3,lets:1,try:1,something:1,else:1,pie:2,i:3,think:3,we:2,reached:2,a:3,dead:2,end:2,have:1,its:1,loop:1,honey:1;hi;None
+1;105,0,29,117,118,8;How may I help?;hi:138,hello:13,there:3,hey:6,im:1,depressed:1,sweetie:3,lets:1,try:1,something:1,else:1,pie:2,i:3,think:3,we:2,reached:2,a:3,dead:2,end:2,have:1,its:1,loop:1,honey:1;hi;None
 2;1,0,17;Cards... I love playing cards.;what:5,do:5,you:5,in:6,your:5,spare:10,time:7,?:5,like:3,to:2,have:1,no:1,preferences:1,tell:1,me:1,about:1,yourself:1,whats:1,favourite:1,thing:1,are:1,dreams:1,then:1,else:1,on:1,free:1;what do you do in your spare time ? ;
 3;2,1,0;42;what:2,is:2,the:2,meaning:13,of:2,life:13,?:17,do:2,you:4,believe:2,in:2,god:2,know:1,and:1,answer:1,why:1,were:1,created:1;what is the meaning of life ? ;
-4;0,13,4,3,1,7;I can try. Checking...;can:1,you:2,tell:1,me:1,the:6,size:2,of:4,planet:2,earth:2,hi:1,whats:1,weather:1,who:1,was:1,fifth:1,president:1,united:1,states:1,america:1,should:1,i:1,continue:1,studying:1,today:3,do:1,know:1,what:1,is:1,?:1;what day is it ?;internet:search:
+4;3,7,0,1,4,13;I can try. Checking...;can:1,you:2,tell:1,me:1,the:7,size:2,of:4,planet:2,earth:2,hi:1,whats:2,weather:2,who:1,was:1,fifth:1,president:1,united:1,states:1,america:1,should:1,i:1,continue:1,studying:1,today:4,do:1,know:1,what:1,is:1,?:2;what day is it ?;internet:search:
 5;17,0,6,69,117,29,1;Roy;who:9,made:5,you:6,?:9,is:4,your:4,creator:3,master:1,do:1,know:1;who made you ? ;
 6;14,2,1,0,13;Nombot;what:5,is:5,your:7,name:23,?:12,whats:7,you:5,again:1,who:7,are:6;what is your name ?; 
 7;1,17,0,136;Talk, answer questions and more;what:8,can:7,you:8,do:9,?:8,like:1,to:1,so:1,are:1,doing:1,today:1,for:2,me:2,help:1,with:1,should:1,i:1,cook:1,ski:1,now:1,know:2,biology:1,who:1,rabin:1,is:1,and:2,else:1,a:1,livin:1;what can you do ? ;
@@ -99,7 +99,7 @@
 98;14,0,13,8,7,93,1,5,29,146;yes;can:4,i:4,contact:3,your:3,creator:3,?:4,him:2,meet:1;can i contact your creator ? ;
 99;98,14,0,13,8,7,93,100,1;Ristlin@gmail.com good luck;how:6,?:5,connect:2,me:2,then:1;how ? ;
 100;93,14,1,0,7,98,8,13;ok... you may;i:2,want:2,to:3,contact:3,your:3,creator:4,connect:1,me:1;i want to contact your creator;
-101;98,0,13,4,8,14,7,93,99,48,129,79,131,1;No problem. You are welcome;thank:6,you:6,ok:1,great:1,thanks:1;thank you;
+101;93,48,4,14,129,131,7,79,0,1,13,99,98,157,8;No problem. You are welcome;thank:7,you:7,ok:1,great:1,thanks:1;thank you;
 102;0,93,99,14,1,7,0,98,23,8,13;I am sorry to hear.;im:1,failing:1,in:1,my:1,tests:1;im failing in my tests;
 103;99,93,48,14,1,0,7,98,23,8,13;it is;its:2,not:2;its not;
 104;35,101,1,0,105;Choose a number between 1 and 9;lets:11,play:12,a:3,game:3,can:1,we:1,?:1,again:1;lets play;
@@ -151,6 +151,8 @@
 150;127,1,0,104;No, only English;can:2,you:2,speak:2,hebrew:1,?:2,arabic:1;can you speak hebrew ? ;Null
 151;0,104,127,1,150;Usually I am.;are:1,you:1,sure:1,?:1;are you sure ? ;Null
 152;0,1,152;I am not into relationships, thank you.;do:2,you:2,have:2,a:2,girlfriend:2,?:3,can:1,i:1,be:1,your:1,boyfriend:1;do you have a girlfriend ? ;Null
-153;1,0,9;Let me check;do:2,you:2,know:2,the:2,weather:2,?:2;do you know the weather ? ;internet:weather:
+153;1,0,9;Let me check;do:2,you:2,know:2,the:10,weather:20,?:10,whats:7,today:2,what:1,is:1,please:2;do you know the weather ? ;internet:weather:
 154;0,1,9;a boy i guess;are:1,you:1,a:2,boy:1,or:1,girl:1,?:1;are you a boy or a girl ? ;Null
 155;0,1,9;a man i guess;are:1,you:1,a:2,man:1,or:1,woman:1,?:1;are you a man or a woman ? ;Null
+156;0,153;ammm let me think about it..;what:6,would:6,you:6,wear:6,?:6;what would you wear ? ;internet:weather:wear
+157;1,0,157;Checking the time...;what:5,day:3,is:5,it:5,?:6,time:2,year:1,can:1,you:2,check:1,the:1,do:1,know:1;what day is it ? ;time:time:
