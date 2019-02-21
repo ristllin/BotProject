@@ -1,5 +1,6 @@
 #from StateFunctions import *
 from constants import *
+from BadDb import *
 
 
 class State:
@@ -42,7 +43,10 @@ class State:
         # print("new words: ", words)  # debug
         for word in words:
             if self.words.get(word) != None: #word exists
-                self.words[word] += 1
+                if word not in limited:
+                    self.words[word] += 1
+                elif self.words[word] < limited[word]:
+                    self.words[word] += 1
             else: #create new key
                 self.words[word] = 1
         # print("updated: ",self.words) #debug
