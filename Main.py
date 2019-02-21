@@ -3,6 +3,7 @@ from StateType import *
 from StateFunctions import *
 from constants import *
 from BadDb import *
+from SpecialAPI import *
 #----------libraries----------
 import wikipedia
 import random
@@ -153,131 +154,21 @@ def correct():
     RESPONSEOPTIONS[0].updateStateResponse(response)
     writeState(RESPONSEOPTIONS[0])
 
-def executeSpecial(command,userInput):
-    """
-    gets String "<API>:<Command>:<data>" passes command to relevant api
-    :param command:
-    :return: None
-    """
-    parsed = command.split(":") #parsed = [API,COMMAND,DATA]
-    if len(parsed) == 3:
-        api = parsed[0]
-        command = parsed[1]
-        data = parsed[2]
-        if "internet" in api:
-            internet(command, data, userInput)
-        elif "random" in api:
-            randoms(command, data, userInput)
-        elif "time" in api:
-            time(command,data,userInput)
-
-def time(command,data,userInput):
-    if command == "time":
-        print(str(datetime.datetime.now()))
-
-def memory(command,data,userInput):
-    """
-    saving temporary data for conversation
-    saving it on computer...?
-    :return:
-    """
-    global TempMemory
-    if command == "remember":
-        tmpdata = input("what should I remember?")
-        data_name = input("what is it? how do you want to call it?")
-        TempMemory.append((data_name,tmpdata)) #allows double saves
-    if command == "retrieve":
-        data_name = input("what is it called?")
-        for slot in TempMemory:
-            if slot[0] == data_name:
-                print(slot[1])
-                break
-    if command == "getName":
-        for slot in TempMemory:
-            if slot[0] == "name":
-                return slot[1]
-    if command == "setName":
-        for slot in TempMemory:
-            if slot[0] == "name":
-                slot[1] = userInput
-
-def internet(command,data,userInput):
-    if command == "search":
-        internetSearch(userInput)
-    if command == "weather":
-        internetWeather(command,data,userInput)
-
-def internetSearch(userInput):
-    try:
-        content = userInput
-        for word in badsearchDb:
-            content = content.replace(" " + word + " ", " ")
-        # print("debug: searching internet for:",content)
-        info = wikipedia.summary(content, sentences=5)
-        print(info[:200])
-    except Exception as e:
-        print("Failed ", e)  # interconnection problems e.g.?
-
-def internetWeather(command,special_data,userInput):
-        # openweatherapi key - 47c0157cd7e7c5cf1f19a97abc04edbc
-    try:
-        otherdays = {"tomorrow","week","sunday","monday","tuesday","wednesday","thursday","friday","saturday"}
-        for time in otherdays:
-            if time in userInput:
-                print("I can only tell the weather now...")
-        weather_data = requests.get('http://api.openweathermap.org/data/2.5/weather?q=Israel&APPID=47c0157cd7e7c5cf1f19a97abc04edbc').json()
-        temp = str(weather_data["main"]['temp'] - 273.15)
-        pressure = str(weather_data["main"]['temp'])
-        general = str(weather_data["weather"][0]['description'])
-        wind = str(weather_data["wind"]['speed'])
-        humidity = str(weather_data["main"]['humidity'])
-        if "wear" in special_data:
-            clothing = [(-50,0,"something very warm"),(1,14,"something warm"),(15,19,"a sweatshirt"),(20,24,"something light"),(25,100,"something short")]
-            decision = clothing[0][1]
-            for cloth in clothing:
-                if cloth[0]<=int(float(temp)) and cloth[1]>=int(float(temp)):
-                    decision = cloth[2]
-                    break
-            if int(float(temp)) < 15 and int(float(humidity)) > 90:
-                decision += " and take an umbrella."
-            print("with this weather, I'd go with "+decision)
-        else:
-            print("Weather: ", general, "\nTemp: ", temp + " deg C", "\nPressure: ", pressure + " Hg", "\nWind: ",wind + " Kmh", "\nHumidity: ", humidity + "%")
-    except Exception as e:
-        print("Failed ", e)  # interconnection problems e.g.?
-
-def randoms(command,data,userInput):
-    if command == "coin":
-        toss = random.randint(0, 1)
-        if toss == 0:
-            print("heads")
-        else:
-            print("tails")
-    elif command == "pass": #generates password
-        length = 10
-        if "length" in userInput:
-            num = "0"
-            for char in userInput:
-                if not (char.isalpha() or char == " "):
-                    num += char
-            print(num)
-            length = int(num)
-        print("".join([chr(random.randint(33,126)) for i in range(int(length))]))
-
 def main():
     global CurrentState
     global CurrentInput
     global RESPONSEOPTIONS
+    global TempMemory
     CurrentState = getState(0)
     print("-------Agent Running-------")
     if CurrentState == None:
         print("<<<Error>>>> Empty DB")
         quit()
     while True:
-        # try:
+        try:
             print("<<<",CurrentState.response)
             if "Null" not in CurrentState.special and CurrentInput != None:
-                executeSpecial(CurrentState.special,CurrentInput)
+                executeSpecial(CurrentState.special,CurrentInput,TempMemory)
             CurrentInput = parseInput(input(">>> ")) #result updates CURRENTINPUT
             if CurrentInput == "":
                 continue
@@ -325,8 +216,12 @@ def main():
                         CurrentState = getState(0)
                 else:
                     CurrentState = getState(RESPONSEOPTIONS[0].id)
-        # except Exception as e:
-        #     print("<<<Error: Main crashed >_< >>>",e)
+        except Exception as e:
+            if LEARNINGMODE:
+               print("<<<Error: Main crashed >_< >>>",e)
+            else:
+                print("Ohh boy, I am not feeling so well, lets try again")
+                CurrentState = getState(0)
         #     quit()
         #     print("Something went wrong, lets restart")
 
