@@ -2,9 +2,11 @@
 from StateType import *
 from StateFunctions import *
 from constants import *
+from BadDb import *
 #----------libraries----------
 import wikipedia
 import random
+import datetime
 #----------constants----------
 CurrentState = None #StateType
 CurrentInput = None
@@ -98,7 +100,7 @@ def search(command):
             tempStatesDb.append(parseDbLine(line))
     for state in tempStatesDb:
         if search_string in state.response.lower():
-            print("id: ", state.id, ": " + state.response)
+            print("id: ", state.id, ": " + state.response + " --- " + state.origin)
     print("___________________________")
 
 def connect(command):
@@ -157,18 +159,35 @@ def executeSpecial(command,userInput):
     """
     parsed = command.split(":") #parsed = [API,COMMAND,DATA]
     if len(parsed) == 3:
+        api = parsed[0]
         command = parsed[1]
         data = parsed[2]
-        if "internet" in parsed[0]:
+        if "internet" in api:
             internet(command, data, userInput)
-        elif "random" in parsed[0]:
+        elif "random" in api:
             randoms(command, data, userInput)
+        elif "time" in api:
+            time(command,data,userInput)
+
+def time(command,data,userInput):
+    if command == "time":
+        print(str(datetime.datetime.now()))
+
+def memory():
+    """
+    saving temporary data for conversation
+    saving it on computer...?
+    :return:
+    """
+    return True
 
 def internet(command,data,userInput):
     if command == "search":
         try:
-            content = userInput.replace("search","").replace("internet","")
-            print("debug: searching internet for:",content)
+            content = userInput
+            for word in badsearchDb:
+                content = content.replace(" "+word+" "," ")
+            # print("debug: searching internet for:",content)
             info = wikipedia.summary(content, sentences=5)
             print(info[:200])
         except Exception as e:
@@ -184,10 +203,11 @@ def randoms(command,data,userInput):
     elif command == "pass": #generates password
         length = 10
         if "length" in userInput:
-            num = 0
+            num = "0"
             for char in userInput:
-                if not char.isalpha():
+                if not (char.isalpha() or char == " "):
                     num += char
+            print(num)
             length = int(num)
         print("".join([chr(random.randint(33,126)) for i in range(int(length))]))
 

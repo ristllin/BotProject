@@ -167,7 +167,7 @@ def calcScore(state,words):
 
 def calcTotalScore(state,currentInput,former_state):
     HITSCONST = 3 #how many words match
-    RELATIONCONST = 2 #connection exists between nodes
+    RELATIONCONST = 3 #connection exists between nodes
     SCORECONST = 1 #adding up matching words weight
     # print("for state: ",state.response," and state: ",former_state.response,"\n Calc Score:",calcScore(state, currentInput),", Calc hits: ",calcHits(state, currentInput))
     nonrelative_score = calcScore(state, currentInput) * SCORECONST + (calcHits(state, currentInput) * HITSCONST)
