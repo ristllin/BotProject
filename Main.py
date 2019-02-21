@@ -4,16 +4,21 @@ from StateFunctions import *
 from constants import *
 from BadDb import *
 from SpecialAPI import *
+from tools import *
+
 #----------libraries----------
 import wikipedia
 import random
 import datetime
 import requests
+
 #----------constants----------
 CurrentState = None #StateType
-CurrentInput = None
+CurrentInput = None #String
 RESPONSEOPTIONS = [] #[state123,state34...] ordered
 TempMemory = [("name","user")] #saving temporary data
+
+normalize()
 
 def create():
     """
@@ -35,7 +40,7 @@ def create():
 
 def createSpecial():
     """
-    creates new active node and updates DB
+    creates new active node and updates DB (with special field)
     :param CurrentInput: getting parsed user input
     :param CurrentState: getting current state
     :return: None
@@ -107,6 +112,11 @@ def search(command):
     print("___________________________")
 
 def connect(command):
+    """
+    gets user command, parses it and retrieves an integer stating which state to add to RESPONSEOPTIONS list
+    :param command: string
+    :return: None
+    """
     global CurrentState
     global CurrentInput
     global RESPONSEOPTIONS
@@ -114,10 +124,17 @@ def connect(command):
     for ltr in command:
         if ltr.isnumeric():
             stateNum += ltr
-    if RESPONSEOPTIONS != []:
-        RESPONSEOPTIONS[0] = getState(int(stateNum))
-    else:
-        RESPONSEOPTIONS.append(getState(int(stateNum)))
+    try:
+        target_state = getState(int(stateNum))
+        if target_state != None:
+            if RESPONSEOPTIONS != []:
+                RESPONSEOPTIONS[0] = target_state
+            else:
+                RESPONSEOPTIONS.append(target_state)
+        else:
+            print("Could not find state")
+    except Exception as e:
+        print("<<<Error: Connecting state failed>>>",e)
 
 def yes():
     """
@@ -147,9 +164,13 @@ def no():
     if RESPONSEOPTIONS != []:
         RESPONSEOPTIONS.pop(0)
     else:
-        print("Debug: Ran of of options")
+        print("RESPONSEOPTIONS - empty. connect a new state or reset")
 
 def correct():
+    """
+    re-set current state response.
+    :return: None
+    """
     response = input("Enter Correct response:")
     RESPONSEOPTIONS[0].updateStateResponse(response)
     writeState(RESPONSEOPTIONS[0])
@@ -222,8 +243,6 @@ def main():
             else:
                 print("Ohh boy, I am not feeling so well, lets try again")
                 CurrentState = getState(0)
-        #     quit()
-        #     print("Something went wrong, lets restart")
 
 
 if __name__ == "__main__":

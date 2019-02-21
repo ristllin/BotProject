@@ -27,6 +27,13 @@ def executeSpecial(command,userInput,TempMemory):
             memory(command,data,userInput,TempMemory)
 
 def time(command,data,userInput):
+    """
+    Time related commands
+    :param command:
+    :param data:
+    :param userInput:
+    :return:
+    """
     if command == "time":
         print(str(datetime.datetime.now()))
 
@@ -56,12 +63,24 @@ def memory(command,data,userInput, TempMemory):
                 slot[1] = userInput
 
 def internet(command,data,userInput):
+    """
+    internet related commands
+    :param command:
+    :param data:
+    :param userInput:
+    :return:
+    """
     if command == "search":
         internetSearch(userInput)
     if command == "weather":
         internetWeather(command,data,userInput)
 
 def internetSearch(userInput):
+    """
+    parses user command, removes from it words in bad DB and searches it in wikipedia
+    :param userInput:
+    :return:
+    """
     try:
         content = userInput.split(" ")
         tmp = content.copy()
@@ -76,6 +95,13 @@ def internetSearch(userInput):
         print("Failed ", e)  # interconnection problems e.g.?
 
 def internetWeather(command,special_data,userInput):
+    """
+    searches Weather data and gives wear recommendations
+    :param command:
+    :param special_data:
+    :param userInput:
+    :return:
+    """
         # openweatherapi key - 47c0157cd7e7c5cf1f19a97abc04edbc
     try:
         otherdays = {"tomorrow","week","sunday","monday","tuesday","wednesday","thursday","friday","saturday"}
@@ -104,6 +130,13 @@ def internetWeather(command,special_data,userInput):
         print("Failed ", e)  # interconnection problems e.g.?
 
 def randoms(command,data,userInput):
+    """
+    random related commands
+    :param command:
+    :param data:
+    :param userInput:
+    :return:
+    """
     if command == "coin":
         toss = random.randint(0, 1)
         if toss == 0:

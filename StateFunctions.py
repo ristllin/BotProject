@@ -21,7 +21,7 @@ def parseDbLine(line):
         words = {}
         for word in words_raw:
             raw_word = word.split(":")
-            words[raw_word[0]] = int(raw_word[1])
+            words[raw_word[0]] = int(raw_word[1]) #change to float?
         origin = data[4]
         special = data[5]
         return State(state_id, incomingStates=incoming_states, response=response, words=words, special=special, origin=origin)
@@ -32,6 +32,10 @@ def parseDbLine(line):
 
 
 def searchNextId():
+    """
+    search what is the next missing id in DB
+    :return:
+    """
     counter = 0
     with open(FILEPATH, "r+") as f:
         for line in f:
@@ -71,6 +75,11 @@ def writeState(state):
     return False
 
 def getState(state_id):
+    """
+    find state in DB by ID and returns it as a StateType
+    :param state_id:
+    :return:
+    """
     with open(FILEPATH, "r+") as f:
         for line in f:
             current_state = parseDbLine(line)
@@ -82,11 +91,16 @@ def getState(state_id):
     return None
 
 def parseInput(user_input):
+    """
+    Parses user input, removes all non alpha\numeric chars, double spaces
+    :param user_input:
+    :return:
+    """
     user_input = user_input.lower()
     user_input = removeChars(user_input)
     user_input = removeDoubleBlanks(user_input)
     user_words = user_input.split(" ")
-    removeBadList(user_words)
+    # removeBadList(user_words)
     return user_input
 
 def removeBadList(user_words): #working????
@@ -133,7 +147,11 @@ def sortStates(currentInput,former_state):
             inserted = False
             for i in range(len(rslt)): #insert in order by score
                 other_final_score = calcTotalScore(rslt[i],currentInput,former_state)
-                if final_score > other_final_score or currentInput == new_state.origin.replace(" ?","?"):
+                if currentInput == new_state.origin:
+                    rslt.insert(0, new_state)
+                    inserted = True
+                    break
+                if final_score > other_final_score:
                     rslt.insert(i,new_state)
                     inserted = True
                     break
@@ -148,18 +166,27 @@ def sortStates(currentInput,former_state):
     return tmp
 
 def calcHits(state,currentInput):
+    """
+    Calculates how many words appeared before in given state that appear in current input
+    :param state:
+    :param currentInput:
+    :return:
+    """
     count = 0
     words = currentInput.split(" ")
     for word in state.words:
         if words != []:
             if word in words:
                 count +=1
-                # print("debug 1.0 state words:", state.words)
-                # print("debug 1.1 comp words:", words)
-                # print("debug: ",word[0])
     return count
 
 def calcScore(state,currentInput):
+    """
+    Calculates accumelated score\weight from words matching in current Input
+    :param state:
+    :param currentInput:
+    :return:
+    """
     score = 0
     words = currentInput.split(" ")
     for word in state.words:
@@ -168,9 +195,13 @@ def calcScore(state,currentInput):
     return score
 
 def calcTotalScore(state,currentInput,former_state):
-    HITSCONST = 3 #how many words match
-    RELATIONCONST = 3 #connection exists between nodes
-    SCORECONST = 1 #adding up matching words weight
+    """
+    Calculates Hits, Score and relation to a total score, used to determine most relevant state
+    :param state:
+    :param currentInput:
+    :param former_state:
+    :return:
+    """
     # print("for state: ",state.response," and state: ",former_state.response,"\n Calc Score:",calcScore(state, currentInput),", Calc hits: ",calcHits(state, currentInput))
     nonrelative_score = calcScore(state, currentInput) * SCORECONST + (calcHits(state, currentInput) * HITSCONST)
     if former_state != None:
