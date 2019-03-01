@@ -9,7 +9,8 @@ class Nombot extends Component {
       //States
       this.state = {
           userString: "User response",
-          resultData : undefined
+          resultData : undefined,
+          botState: 0
       }
       //Fields
       this.result = "Hello";
@@ -20,9 +21,13 @@ class Nombot extends Component {
     }
 
     PostString(event){
-        if (this.state.WTString !== undefined && this.state.VarString !== undefined) { //check strings exist
+        if (this.state.userString !== undefined) { //check strings exist
+            if (this.state.resultData !== undefined){
+                var current_state = this.state.resultData['State'];
+                this.setState({botState: current_state});
+            }
             var url = '/sequence_submition';
-            var data = {"User": this.state.userString};
+            var data = {"User": this.state.userString, "State": this.state.botState};
             console.log("Post Strings:",data);
             fetch(url, {
                 method: 'POST',
@@ -40,7 +45,7 @@ class Nombot extends Component {
     }
 
     inputOnChange(event){
-        this.setState({WTString: event.target.value});
+        this.setState({userString: event.target.value});
     }
 
     shouldComponentUpdate(nextProps, nextState){
