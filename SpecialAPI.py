@@ -1,4 +1,5 @@
 #------imported libraries--------
+import wolframalpha
 import wikipedia
 import random
 import datetime
@@ -6,7 +7,7 @@ import requests
 #------imported modules--------
 from BadDb import *
 
-def executeSpecial(command,userInput,TempMemory):
+def executeSpecial(command,userInput,TempMemory,RawInput):
     """
     gets String "<API>:<Command>:<data>" passes command to relevant api
     :param command:
@@ -18,7 +19,7 @@ def executeSpecial(command,userInput,TempMemory):
         command = parsed[1]
         data = parsed[2]
         if "internet" in api:
-            internet(command, data, userInput)
+            internet(command, data, userInput,RawInput)
         elif "random" in api:
             randoms(command, data, userInput)
         elif "time" in api:
@@ -37,20 +38,19 @@ def time(command,data,userInput):
     if command == "time":
         print(str(datetime.datetime.now()))
 
-def memory(command,data,userInput, TempMemory):
+def memory(command,data,userInput,TempMemory):
     """
     saving temporary data for conversation
     saving it on computer...?
     :return:
     """
     if command == "remember":
-        tmpdata = input("what should I remember?")
-        data_name = input("what is it? how do you want to call it?")
+        tmpdata = input("say it: ")
+        data_name = data
         TempMemory.append((data_name,tmpdata)) #allows double saves
     if command == "retrieve":
-        data_name = input("what is it called?")
         for slot in TempMemory:
-            if slot[0] == data_name:
+            if slot[0] == data:
                 print(slot[1])
                 break
     if command == "getName":
@@ -62,7 +62,7 @@ def memory(command,data,userInput, TempMemory):
             if slot[0] == "name":
                 slot[1] = userInput
 
-def internet(command,data,userInput):
+def internet(command,data,userInput,RawInput):
     """
     internet related commands
     :param command:
@@ -70,10 +70,13 @@ def internet(command,data,userInput):
     :param userInput:
     :return:
     """
-    if command == "search":
+    if command == "search": #wikipedia
         internetSearch(userInput)
-    if command == "weather":
+    if command == "weather": #weather status
         internetWeather(command,data,userInput)
+    if command == "wolfram": #gets raw user input
+        internetWolfram(RawInput)
+
 
 def internetSearch(userInput):
     """
@@ -128,6 +131,21 @@ def internetWeather(command,special_data,userInput):
             print("Weather: ", general, "\nTemp: ", temp + " deg C", "\nPressure: ", pressure + " Hg", "\nWind: ",wind + " Kmh", "\nHumidity: ", humidity + "%")
     except Exception as e:
         print("Failed ", e)  # interconnection problems e.g.?
+
+def internetWolfram(userInput):
+    """
+    Gets raw user input, transfers to wolframAlpha
+    :param userInput: String (with signs)
+    :return: String
+    """
+    try:
+        client = wolframalpha.Client("2TYLUH-6Q2KRKXA2U")
+        res = client.query(userInput)
+        res = res["pod"][1]["subpod"]["plaintext"]
+        print(res)
+        return str(res)
+    except Exception as e:
+        return "Hmm.. seems my friend is having trouble helping me with this answer..." + str(e)
 
 def randoms(command,data,userInput):
     """

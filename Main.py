@@ -15,6 +15,7 @@ import requests
 #----------constants----------
 CurrentState = None #StateType
 CurrentInput = None #String
+RawInput = None #String
 RESPONSEOPTIONS = [] #[state123,state34...] ordered
 TempMemory = [("name","user")] #saving temporary data
 
@@ -178,6 +179,7 @@ def correct():
 def main():
     global CurrentState
     global CurrentInput
+    global RawInput
     global RESPONSEOPTIONS
     global TempMemory
     CurrentState = getState(0)
@@ -189,8 +191,9 @@ def main():
         try:
             print("<<<",CurrentState.response)
             if "Null" not in CurrentState.special and CurrentInput != None:
-                executeSpecial(CurrentState.special,CurrentInput,TempMemory)
-            CurrentInput = parseInput(input(">>> ")) #result updates CURRENTINPUT
+                executeSpecial(CurrentState.special,CurrentInput,TempMemory,RawInput)
+            RawInput = input(">>> ")
+            CurrentInput = parseInput(RawInput) #result updates CURRENTINPUT
             if CurrentInput == "":
                 continue
             RESPONSEOPTIONS = sortStates(CurrentInput,CurrentState) #list of stateType [state34,state21...]
