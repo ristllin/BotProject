@@ -4,6 +4,7 @@ import wikipedia
 import random
 import datetime
 import requests
+import re
 #------imported modules--------
 from BadDb import *
 
@@ -71,7 +72,10 @@ def internet(command,data,userInput,RawInput):
     :return:
     """
     if command == "search": #wikipedia
-        internetSearch(userInput)
+        if data == "multiple":
+            multiSearch(RawInput)
+        else:
+            internetSearch(userInput)
     if command == "weather": #weather status
         internetWeather(command,data,userInput)
     if command == "wolfram": #gets raw user input
@@ -94,6 +98,33 @@ def internetSearch(userInput):
         print("searching: ",content)
         info = wikipedia.summary(content, sentences=5)
         print(info[:200])
+    except Exception as e:
+        print("Failed ", e)  # interconnection problems e.g.?
+
+def multiSearch(userInput):
+    """
+    parses user command, removes from raw input words in bad DB, splits it into sub terms and searches it in wikipedia
+    :param userInput:
+    :return:
+    """
+    try:
+        content = userInput.split(" ")
+        tmp = content.copy()
+        for bad_word in badsearchDb:
+            for word in content:
+                clean_word = re.sub(r'\W+', '', word) #remove all non alpha-numeric
+                if ("," not in word) and (bad_word == clean_word) and (word in tmp):
+                    tmp.remove(word)
+                    break
+        content = " ".join(tmp)
+        content = content.replace(" ","").split(",")
+        print("searching for:",content)
+        for word in content:
+            try:
+                info = wikipedia.summary(word, sentences=5)
+                print(word+": ",info[:200] )
+            except Exception as er:
+                print("couldn't work out:", word)
     except Exception as e:
         print("Failed ", e)  # interconnection problems e.g.?
 

@@ -11,7 +11,7 @@ badsearchDb = {
     "will", "a", "an", "be", "to", "of", "internet", "tell", "are",
     "in", "that", "have", "i", "it", "for", "is", "you", "ok", "no",
     "as", "at", "by", "so", "than", "it", "search", "me", "please",
-    "do", "know", "who", "?", "what", "your", "opinion", "about", "tell",
+    "do", "know", "who", "?", "what", "your", "opinion", "about", "tell", "these", "me"
 }
 
 #limited - common words, commonly repeated but usually aren't relevant to subject, therefore limited by weight - significance
