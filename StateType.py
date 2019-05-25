@@ -20,7 +20,7 @@ class State:
         print("ID: "+str(self.id)+"; Response: "+self.response+"; Origin Sentance:"+self.origin+";\n Words:"+str(self.words)+"\n Incoming State:"+str(self.incomingStates))+"\n Special:"+str(self.special)
 
     def updateStateResponse(self,response):
-        print("response changed from: ",self.response," to:",response)
+        # print("response changed from: ",self.response," to:",response)
         self.response = response
 
     def updateStateIncoming(self,state_id):
@@ -32,9 +32,6 @@ class State:
         self.special = special
 
     def updateStateWords(self,words):
-        # print("---debug updating words---") #debug
-        # print("adding words: ",words) #debug
-        # print("debug, current words: ",self.words) #debug
         words = words.split(" ")
         for word in words:
             word.replace(" ","")
@@ -49,5 +46,3 @@ class State:
                     self.words[word] += 1
             else: #create new key
                 self.words[word] = 1
-        # print("updated: ",self.words) #debug
-        # print("-------------------------") #debug

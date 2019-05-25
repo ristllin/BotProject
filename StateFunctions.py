@@ -137,9 +137,7 @@ def sortStates(currentInput,former_state):
     with open(FILEPATH, "r+") as f:
         for line in f:
             tempStatesDb.append(parseDbLine(line))
-    first_element = tempStatesDb.pop(0)
-    # print("debug 1.1:",len(tempStatesDb)) #that's ok...
-    rslt.append(first_element)
+    rslt.append(tempStatesDb.pop(0)) #adding
     for new_state in tempStatesDb: #insert all good states
         hits = calcHits(new_state,currentInput)
         final_score = calcTotalScore(new_state,currentInput,former_state)
@@ -148,10 +146,10 @@ def sortStates(currentInput,former_state):
             for i in range(len(rslt)): #insert in order by score
                 other_final_score = calcTotalScore(rslt[i],currentInput,former_state)
                 if currentInput == new_state.origin:
-                    rslt.insert(0, new_state)
+                    rslt.insert(0, new_state) #add to head of list
                     inserted = True
                     break
-                if final_score > other_final_score:
+                if final_score > other_final_score: #add in position of list
                     rslt.insert(i,new_state)
                     inserted = True
                     break
@@ -162,7 +160,6 @@ def sortStates(currentInput,former_state):
     for index in rslt: #cancel doubles
         if index not in tmp:
             tmp.append(index)
-    # print("debug:",tmp)
     return tmp
 
 def calcHits(state,currentInput):
@@ -208,3 +205,18 @@ def calcTotalScore(state,currentInput,former_state):
         if str(former_state.id) in state.incomingStates:
             return nonrelative_score * RELATIONCONST
     return nonrelative_score
+
+def searchOrigin(origin):
+    """
+    Searches StateDB for state with provided origin
+    :param origin: String - containing unparsed user input
+    :return: None if origin doesn't exist in any state, else returns state
+    """
+    StatesDb = []
+    with open(FILEPATH, "r+") as f: #loading states DB
+        for line in f:
+            StatesDb.append(parseDbLine(line))
+    for state in StatesDb:
+        if state.origin == origin:
+            return state
+    return None

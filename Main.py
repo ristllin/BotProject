@@ -21,7 +21,7 @@ TempMemory = [("name","user")] #saving temporary data
 
 normalize()
 
-def create():
+def create(crnt_state_id = None,crnt_input = None,rspns = None):
     """
     creates new node and updates DB
     :param CurrentInput: getting parsed user input
@@ -31,13 +31,24 @@ def create():
     global CurrentState
     global CurrentInput
     global RESPONSEOPTIONS
-    response = input("Enter response:")
-    new_state = State(searchNextId(), words={}, origin=CurrentInput)
-    new_state.updateStateIncoming(CurrentState.id)
-    new_state.updateStateResponse(response)
-    new_state.updateStateWords(CurrentInput)
-    writeState(new_state)
-    print("I'm smarter now, try me again.")
+    if (crnt_state_id == None):
+        response = input("Enter response:")
+        new_state = State(searchNextId(), words={}, origin=CurrentInput)
+        new_state.updateStateIncoming(CurrentState.id)
+        new_state.updateStateResponse(response)
+        new_state.updateStateWords(CurrentInput)
+        writeState(new_state)
+        print("I'm smarter now, try me again.")
+    else: #direct data, not from global
+        if searchOrigin(crnt_input) != None: #skip existing states
+            return
+        new_state = State(searchNextId(), words={}, origin=crnt_input)
+        new_state.incomingStates = {crnt_state_id}
+        new_state.updateStateResponse(rspns)
+        removeBadList(crnt_input.split(" "))
+        crnt_input = "".join(crnt_input)
+        new_state.updateStateWords(crnt_input)
+        writeState(new_state)
 
 def createSpecial():
     """
@@ -176,6 +187,71 @@ def correct():
     RESPONSEOPTIONS[0].updateStateResponse(response)
     writeState(RESPONSEOPTIONS[0])
 
+def importDataSet(dataset):
+    """
+    teaches bot (updates stateDB) according to given dataset in proper format
+    the each thread (title) is being treated as a new question.
+    each thread is being preparsed (reaplcing \n with a space)
+    each title is treated as a new question.
+    />>> Title
+    />> username|||question\answer\originalQuestion|||content
+    adds words from title to original question and gives extra weight to these words
+    :param dataset: path to dataset text file, assuming is in format as mentioned above
+    :param stateDB: path to DB text file being updated
+    :return: None (edits stateDB)
+    """
+    #-------------Load and Parse--------------
+    #parsed_DB = [[<Title>,[<user_name>,<responseType>,<response_content>],...,responses],...,more threads]
+    print("ImportDataSet() called")
+    print("Loading and parsing data")
+    with open(dataset,"r") as file:
+        thread_count = 0
+        response_count = 0
+        data = file.read() #load dataset as a single string
+        data = data.replace("\n"," ") # replace \n with " "
+        data = data.split(">>>") #split threads by >>> (titles)
+        data.pop(0)
+        parsed_DB = []
+        for thread in data: #for each thread
+            thread_count += 1
+            parsed_thread = []
+            split_thread = thread.split(">>") #split conversation by >> (different comments)
+            title = (split_thread[0].split("|||"))[1]
+            parsed_thread.append(title)
+            split_thread.pop(0) #remove title
+            for response in split_thread:
+                response_count += 1
+                username,response_type,response_content = response.split("|||")
+                parsed_thread.append([username,response_type,response_content])
+            parsed_DB.append(parsed_thread)
+        print("parsed: ",thread_count," threads. and ",response_count," responses.")
+        question = True
+        for thread in parsed_DB:
+            try:
+                # print("----------->starting thread: ",thread)
+                state_id = 0
+                title = thread[0] #pop title
+                thread.pop(0)
+                thread[0][2] += title #add title key words to original question
+                for comment in thread:
+                    content = comment[2].replace(";","").replace(",","").replace(":","")
+                    if len(content) > 200: #cut long messages <<<<hurts algo>>>>
+                        content = content[:200]
+                    # print("--->On comment:",comment)
+                    if question: #insert question as user question
+                        user_input = content
+                        question = not question
+                    else: #content as response
+                        response = content
+                        # print("Creating: state:",state_id," user input:",user_input,"response: ",response)
+                        # print("<<<debug: >>>",state_id)
+                        next_state_id = searchNextId()
+                        create(crnt_state_id = state_id,crnt_input = user_input,rspns = response) #create state with this response and previous userinput
+                        state_id = next_state_id
+                        question = not question
+            except Exception as e:
+                print("Error on thread:",thread)
+
 def main():
     global CurrentState
     global CurrentInput
@@ -183,11 +259,12 @@ def main():
     global RESPONSEOPTIONS
     global TempMemory
     CurrentState = getState(0)
+    # importDataSet(r"D:\projects\BotProject\fordForums.txt") #add new dataset
     print("-------Agent Running-------")
     if CurrentState == None:
         print("<<<Error>>>> Empty DB")
         quit()
-    while True:
+    while True: #should be True
         try:
             print("<<<",CurrentState.response)
             if "Null" not in CurrentState.special and CurrentInput != None:
