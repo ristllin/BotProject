@@ -71,8 +71,11 @@ def internet(command,data,userInput,RawInput):
     :param userInput:
     :return:
     """
+    # print("debug",command,data)
     if command == "search": #wikipedia
-        if data == "multiple":
+        # if "multiple" in data:
+        if "multiple" in data:
+            print("going multiple")
             multiSearch(RawInput)
         else:
             internetSearch(userInput)
@@ -117,8 +120,8 @@ def multiSearch(userInput):
                     tmp.remove(word)
                     break
         content = " ".join(tmp)
-        content = content.replace(" ","").split(",")
-        print("searching for:",content)
+        content = content.split(",")
+        print("conducting multiple searches:",content)
         for word in content:
             try:
                 info = wikipedia.summary(word, sentences=5)

@@ -25,6 +25,7 @@ class Nombot extends Component {
             if (this.state.resultData !== undefined){
                 var current_state = this.state.resultData['State'];
                 this.setState({botState: current_state});
+                console.log("botState changed to:",this.state.botState);
             }
             var url = '/sequence_submition';
             var data = {"User": this.state.userString, "State": this.state.botState};
