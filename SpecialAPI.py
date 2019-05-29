@@ -145,7 +145,7 @@ def internetWeather(command,special_data,userInput):
         for time in otherdays:
             if time in userInput:
                 print("I can only tell the weather now...")
-        weather_data = requests.get('http://api.openweathermap.org/data/2.5/weather?q=Israel&APPID=47c0157cd7e7c5cf1f19a97abc04edbc').json()
+        weather_data = requests.get('http://api.openweathermap.org/data/2.5/weather?q=Tel Aviv District&APPID=47c0157cd7e7c5cf1f19a97abc04edbc').json()
         temp = str(weather_data["main"]['temp'] - 273.15)
         pressure = str(weather_data["main"]['temp'])
         general = str(weather_data["weather"][0]['description'])

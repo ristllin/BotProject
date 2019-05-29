@@ -31,7 +31,7 @@ class State:
         # print("added or updated incoming state:",state_id," to state: ",self.id)
         self.special = special
 
-    def updateStateWords(self,words):
+    def updateStateWords(self,words,strength_factor = 1):
         words = words.split(" ")
         for word in words:
             word.replace(" ","")
@@ -45,4 +45,4 @@ class State:
                 elif self.words[word] < limited[word]:
                     self.words[word] += 1
             else: #create new key
-                self.words[word] = 1
+                self.words[word] = strength_factor

@@ -194,9 +194,9 @@ def calcScore(state,currentInput):
 def calcTotalScore(state,currentInput,former_state):
     """
     Calculates Hits, Score and relation to a total score, used to determine most relevant state
-    :param state:
-    :param currentInput:
-    :param former_state:
+    :param state: StateType (for state words)
+    :param currentInput: String (current user parsed words in single String)
+    :param former_state: StateType (for id to check if is an origin)
     :return:
     """
     # print("for state: ",state.response," and state: ",former_state.response,"\n Calc Score:",calcScore(state, currentInput),", Calc hits: ",calcHits(state, currentInput))

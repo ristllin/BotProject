@@ -21,7 +21,7 @@ TempMemory = [("name","user")] #saving temporary data
 
 normalize()
 
-def create(crnt_state_id = None,crnt_input = None,rspns = None):
+def create(crnt_state_id = None,crnt_input = None,rspns = None,strength_factor = 1):
     """
     creates new node and updates DB
     :param CurrentInput: getting parsed user input
@@ -36,7 +36,7 @@ def create(crnt_state_id = None,crnt_input = None,rspns = None):
         new_state = State(searchNextId(), words={}, origin=CurrentInput)
         new_state.updateStateIncoming(CurrentState.id)
         new_state.updateStateResponse(response)
-        new_state.updateStateWords(CurrentInput)
+        new_state.updateStateWords(CurrentInput,strength_factor)
         writeState(new_state)
         print("I'm smarter now, try me again.")
     else: #direct data, not from global
@@ -47,7 +47,7 @@ def create(crnt_state_id = None,crnt_input = None,rspns = None):
         new_state.updateStateResponse(rspns)
         removeBadList(crnt_input.split(" "))
         crnt_input = "".join(crnt_input)
-        new_state.updateStateWords(crnt_input)
+        new_state.updateStateWords(crnt_input,strength_factor)
         writeState(new_state)
 
 def createSpecial():
@@ -187,7 +187,7 @@ def correct():
     RESPONSEOPTIONS[0].updateStateResponse(response)
     writeState(RESPONSEOPTIONS[0])
 
-def importDataSet(dataset):
+def importDataSet(dataset,STRENGTHFACTOR = 1):
     """
     teaches bot (updates stateDB) according to given dataset in proper format
     the each thread (title) is being treated as a new question.
@@ -202,6 +202,7 @@ def importDataSet(dataset):
     """
     #-------------Load and Parse--------------
     #parsed_DB = [[<Title>,[<user_name>,<responseType>,<response_content>],...,responses],...,more threads]
+    # STRENGTHFACTOR = 5 #what weight each word should get automatically when loaded
     print("ImportDataSet() called")
     print("Loading and parsing data")
     with open(dataset,"r") as file:
@@ -246,7 +247,7 @@ def importDataSet(dataset):
                         # print("Creating: state:",state_id," user input:",user_input,"response: ",response)
                         # print("<<<debug: >>>",state_id)
                         next_state_id = searchNextId()
-                        create(crnt_state_id = state_id,crnt_input = user_input,rspns = response) #create state with this response and previous userinput
+                        create(crnt_state_id = state_id,crnt_input = user_input,rspns = response,strength_factor = STRENGTHFACTOR) #create state with this response and previous userinput
                         state_id = next_state_id
                         question = not question
             except Exception as e:
@@ -258,8 +259,9 @@ def main():
     global RawInput
     global RESPONSEOPTIONS
     global TempMemory
-    CurrentState = getState(0)
-    # importDataSet(r"D:\projects\BotProject\fordForums.txt") #add new dataset
+    CurrentState = getState(0) #set state to init
+    # importDataSet(r"D:\projects\BotProject\basicCarQuestions.txt",3) #add new dataset
+    # importDataSet(r"D:\projects\BotProject\genericBot.txt",5)  # add new dataset
     print("-------Agent Running-------")
     if CurrentState == None:
         print("<<<Error>>>> Empty DB")
@@ -279,6 +281,8 @@ def main():
                 while command != 'fix' or command != 'restart' or command != 'y':
                     if RESPONSEOPTIONS != []: #no options
                         print("<<<",RESPONSEOPTIONS[0].response,"\nIs State: ",RESPONSEOPTIONS[0].id," good? Origin: ",RESPONSEOPTIONS[0].origin)
+                        print("Score: ",calcTotalScore(RESPONSEOPTIONS[0],CurrentInput,CurrentState))
+                        # print(type(RESPONSEOPTIONS[0]),type(CurrentState),type(CurrentInput))
                         print("<y>-yes,<n>-no/next,<r>-fix response,'create', 'connect <id#>', 'search <string>'")
                     else:
                         print("I'm ClueLess...\n'fix' text, 'restart', 'connect #' to add a known state or 'create' new state?")
