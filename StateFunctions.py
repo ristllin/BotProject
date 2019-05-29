@@ -25,10 +25,21 @@ def parseDbLine(line):
         origin = data[4]
         special = data[5]
         return State(state_id, incomingStates=incoming_states, response=response, words=words, special=special, origin=origin)
-    except Exception as e:
-        print("<<<Error: (parseDbLine) Corrupt file>>>.\n",e)
+    except IndexError as e:
+        print("<<<Error: 1 (parseDbLine) Corrupt file>>>.\n",e)
         print("on Line:",line)
+        print("Trying to fix DB, run again when fix finished")
+        fixed = []
+        with open(FILEPATH, "r+") as f:
+            for line in f:
+                if line != "" and line != "\n":
+                    fixed.append(line)
+        f.close()
+        with open(FILEPATH, "w") as f:
+            f.writelines(fixed)
         return None
+    except Exception as e:
+        print("<<<Error: 2 (parseDbLine) Corrupt file>>>.\n", e)
 
 
 def searchNextId():

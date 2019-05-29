@@ -5,6 +5,7 @@ from constants import *
 from BadDb import *
 from SpecialAPI import *
 from tools import *
+from math import *
 
 #----------libraries----------
 import wikipedia
@@ -160,11 +161,16 @@ def yes():
     global CurrentInput
     global RESPONSEOPTIONS
     state = RESPONSEOPTIONS[0]
-    # print("state under update:",state)
     state.updateStateIncoming(CurrentState.id)
     state.updateStateWords(CurrentInput)
-    # print("writing state:",state)
     writeState(state)
+    if STRONGMODE: #strengthen until first
+        RESPONSEOPTIONS = sortStates(CurrentInput, CurrentState)
+        while RESPONSEOPTIONS[0].id != state.id:
+            print("Boosting up...")
+            state.updateStateWords(CurrentInput)
+            writeState(state)
+            RESPONSEOPTIONS = sortStates(CurrentInput, CurrentState)
     CurrentState = getState(state.id)
 
 def no():
@@ -259,6 +265,8 @@ def main():
     global RawInput
     global RESPONSEOPTIONS
     global TempMemory
+    avg_score_per_word = 0
+    avgCmp = 0
     CurrentState = getState(0) #set state to init
     # importDataSet(r"D:\projects\BotProject\basicCarQuestions.txt",3) #add new dataset
     # importDataSet(r"D:\projects\BotProject\genericBot.txt",5)  # add new dataset
@@ -281,8 +289,22 @@ def main():
                 while command != 'fix' or command != 'restart' or command != 'y':
                     if RESPONSEOPTIONS != []: #no options
                         print("<<<",RESPONSEOPTIONS[0].response,"\nIs State: ",RESPONSEOPTIONS[0].id," good? Origin: ",RESPONSEOPTIONS[0].origin)
-                        print("Score: ",calcTotalScore(RESPONSEOPTIONS[0],CurrentInput,CurrentState))
-                        # print(type(RESPONSEOPTIONS[0]),type(CurrentState),type(CurrentInput))
+                        input_length = len(CurrentInput.split(" "))
+                        current_score = calcTotalScore(RESPONSEOPTIONS[0], CurrentInput, CurrentState)
+                        TOLERANCE = 0.2
+                        avg_score_per_word = (avg_score_per_word*avgCmp+(current_score/input_length))/(avgCmp+1)
+                        avgCmp += 1
+                        if current_score > avg_score_per_word*(1+TOLERANCE*3):
+                            certainty = "High"
+                        elif current_score > avg_score_per_word*(1+TOLERANCE):
+                            certainty = "good"
+                        elif current_score*(1+TOLERANCE) < avg_score_per_word:
+                            certainty = "low"
+                        elif current_score*(1+TOLERANCE*3) < avg_score_per_word:
+                            certainty = "Very Low"
+                        else:
+                            certainty = "Medium"
+                        print("ScorePerWord: ",current_score/input_length," avgScore:",avg_score_per_word," certainty:",certainty)
                         print("<y>-yes,<n>-no/next,<r>-fix response,'create', 'connect <id#>', 'search <string>'")
                     else:
                         print("I'm ClueLess...\n'fix' text, 'restart', 'connect #' to add a known state or 'create' new state?")

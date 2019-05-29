@@ -10,7 +10,7 @@ badsearchDb = {
     "and", "or", "also", "please", "maybe", "the", "can", "yes", "why",
     "will", "a", "an", "be", "to", "of", "internet", "tell", "are",
     "in", "that", "have", "i", "it", "for", "is", "you", "ok", "no",
-    "as", "at", "by", "so", "than", "it", "search", "me", "please",
+    "as", "at", "by", "so", "than", "it", "search", "me", "please", "this",
     "do", "know", "who", "?", "what", "your", "opinion", "about", "tell", "these", "me"
 }
 

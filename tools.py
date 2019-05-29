@@ -34,33 +34,66 @@ def getStatesDb():
     return tempStatesDb
 
 
-def analsys():
+def analsys(vrbs=False):
+    """
+    analyzes the states DB to find which words are rare and which are common
+    it generates a dict containing all of the words that have appeared and a rarity factor.
+     Rarity factor value is set from 1 to DIFVALUE, normalized\mapped to the amount of appearances
+    :return:
+    """
+    DIFVALUE = 10 #max value a word can get for being rare
     DB = getStatesDb()
-    wordDB = {}
+    wordDB = {} #{"word":[appearances,rarity_factor]..."last_word":[appr,rarty_fctr]}
     total_word_count = 0
     for state in DB:
         for word in state.words:
             lowered_word = word.lower()
             if wordDB.get(lowered_word) == None:
-                wordDB[lowered_word] = 1
+                wordDB[lowered_word] = [1]
             else:
-                wordDB[lowered_word] += 1
+                wordDB[lowered_word][0] += 1
             total_word_count += 1
-    print("total of: ", len(wordDB), " different words.")
-    print("total of: ", total_word_count, " words altogether.")
     sorted_list = []
     for word in wordDB:
-        sorted_list.append([wordDB[word],word])
-    for word in sorted_list:
-        rarity_factor = (1/word[0])*5
-        word.append(rarity_factor)
+        sorted_list.append([wordDB[word][0],word])
     sorted_list.sort(key=operator.itemgetter(0))
-    max_apr = sorted_list[0][0]
+    for word in sorted_list:
+        rarity_factor = (1/word[0])*DIFVALUE
+        # print("debug 2:",word)
+        (wordDB[word[1]]).append(rarity_factor)
     length = len(sorted_list)
-    for i in range(100):
-        print("rarity: ",i,": ",sorted_list[i])
-    for i in range(10):
-        print("rarity: ",length-i, ": ", sorted_list[(length-10)+i])
+    if vrbs:
+        print("total of: ", len(wordDB), " different words.")
+        print("total of: ", total_word_count, " words altogether.")
+        for i in range(10):
+            print("rarity: ",i,": ",sorted_list[i])
+        for i in range(10):
+            print("rarity: ",length-i, ": ", sorted_list[(length-10)+i])
+    return wordDB
+
+def removeBadWords(userinput):
+    """
+    removes bad search words from userinput
+    :param userinput: single String
+    :return: single String
+    """
+    userWords = userinput.split(" ")
+    # print("userWords:",userWords)
+    rslt = ""
+    for word in userWords:
+        if word not in badsearchDb:
+            rslt += word + " "
+        else:
+            print("caught:",word)
+    return rslt
 
 
-analsys()
+def normalizeByRarity(DB):
+    db = getStatesDb()
+    for state in db:
+        for word in state.words:
+            state.words[word] += int(DB[word.lower()][1])
+            writeState(state)
+# normalize()
+# db = analsys()
+# normalizeByRarity(db)

@@ -7,6 +7,7 @@ import requests
 import re
 #------imported modules--------
 from BadDb import *
+from tools import *
 
 def executeSpecial(command,userInput,TempMemory,RawInput):
     """
@@ -173,8 +174,13 @@ def internetWolfram(userInput):
     :return: String
     """
     try:
+        print("connecting to internet resources...")
+        # print(userInput)
+        userInput = removeBadWords(userInput)
+        # print(userInput)
         client = wolframalpha.Client("2TYLUH-6Q2KRKXA2U")
-        res = client.query(userInput)
+        res = client.query(" ".join(userInput))
+        # print("raw:",res)
         res = res["pod"][1]["subpod"]["plaintext"]
         print(res)
         return str(res)

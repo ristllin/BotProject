@@ -1,0 +1,176 @@
+>>>Title|||squeals squeaks Brakes Belt strange noises
+>>user|||Original question|||I hear strange squeaks squeals sounds from the front of the car, back of the car
+>>Bot|||Answer|||Squealing can be caused by various problems. Squeals can be the result of worn belts, or in some cases, problems with the brakes. Unless you are familiar with automobiles, it might be hard to diagnose the problem that is causing the noise. If you listen closely to noises you may be able to differentiate between a chirp and a squeal. Chirping is usually a sign of break issues while squealing comes from the engine and might mean a bad belt.
+>>user|||Followup-question|||its chirping
+>>Bot|||Answer|||That might be one of the most dangerous problems a car can have, brakes naturally wear down over time. That's why it's so important to keep up with their maintenance; the trick is to catch the problem long before true failure. Certain factory defects can make this difficult, however, as affected brake pads and rotors wear down much more quickly than expected. Its highly recommnded that you take the car to a mechanic as soon as possible.
+>>user|||Followup-question|||it squeals
+>>Bot|||Answer|||Belt problems might cause problems to the engine over time, try to get to a mechanic soon.
+
+>>>Title|||Problems Starting the Car Ignition fails Faulty Starter
+>>user|||Original question|||My car won't start
+>>Bot|||Answer|||Does your car take longer than usual to start? or is it not starting at all?
+>>user|||Followup-question|||It Won't start at all
+>>Bot|||Answer|||Lets try to analyze your problem. when you turn the switch do youhear a clicking sound, or no sound at all?
+>>user|||Followup-question|||no sound at all
+>>Bot|||Answer|||Does your car has an emobilizer? if you didn't put in the right code, the car won't start.
+>>user|||Followup-question|||no that's not the problem
+>>Bot|||Answer|||It is possible your car battery died, that usually happens when you don't start the car for a long time, or with an old battery. Try getting a hold of another car and using it to start yours with cables
+>>user|||Followup-question|||How do I do that? how do i start the car with cables? what is a cable start? what do i do when my car battery dies? how do i jump start my car?
+>>Bot|||Answer|||Try following these instructions regarding how to start a car with a dead battery: https://www.youtube.com/watch?v=iI1o2hNy2hE
+>>user|||Followup-question|||the car it makes a clicking sound but wont start
+>>Bot|||Answer|||firstly check your gauges, is your fuel light on, is your fuel tank empty?
+>>user|||Followup-question|||yes
+>>Bot|||Answer|||simply fill the tank
+>>user|||Followup-question|||no
+>>Bot|||Answer|||are you on neutral in a manual transmission or parking in an automatic vehicle?
+>>user|||Followup-question|||no
+>>Bot|||Answer|||Change gear into parking or neutral and try starting the car again, many cars won't start unless on parking\neutral gear. Also, try pressing breaks while starting it on.
+>>user|||Followup-question|||yes
+>>user|||Followup-question|||I can't get a hold of another car and i am really stuck
+>>Bot|||Answer|||If you have an automatic gear transmission call for technical assistance, if you are an experienced driver, with a manual transmission and on a down hill, you can try to roll push start. watch this movie: https://www.youtube.com/watch?v=7Dblxll9Wi4
+>>user|||Followup-question|||it takes longer than usual
+>>Bot|||Answer|||If that’s the case and you hear a clicking sound before your car starts, your starter may be starting to fail. It’s a common problem that is pretty easy to repair. But, fix it fast, because if it fails your car won’t start.
+
+>>>Title|||Ignition Coil
+>>user|||Original question|||I was told i have a problem with my ignition coil what does that mean?
+>>Bot|||Answer|||Symptoms of ignition coil problems often mimic other issues. When ignition coils are going bad your car will be difficult to start. As already stated, there are other possible problems that could also be responsible for a car being difficult to start.
+
+>>>Title|||key Switch won't turn
+>>user|||Original question|||I try to turn the key switch and it wont turn
+>>Bot|||Answer|||Firstly check that you are indeed using the right key. Secondly, try jugging the steering wheel with a little force while applying slight pressure on turnning the key in the correct direction.
+
+>>>Title|||Clutch
+>>user|||Original question|||i press the gas padel but the car barely moves, lossing power it has no power.
+>>Bot|||Answer|||if you are the driver of a manual transmission that might be the clutch. The clutch is made up of various mechanical parts and if any of them break, it will cause your clutch to stop working. This problem will be obvious right away; while you are in gear, it will feel like pushing your gas pedal isn’t enough to make your car move forward.
+
+>>>Title|||Air Conditioning
+>>user|||Original question|||the airconditioning air isn't cold, is worm.
+>>Bot|||Answer|||It is simple to diagnose an air conditioning problem. Your air will simply not be cold. The causes are a little less simple. Your problems could be due to a faulty compressor or possibly a Freon leak. If you can roll your windows down until you have time to take your car into a shop.
+
+>>>Title|||Steering Uneven Tire Wear
+>>user|||Original question|||I feel a pull to the right left one of the side sides
+>>Bot|||Answer|||While many flats and blowouts are due to external forces, they can also be attributed to factory defects in the tire itself. Some tread wear is normal over time, but excessive tire wear early on is not. Additionally, if your tires are wearing out unevenly or you feel a vibration through your steering wheel, your suspension is probably in need of alignment.
+
+>>>Title|||Warning Lights
+>>user|||Original question|||I have a warnning light on. what does it mean?
+>>Bot|||Answer|||check your car manual, what the specific light stands for. e.g. engine problem, and tell me, i will try to help.
+
+>>>Title|||brake system Warning Light
+>>user|||Original question|||Brake system / brake fluid warning light
+>>Bot|||Answer|||Your vehicle’s brakes are arguably the most important feature on your car, so if there’s a warning light flashing on your dash highlighting there’s something wrong with the braking system, it’s best to get it checked out right away. you can open the car hood and check if there is fluid missing in the break fluid tank, you can fill it in every gas station. make sure to check you aren't lossing it again during the same day and again after a few days. if you are go to a mechanic.
+
+>>>Title|||Engine Warning Light
+>>user|||Original question|||ECU / engine warning light
+>>Bot|||Answer|||That might mean your engine warmed up too much, were you driving uphill or carrying a lot of load?
+>>user|||Followup-question|||no it was a regular drive, downhill, nothing special
+>>Bot|||Answer|||Radiator Leaks  - Corrosion is the typical culprit when it comes to radiator leaks. However, the root cause of corrosion can be anything from poor maintenance to factory defects to contaminated fluid. In general, it makes more sense to replace a radiator rather than patch it up. That first leak means corrosion has already set in and that more leaks will follow soon. Whichever course you decide to take, avoid driving your car before its fixed — A leaky radiator can lead to overheating and even an engine fire.
+>>user|||Followup-question|||I was pushing the engine, long uphill, working hard
+>>Bot|||Answer|||That might mean your engine warmed up too much
+
+>>>Title|||Airbag warning light
+>>user|||Original question|||my Airbag warning light has light up
+>>Bot|||Answer|||The invention of the airbag was a major step forward in vehicle occupant safety, so if your car’s isn’t working properly, get it seen to. A faulty airbag potentially won’t go off in a crash, meaning you and your passengers won’t be as well protected from any potential injuries. The other possibility is that your vehicle’s airbag could deploy when you least expect it, giving you a nasty shock – or even actually causing­ an injury – and an expensive fix to put right.
+
+>>>Title|||Power steering / EPAS warning light
+>>user|||Original question|||the EPAS warnning light has lit up
+>>Bot|||Answer|||If your car’s power steering warning light – often known as the EPAS light – is illuminated, it means there could be something wrong with the steering system. If the system fails, the steering could go heavy, meaning more effort will be needed to make the car change direction. This can be an annoyance at low speed when you’re trying to manoeuvre, but a real risk at higher motorway speeds if you need to make a sudden lane change to avoid an obstacle.
+
+>>>Title|||Coolant warning light
+>>user|||Original question|||the coolant warnning light lit up
+>>Bot|||Answer|||Without any coolant, your car’s engine would get so hot it’d effectively ‘weld’ itself together. If you see the coolant light show up on your dashboard, it could mean coolant levels are running low, so check the gauge on the side of the coolant tank under the bonnet and top up if necessary. In conjunction with a temperature gauge reading well into the red, it could mean your engine is overheating. This is either the sign of a larger problem – like a head gasket failure – or symptomatic of something less major, like a leak in the system somewhere, meaning you’re engine has run low on coolant and got too hot. Get it seen to as soon as possible to avoid a potentially expensive repair bill.
+
+>>>Title|||Oil warning light
+>>user|||Original question|||my oil warning light has lit up
+>>Bot|||Answer|||Just like your car’s water or coolant warning light, you might see an oil warning light flash up if oil temperature gets too high, the level is low or oil pressure too low. It’s the latter two you want to avoid at all costs. Oil is what lubricates your engine, with the oil pump used to spray the fluid to all corners of your engine. If temperatures get too high, or even worse, level is low or oil pressure drops, the effectiveness of the lubrication can be reduced or lost all together. The result? Expensive engine damage, so if you see this warning sign, stop and phone a professional right away.
+
+>>>Title|||Tire pressure monitor warning light
+>>user|||Original question|||Tyre pressure monitor warning light has lit up what should i do?
+>>Bot|||Answer|||Once the preserve of high-end, super-expensive luxury saloons, many more cars are fitted with tire pressure monitoring systems today. These systems can sense a deviation away from normal tyre pressures, signifying a puncture. Generally, the device will flash a warning light on the dashboard, highlighting you should take a look at your car’s rubber.
+
+>>>Title|||Battery charge warning light
+>>user|||Original question|||what does that mean?
+>>Bot|||Answer|||You should see your battery charge warning light when you first turn your car on, but if it doesn’t go out a few seconds after the engine starts, there could be a problem with your car’s electrical system. This could be to do with a faulty alternator, faulty battery, a bad connection or damaged cabling somewhere in the engine bay. If your car isn’t charging its battery when moving (the job of the alternator), then you could eventually run out of electrical power and grind to a halt. At worst, the light could be on due to an alternator drive belt braking. Other systems also use this belt – such as the engine coolant pump, or power steering – so the affects of a failure here could be compounded.
+
+>>>Title|||Excessive Oil Consumption
+>>user|||Original question|||my car is running through the oil real fast and i have to refill it a lot.
+>>Bot|||Answer|||It's a fact of life: Your car will need fresh oil to stay functioning. However, if you're finding it's needing changes and top-ups more frequently than it should, there might be a problem. Early signs you need to check your oil include a minor dip in performance and the ever-dreaded oil light on your dashboard. When your car is in a particularly dire need of an oil change, you may even start to see corrosion in its engine. Another oil-related complaint is the clogged oil filter. You'll probably see this problem if you've waited too long to change the oil. While modern cars come with systems that are equipped with filter bypasses, Its a good rule of thumb to change the filter whenever you change the oil.
+
+>>>Title|||Cracked Windshield
+>>user|||Original question|||my windshield glass has shaterred, or cracked
+>>Bot|||Answer|||While it still takes an errant rock or some other heavy catalyst, many car windshields are rolling off the assembly line with stress defects that make them more vulnerable to damage. Small ones may seem like a cosmetic problem, but any cracks can potentially compromise the structural integrity of your vehicle.
+
+>>>Title|||Emission System
+>>user|||Original question|||<question>
+>>Bot|||Answer|||Your car's emission system includes everything it needs to run efficiently while minimizing pollution. However, it also includes some sensitive equipment prone to problems. O2 sensors tell your car how much oxygen to put in the fuel mixture. Faulty O2 sensors will result in your car running less efficiently.
+
+>>>Title|||Evaporative Leaks
+>>user|||Original question|||<question>
+>>Bot|||Answer|||High outside temperatures cause the fuel in your gas tank to expand. Without some venting, that pressure would build and damage your gas tank. However, since these fumes are also toxic, modern cars are equipped with a system of specialized vents and devices to keep this pollution from hitting the open air. Problems with this system are called evaporative leaks. Loose gas caps are by far the most common evaporative leaks, causing roughly half of newer car repairs based on the "check engine" light. While a gas cap costs only a few dollars to replace, ignoring that warning can lead to catalytic converter failure, a problem that will run you over $1,000 to solve.
+
+>>>Title|||Malfunctioning Sensors
+>>user|||Original question|||<question>
+>>Bot|||Answer|||Modern cars run with the help of an array of high-tech sensors, but those come with their own issues. Faulty fuel-air sensors are some of the most common, with pricey replacements at around $250 or more.
+
+>>>Title|||Transmission
+>>user|||Original question|||I was told i have a transmission problem, what does that mean?
+>>Bot|||Answer|||Your car's transmission is basically a gearbox that converts the power generated by the engine into rotational force (torque) the wheels can use. Unfortunately, it's also one of the most frequent sources of complaints. Over time the gears can wear down, resulting in the transmission not being able to shift gears properly. Eventually, the whole transmission will fail. That’s a multi-thousand-dollar fix.
+
+>>>Title|||Transmission Fluid Leaks
+>>user|||Original question|||my transmission fluid is low
+>>Bot|||Answer|||Your vehicle's transmission requires a special fluid to keep its components well lubricated. In cars with automatic transmissions, transmission fluid also works as a hydraulic fluid and coolant. Over the course of your car's life, small holes can form anywhere in this system, such as in the fluid lines, seals, or gaskets. These tiny tears allow transmission fluid to escape, causing a leak. If the leak is bad enough to lower the overall fluid levels, your transmission will lose efficiency and may eventually fail, whether from overheating or internal pressure loss. Leaks can also come from cracks in the transmission pan that collects excess fluid. When that happens, you'll probably see a big red puddle under your vehicle.
+
+>>>Title|||Clogged Filter
+>>user|||Original question|||my filter is clogged, the warnning light has lit up
+>>Bot|||Answer|||Transmission fluid can also get dirty over time as it picks up particulates, which include everything from flaked off bits of metal to everyday grime. Many transmissions have filters to strain out these particulates, but they can themselves become clogged over time. However, since the transmission is supposed to be a closed system, excessive contaminants point to the possibility of serious defects or beyond-repair wear.
+
+>>>Title|||Water Damage
+>>user|||Original question|||I was told my transmission is suffering from water damage, what does it mean?
+>>Bot|||Answer|||Liquids can also leak into the transmission, such as the case with water dripping from the radiator or the whole unit getting soaked through from serious flooding. However it got there, water mixing with transmission fluid is bad news. Even a very small amount of water can lead to transmission failure. This is because water directly damages the components of the transmission system, wearing away glue and rusting metal.
+
+>>>Title|||Electrical Problems Speakers, radio, window
+>>user|||Original question|||my window won't open, my light wont start
+>>Bot|||Answer|||Another common source of complaints for modern cars come from problems in their extensive electrical systems. Electrical gremlins can infect any system. Few are more annoying than the speakers failing, because we all like to rock out. Sometimes, the connections for the speakers wiggle off, preventing the speakers from working. If this happens, just pull the speaker out and reattach the wires. if its the radio or the window for example it is recomended you go to a technician.
+
+>>>Title|||Lights
+>>user|||Original question|||my front back lights are burnt, won't turn on
+>>Bot|||Answer|||Whether a burnt out bulb or a poor connection, if your headlights, brake lights, or turn signals are out, you've got a safety issue on your hands. While the bulbs themselves are lasting longer than ever, corrosion and poor wiring is still a major concern. simply go to a fuel station and buy a new one. you can easily replace it through the counter side. e.g. front light through the engine hood, back lights from the car trunk. you cann see this video for additional information: https://www.youtube.com/watch?v=HO3IXM3XkUU
+
+>>>Title|||Dead Battery
+>>user|||Original question|||I was told my battery died
+>>Bot|||Answer|||The cause may be a defect or mistreatment — hot summers or that one time you may have accidentally left a light on for a day (or five) — dead batteries are a frequent cause of panic among car owners. While repairs can be as simple as getting a jump from a neighbor, most batteries need to be replaced every three to six years.
+
+>>>Title|||Cosmetic Issues and Other Minor Annoyances
+>>user|||Original question|||my car interior got damaged what can i do?
+>>Bot|||Answer|||Luckily not all common car problems need your immediate attention. Scratches, yellowing headlights and streaky windshields can be very annoying. But, they can also be fixed very easily. A bit of cleaner wax and touch-up paint will take care of minor scratches. A plastic restoration kit makes your headlights crystal clear again. And, a new pair of windshield wipers will prevent streaking.
+
+>>>Title|||Paint Problems
+>>user|||Original question|||my car paint got scratched
+>>Bot|||Answer|||From discoloration to chipping to scratches, auto paint defects are some of the most visible car problems to have. While most are a nuisance, keep in mind that rust spots can lead to major structural damage if left unchecked.
+
+>>>Title|||Faulty Windows
+>>user|||Original question|||my windows won't open and or close
+>>Bot|||Answer|||As power windows have become the norm, car owners have seen the rise of one big annoyance: Windows that don't roll all the way up. While not too worrisome on its own, remember that too much of a gap makes you vulnerable to theft and water damage.
+
+>>>Title|||Falling Gas Mileage
+>>user|||Original question|||i feel my car is taking a lot more gas lately
+>>Bot|||Answer|||Believe it or not, your gas mileage is very dependent on the maintenance of your engine. Regular oil changes, replacing your engine air filter and changing your spark plugs will all make sure your car gets the most miles per gallon.
+
+>>>Title|||flat tire
+>>user|||Original question|||I have a flat tire how do i replace it?
+>>Bot|||Answer|||replacing a flat tire is not a big fuss, but it will require you fix the damaged tire because a lot of spare tires are limited to speed and distance. simply watch this movie: https://www.youtube.com/watch?v=joBmbh0AGSQ
+
+>>>Title|||missing oil
+>>user|||Original question|||my oil is low
+>>Bot|||Answer|||just get into a close gas station, ask for the relevant type of oil, and fill up to the line marked. after you fill the oil make sure you aren't lossing it from a hole. give a few minutes and then look under the car. if you a have a leak, you need to call a technician. if the leak is massive you might need to tow your car to avoid permanent damage while driving to the technician.
+
+>>>Title|||Smoke
+>>user|||Original question|||I can see smoke.
+>>Bot|||Answer|||stop the car immediately. if the smoke is white that is most likely your engine burnning oil. call a tow car to avoid permanent engine damage. black oil can mean different things, call a technician for diagnostics and assistance.
+
+>>>Title|||burnt smell
+>>user|||Original question|||I can smell smoke, smells like something is burnning
+>>Bot|||Answer|||Firstly stop the car. make sure your handbrake is down. if it's not that, your car might be burnning, oil, fuel or water, as well as the breaks. it might be hard to diagnose without taking a look. contact a technician for further analysis and assistace
+
+>>>Title|||give me a techinician number
+>>user|||Original question|||please give me provide a technician assistance phone number
+>>Bot|||Answer|||recomended techinicians: bla bla bla...
