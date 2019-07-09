@@ -269,7 +269,7 @@ def main():
     avgCmp = 0
     CurrentState = getState(0) #set state to init
     # importDataSet(r"D:\projects\BotProject\basicCarQuestions.txt",3) #add new dataset
-    # importDataSet(r"D:\projects\BotProject\genericBot.txt",5)  # add new dataset
+    # importDataSet(r"D:\projects\BotProject\fordForums.txt",1 )  # add new dataset
     print("-------Agent Running-------")
     if CurrentState == None:
         print("<<<Error>>>> Empty DB")
