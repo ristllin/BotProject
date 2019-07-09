@@ -259,6 +259,23 @@ def importDataSet(dataset,STRENGTHFACTOR = 1):
             except Exception as e:
                 print("Error on thread:",thread)
 
+def calcCertainty(input_length,avgCmp,current_score,avg_score_per_word):
+    TOLERANCE = 0.2
+    avg_score_per_word = (avg_score_per_word * avgCmp + (current_score / input_length)) / (avgCmp + 1)
+    avgCmp += 1
+    if current_score > avg_score_per_word * (1 + TOLERANCE * 3):
+        certainty = "High"
+    elif current_score > avg_score_per_word * (1 + TOLERANCE):
+        certainty = "good"
+    elif current_score * (1 + TOLERANCE) < avg_score_per_word:
+        certainty = "low"
+    elif current_score * (1 + TOLERANCE * 3) < avg_score_per_word:
+        certainty = "Very Low"
+    else:
+        certainty = "Medium"
+    return certainty,avgCmp,current_score,avg_score_per_word
+
+
 def main():
     global CurrentState
     global CurrentInput
@@ -276,34 +293,24 @@ def main():
         quit()
     while True: #should be True
         try:
-            print("<<<",CurrentState.response)
-            if "Null" not in CurrentState.special and CurrentInput != None:
+            print("<<<",CurrentState.response)                                                      #print current State response
+            if "Null" not in CurrentState.special and CurrentInput != None:                         #Special Apis activation
                 executeSpecial(CurrentState.special,CurrentInput,TempMemory,RawInput)
             RawInput = input(">>> ")
-            CurrentInput = parseInput(RawInput) #result updates CURRENTINPUT
-            if CurrentInput == "":
+            CurrentInput = parseInput(RawInput)                                                     #Parse userInput...
+            if CurrentInput == "":                                                                  #No input, repeat
                 continue
-            RESPONSEOPTIONS = sortStates(CurrentInput,CurrentState) #list of stateType [state34,state21...]
+            # Calc Best response for input, returns a list of stateType [state34,state21...]
+            RESPONSEOPTIONS = sortStates(CurrentInput,CurrentState)
+            #analyze Chosen state
+            input_length = len(CurrentInput.split(" "))
+            current_score = calcTotalScore(RESPONSEOPTIONS[0], CurrentInput, CurrentState)
+            certainty,avgCmp,current_score,avg_score_per_word = calcCertainty(input_length,avgCmp,current_score,avg_score_per_word)
             if LEARNINGMODE:
                 command = ""
                 while command != 'fix' or command != 'restart' or command != 'y':
                     if RESPONSEOPTIONS != []: #no options
                         print("<<<",RESPONSEOPTIONS[0].response,"\nIs State: ",RESPONSEOPTIONS[0].id," good? Origin: ",RESPONSEOPTIONS[0].origin)
-                        input_length = len(CurrentInput.split(" "))
-                        current_score = calcTotalScore(RESPONSEOPTIONS[0], CurrentInput, CurrentState)
-                        TOLERANCE = 0.2
-                        avg_score_per_word = (avg_score_per_word*avgCmp+(current_score/input_length))/(avgCmp+1)
-                        avgCmp += 1
-                        if current_score > avg_score_per_word*(1+TOLERANCE*3):
-                            certainty = "High"
-                        elif current_score > avg_score_per_word*(1+TOLERANCE):
-                            certainty = "good"
-                        elif current_score*(1+TOLERANCE) < avg_score_per_word:
-                            certainty = "low"
-                        elif current_score*(1+TOLERANCE*3) < avg_score_per_word:
-                            certainty = "Very Low"
-                        else:
-                            certainty = "Medium"
                         print("ScorePerWord: ",current_score/input_length," avgScore:",avg_score_per_word," certainty:",certainty)
                         print("<y>-yes,<n>-no/next,<r>-fix response,'create', 'connect <id#>', 'search <string>'")
                     else:
@@ -337,7 +344,7 @@ def main():
                         print("---Unknown command---")
             else: #not learning mode
                 if RESPONSEOPTIONS == None:
-                    print("Hmm... it seams I am clueless.")
+                    print("Hmm... it seems I am clueless.")
                     command = input("do you want to restart the conversation or rephrase?")
                     if "restart" in command:
                         CurrentState = getState(0)
