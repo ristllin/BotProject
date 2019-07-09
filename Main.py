@@ -260,21 +260,45 @@ def importDataSet(dataset,STRENGTHFACTOR = 1):
                 print("Error on thread:",thread)
 
 def calcCertainty(input_length,avgCmp,current_score,avg_score_per_word):
+    """
+
+    :param input_length: int - amount of words in current sentence
+    :param avgCmp: amount of inputs calculated for given average
+    :param current_score: ambiguous Score from scoring algo
+    :param avg_score_per_word:
+    :return:
+    """
     TOLERANCE = 0.2
     avg_score_per_word = (avg_score_per_word * avgCmp + (current_score / input_length)) / (avgCmp + 1)
     avgCmp += 1
-    if current_score > avg_score_per_word * (1 + TOLERANCE * 3):
-        certainty = "High"
-    elif current_score > avg_score_per_word * (1 + TOLERANCE):
-        certainty = "good"
-    elif current_score * (1 + TOLERANCE) < avg_score_per_word:
-        certainty = "low"
-    elif current_score * (1 + TOLERANCE * 3) < avg_score_per_word:
-        certainty = "Very Low"
+    current_avg_per_word = current_score / input_length
+    if current_avg_per_word > avg_score_per_word * (1 + TOLERANCE * 3):
+        certainty = 4 #very good
+    elif current_avg_per_word > avg_score_per_word * (1 + TOLERANCE):
+        certainty = 3 #good
+    elif (current_avg_per_word) * (1 + TOLERANCE) < avg_score_per_word:
+        certainty = 1 #bad
+    elif (current_avg_per_word) * (1 + TOLERANCE * 3) < avg_score_per_word:
+        certainty = 0 #very bad
     else:
-        certainty = "Medium"
+        certainty = 2 #Medium
     return certainty,avgCmp,current_score,avg_score_per_word
 
+
+def EnhanceResults(user_input, DB):
+    """
+    Gets a sentence, replaces unknown words with alternative words using word2vec.
+    :param user_input: (Str) after basic parsing (bad words removal etc..)
+    :return: (Str) Alternative Sentence
+    """
+    words = user_input.split(" ")
+    alternative_sentance = ""
+    for word in words:
+        if word in DB:
+            alternative_sentance += word + " "
+        else:
+            alternative_sentance += GetAlternative(word)
+    return alternative_sentance
 
 def main():
     global CurrentState
@@ -282,6 +306,9 @@ def main():
     global RawInput
     global RESPONSEOPTIONS
     global TempMemory
+    #--------init---------------
+    print("-------Initializing-------")
+    DB = AllKnownWords()
     avg_score_per_word = 0
     avgCmp = 0
     CurrentState = getState(0) #set state to init
@@ -306,12 +333,19 @@ def main():
             input_length = len(CurrentInput.split(" "))
             current_score = calcTotalScore(RESPONSEOPTIONS[0], CurrentInput, CurrentState)
             certainty,avgCmp,current_score,avg_score_per_word = calcCertainty(input_length,avgCmp,current_score,avg_score_per_word)
+            if certainty < 2:
+                if LEARNINGMODE: print("Activating Enhancement tools")
+                new_sentance = EnhanceResults(CurrentInput,DB) #find unknown words, get alternative for each, create new sentance with them
+                alternative_state = sortStates(new_sentance, CurrentState)[0]
+                alt_score = calcTotalScore(alternative_state, new_sentance, CurrentState)
+                if alt_score > current_score:
+                    RESPONSEOPTIONS.insert(0, alternative_state) #if higher than current score, push to RESPONSEOPTIONS
             if LEARNINGMODE:
                 command = ""
                 while command != 'fix' or command != 'restart' or command != 'y':
                     if RESPONSEOPTIONS != []: #no options
                         print("<<<",RESPONSEOPTIONS[0].response,"\nIs State: ",RESPONSEOPTIONS[0].id," good? Origin: ",RESPONSEOPTIONS[0].origin)
-                        print("ScorePerWord: ",current_score/input_length," avgScore:",avg_score_per_word," certainty:",certainty)
+                        print("CurrentScorePerWord: ",current_score/input_length," TotalAvgScorePerWord:",avg_score_per_word," certainty:",certainty)
                         print("<y>-yes,<n>-no/next,<r>-fix response,'create', 'connect <id#>', 'search <string>'")
                     else:
                         print("I'm ClueLess...\n'fix' text, 'restart', 'connect #' to add a known state or 'create' new state?")

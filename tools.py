@@ -20,8 +20,6 @@ def normalize():
                 state.words[word] = MAXVALUE
                 writeState(state)
 
-
-
 def getStatesDb():
     """
     pulls db from path and parses it into a list
@@ -33,8 +31,20 @@ def getStatesDb():
             tempStatesDb.append(parseDbLine(line))
     return tempStatesDb
 
+def AllKnownWords():
+    """
+    Goes over DB and returns a set with all known words
+    :return: <Set> a set containing everyword in initial DB
+    """
+    DB = set()
+    with open(FILEPATH, "r+") as f:
+        for line in f:
+            state = parseDbLine(line)
+            for word in state.words:
+                DB.add(word)
+    return DB
 
-def analsys(vrbs=False):
+def analysis(vrbs=False):
     """
     analyzes the states DB to find which words are rare and which are common
     it generates a dict containing all of the words that have appeared and a rarity factor.
@@ -95,5 +105,5 @@ def normalizeByRarity(DB):
             state.words[word] += int(DB[word.lower()][1])
             writeState(state)
 # normalize()
-# db = analsys()
+# db = analysis()
 # normalizeByRarity(db)
