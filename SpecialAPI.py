@@ -37,8 +37,8 @@ def time(command,data,userInput):
     :param userInput:
     :return:
     """
-    if command == "time":
-        print(str(datetime.datetime.now()))
+    if DEBUG: print("time() called ")
+    print(str(datetime.datetime.now()))
 
 def memory(command,data,userInput,TempMemory):
     """
@@ -142,11 +142,12 @@ def internetWeather(command,special_data,userInput):
     """
         # openweatherapi key - 47c0157cd7e7c5cf1f19a97abc04edbc
     try:
+        location = "Tel Aviv District"
         otherdays = {"tomorrow","week","sunday","monday","tuesday","wednesday","thursday","friday","saturday"}
         for time in otherdays:
             if time in userInput:
                 print("I can only tell the weather now...")
-        weather_data = requests.get('http://api.openweathermap.org/data/2.5/weather?q=Tel Aviv District&APPID=47c0157cd7e7c5cf1f19a97abc04edbc').json()
+        weather_data = requests.get('http://api.openweathermap.org/data/2.5/weather?q='+location+'&APPID=47c0157cd7e7c5cf1f19a97abc04edbc').json()
         temp = str(weather_data["main"]['temp'] - 273.15)
         pressure = str(weather_data["main"]['temp'])
         general = str(weather_data["weather"][0]['description'])
@@ -163,6 +164,7 @@ def internetWeather(command,special_data,userInput):
                 decision += " and take an umbrella."
             print("with this weather, I'd go with "+decision)
         else:
+            print("The weather in "+location+" is")
             print("Weather: ", general, "\nTemp: ", temp + " deg C", "\nPressure: ", pressure + " Hg", "\nWind: ",wind + " Kmh", "\nHumidity: ", humidity + "%")
     except Exception as e:
         print("Failed ", e)  # interconnection problems e.g.?

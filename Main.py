@@ -6,6 +6,7 @@ from BadDb import *
 from SpecialAPI import *
 from tools import *
 from math import *
+from nltk.corpus import wordnet
 
 #----------libraries----------
 import wikipedia
@@ -291,14 +292,34 @@ def EnhanceResults(user_input, DB):
     :param user_input: (Str) after basic parsing (bad words removal etc..)
     :return: (Str) Alternative Sentence
     """
+    if DEBUG: print("EnhanceResults called()")
     words = user_input.split(" ")
     alternative_sentance = ""
     for word in words:
         if word in DB:
             alternative_sentance += word + " "
         else:
+            print("Getting alternative")
             alternative_sentance += GetAlternative(word)
+    if DEBUG: print("debug: alternative sentance created: ",alternative_sentance)
     return alternative_sentance
+
+def GetAlternative(word):
+    """
+    Gets a word (String), uses natural language toolkit to find synonyms to the given word, and returns one of them randomly (String)
+    :param word: String
+    :return: (String) a synonym to the given word
+    """
+    alternative = word
+    synonyms = []
+    for syn in wordnet.synsets(word):
+        for lm in syn.lemmas():
+            synonyms.append(lm.name())
+    if synonyms != []:
+        alternative = synonyms[0]
+    if DEBUG: print("ALt for: ",word," is: ",alternative)
+    return alternative
+
 
 def main():
     global CurrentState
@@ -309,8 +330,8 @@ def main():
     #--------init---------------
     print("-------Initializing-------")
     DB = AllKnownWords()
-    avg_score_per_word = 0
-    avgCmp = 0
+    avg_score_per_word = 5 #<<<<<>>>>> need to build algo for that
+    avgCmp = 1
     CurrentState = getState(0) #set state to init
     # importDataSet(r"D:\projects\BotProject\basicCarQuestions.txt",3) #add new dataset
     # importDataSet(r"D:\projects\BotProject\fordForums.txt",1 )  # add new dataset
@@ -334,12 +355,17 @@ def main():
             current_score = calcTotalScore(RESPONSEOPTIONS[0], CurrentInput, CurrentState)
             certainty,avgCmp,current_score,avg_score_per_word = calcCertainty(input_length,avgCmp,current_score,avg_score_per_word)
             if certainty < 2:
-                if LEARNINGMODE: print("Activating Enhancement tools")
+                if DEBUG: print("debug: Activating Enhancement tools")
                 new_sentance = EnhanceResults(CurrentInput,DB) #find unknown words, get alternative for each, create new sentance with them
                 alternative_state = sortStates(new_sentance, CurrentState)[0]
                 alt_score = calcTotalScore(alternative_state, new_sentance, CurrentState)
+                if DEBUG: print("debug: alt_score: ",alt_score)
                 if alt_score > current_score:
                     RESPONSEOPTIONS.insert(0, alternative_state) #if higher than current score, push to RESPONSEOPTIONS
+                certainty, avgCmp, current_score, avg_score_per_word = calcCertainty(input_length, avgCmp, current_score,avg_score_per_word)
+            if certainty < 1: #still bad
+                print("I am sorry, I am not sure how to answer that. Please try to rephrase.")
+                continue
             if LEARNINGMODE:
                 command = ""
                 while command != 'fix' or command != 'restart' or command != 'y':

@@ -4,3 +4,4 @@ STRONGMODE = False #Every sentence taught is repeated until it is first result i
 HITSCONST = 4  # how many words match
 RELATIONCONST = 3  # connection exists between nodes
 SCORECONST = 1  # adding up matching words weight
+DEBUG = True
