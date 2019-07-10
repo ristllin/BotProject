@@ -292,15 +292,14 @@ def EnhanceResults(user_input, DB):
     :param user_input: (Str) after basic parsing (bad words removal etc..)
     :return: (Str) Alternative Sentence
     """
-    if DEBUG: print("EnhanceResults called()")
+    if DEBUG: print("debug: EnhanceResults called()")
     words = user_input.split(" ")
     alternative_sentance = ""
     for word in words:
         if word in DB:
             alternative_sentance += word + " "
         else:
-            print("Getting alternative")
-            alternative_sentance += GetAlternative(word)
+            alternative_sentance += GetAlternative(word) + " "
     if DEBUG: print("debug: alternative sentance created: ",alternative_sentance)
     return alternative_sentance
 
@@ -317,7 +316,8 @@ def GetAlternative(word):
             synonyms.append(lm.name())
     if synonyms != []:
         alternative = synonyms[0]
-    if DEBUG: print("ALt for: ",word," is: ",alternative)
+        if DEBUG: print("debug: synonyms are: ",synonyms)
+    if DEBUG: print("debug: Alt for: ",word," is: ",alternative)
     return alternative
 
 
