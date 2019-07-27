@@ -93,8 +93,8 @@ def removeBadWords(userinput):
     for word in userWords:
         if word not in badsearchDb:
             rslt += word + " "
-        else:
-            print("caught:",word)
+        # else:
+            # print("caught:",word)
     return rslt
 
 

@@ -176,18 +176,24 @@ def internetWolfram(userInput):
     :return: String
     """
     try:
-        print("connecting to internet resources...")
-        # print(userInput)
-        userInput = removeBadWords(userInput)
-        # print(userInput)
         client = wolframalpha.Client("2TYLUH-6Q2KRKXA2U")
-        res = client.query(" ".join(userInput))
-        # print("raw:",res)
+        res = client.query(userInput)
         res = res["pod"][1]["subpod"]["plaintext"]
-        print(res)
         return str(res)
     except Exception as e:
         return "Hmm.. seems my friend is having trouble helping me with this answer..." + str(e)
+    # try:
+    #     print("Connecting to internet resources...")
+    #     userInput = removeBadWords(userInput)
+    #     print("Asking: ",userInput)
+    #     client = wolframalpha.Client("2TYLUH-6Q2KRKXA2U")
+    #     res = client.query(" ".join(userInput))
+    #     print("raw:",res)
+    #     res = res["pod"][1]["subpod"]["plaintext"]
+    #     print(res)
+    #     return str(res)
+    # except Exception as e:
+    #     return "Hmm.. seems my friend is having trouble helping me with this answer..." + str(e)
 
 def randoms(command,data,userInput):
     """

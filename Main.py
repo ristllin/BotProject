@@ -286,7 +286,7 @@ def calcCertainty(input_length,avgCmp,current_score,avg_score_per_word):
     return certainty,avgCmp,current_score,avg_score_per_word
 
 
-def EnhanceResults(user_input, DB, iter = 0):
+def EnhanceResults(user_input, DB):
     """
     Gets a sentence, replaces unknown words with alternative words using word2vec.
     :param user_input: (Str) after basic parsing (bad words removal etc..)
@@ -296,14 +296,14 @@ def EnhanceResults(user_input, DB, iter = 0):
     words = user_input.split(" ")
     alternative_sentance = ""
     for word in words:
-        if word in DB:
+        if word in DB: #word contributes to score
             alternative_sentance += word + " "
-        else:
-            alternative_sentance += GetAlternative(word,iter) + " "
+        else: #unknown word
+            alternative_sentance += GetAlternative(word,DB) + " "
     if DEBUG: print("debug: alternative sentance created: ",alternative_sentance)
     return alternative_sentance
 
-def GetAlternative(word,iter):
+def GetAlternative(word,DB):
     """
     Gets a word (String), uses natural language toolkit to find synonyms to the given word, and returns one of them randomly (String)
     :param word: String
@@ -314,9 +314,17 @@ def GetAlternative(word,iter):
     for syn in wordnet.synsets(word):
         for lm in syn.lemmas():
             synonyms.append(lm.name())
-    if len(synonyms) > iter:
-        alternative = synonyms[iter]
-        if DEBUG: print("debug: synonyms are: ",synonyms)
+    if DEBUG: print("searching alt for: <",word, "> looking at: ")
+    if len(synonyms) > 0: #found synonyms
+        for alt_word in synonyms:
+            if alt_word in DB:
+                alternative = alt_word
+                break
+            else:
+                if DEBUG: print(alt_word+" ",end = "")
+        if DEBUG: print()
+    if DEBUG and word == alternative: print("didn't find alt.")
+    if DEBUG and word != alternative: print("using alt: ",alternative)
     if DEBUG: print("debug: Alt for: ",word," is: ",alternative)
     return alternative
 
@@ -351,20 +359,20 @@ def main():
             # Calc Best response for input, returns a list of stateType [state34,state21...]
             RESPONSEOPTIONS = sortStates(CurrentInput,CurrentState)
             #analyze Chosen state
-            iter = 0
             input_length = len(CurrentInput.split(" "))
             current_score = calcTotalScore(RESPONSEOPTIONS[0], CurrentInput, CurrentState)
             certainty,avgCmp,current_score,avg_score_per_word = calcCertainty(input_length,avgCmp,current_score,avg_score_per_word)
-            while certainty < 2 and iter <= MAXENHANCMENTITER:
+            if certainty < 2:
                 if DEBUG: print("debug: Activating Enhancement tools")
-                new_sentance = EnhanceResults(CurrentInput,DB, iter) #find unknown words, get alternative for each, create new sentance with them
+                new_sentance = EnhanceResults(CurrentInput,DB) #find unknown words, get alternative for each, create new sentance with them
                 alternative_state = sortStates(new_sentance, CurrentState)[0]
                 alt_score = calcTotalScore(alternative_state, new_sentance, CurrentState)
                 if DEBUG: print("debug: alt_score: ",alt_score)
+                if DEBUG: print("debug: current_score: ",current_score)
                 if alt_score > current_score:
+                    if DEBUG: print("debug: adopting new sentence.")
                     RESPONSEOPTIONS.insert(0, alternative_state) #if higher than current score, push to RESPONSEOPTIONS
                 certainty, avgCmp, current_score, avg_score_per_word = calcCertainty(input_length, avgCmp, current_score,avg_score_per_word)
-                iter += 1
             if certainty < 1: #still bad
                 print("I am sorry, I am not sure how to answer that. Please try to rephrase.")
                 continue
