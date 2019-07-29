@@ -1,4 +1,4 @@
-0;1046,1684,1664,1655,1628,1674,84,77,1661,1666,1681,81,1683,1675,96,1633,101,1627,1693,94,1694,1654,1637,1662,0,1670,1634,1692,1643,1645,1691,1671,1630,1699;Hello;restart:5,reset:5,reste:5,lets:1,talk:1;restart;None
+0;81,1691,77,1633,1683,104,1046,0,1699,1654,1637,1662,91,1666,1643,1693,1664,1645,1655,1675,1661,94,101,1630,1671,1694,1674,1684,84,1681,1670,1627,1634,1628,1692,96;Hello;restart:5,reset:7,reste:5,lets:1,talk:1;restart;None
 1627;0,1699;Squealing can be caused by various problems. Squeals can be the result of worn belts or in some cases problems with the brakes. Unless you are familiar with automobiles it might be hard to diagnose th;I:3,hear:4,strange:5,squeaks:5,squeals:4,sounds:3,from:3,the:5,front:3,of:4,car:5,back:3,Brakes:3,Belt:3,noises:4,my:4,it:2,makes:1,a:2,noise:1,is:3,dangerous:1,?:1,forom:1,i:3,squeak:1,when:2,start:2,noisy:1,making:1,weird:1;I hear strange squeaks squeals sounds from the front of the car back of the car squeals squeaks Brakes Belt strange noises ;Null
 1628;1635,1627;That might be one of the most dangerous problems a car can have brakes naturally wear down over time. Thats why its so important to keep up with their maintenance the trick is to catch the problem l;its:4,chirping:3,about:1,the:1,breaks:1;its chirping ;Null
 1629;1666,0,78;Does your car take longer than usual to start? or is it not starting at all? ;My:3,car:5,"wont":3,start:5,Problems:3,Starting:3,the:5,Car:3,Ignition:3,fails:3,Faulty:3,Starter:3,wont:5,my:5,engine:2,did:1,not:1,is:1,stuck:1;My car wont start Problems Starting the Car Ignition fails Faulty Starter ;Null
@@ -41,12 +41,12 @@
 1666;0;How may I help? ;hi:5,whats:5,up:5,hey:5,there:5,Hello:5,ola:1,hello:2,aloha:1;hi whats up hey there Hello ;Null
 1667;0;good thank you. how may I help? ;what:5,up?:5,greetings:5;what up? greetings ;Null
 1668;0;it is nice to meet you too. how may I help? ;hi:5,its:5,nice:5,to:5,meet:5,you:5;hi its nice to meet you nice to meet you ;Null
-1669;0;and a good day to you too. how may I help? ;afternoon:5,evening:5,day:5,good:5,mornning:5,:5,morning:1;afternoon evening day good mornning ;Null
-1670;0,1666;Nombot ;So:5,what:5,is:5,your:5,name?:5,name:5,?:5,my:1,roy:1,yours:1;So what is your name? what is your name? ;Null
+1669;0;and a good day to you too. how may I help? ;afternoon:5,evening:5,day:5,good:5,mornning:5,:5,morning:5;afternoon evening day good mornning ;Null
+1670;0,1666;Nombot ;So:5,what:5,is:6,your:6,name?:5,name:6,?:5,my:1,roy:1,yours:1;So what is your name? what is your name? ;Null
 1671;0,1671,1666;Checking with a friend. ;what:5,is:5,an:5,engine:5,carburetor:5,alternator:5,radiator:5,engine?:5,a:5,carborator:1,?:5,tire:1,carburator:1,guacamouli:1,how:2,would:1,you:2,describe:1,car:5,whats:4,differential:5,could:1,please:2,explain:1,i:1,dont:1,know:1,teach:1,me:2,does:1,the:1,gear:1,do:1,help:1,solve:1,this:1,equation:1,11x:1,much:1,x:1;what is an engine carburetor alternator radiator what is an engine? ;internet:search:
-1672;0,1675,1666;I am from nowhere i am a synthetic artifical intelligence. ;where:5,were:5,you:5,born?:5,are:5,from?:5,from:4,?:3;where were you born? where are you from? ;Null
+1672;0,1669,1675,1666;I am from nowhere i am a synthetic artifical intelligence. ;where:5,were:5,you:5,born?:5,are:5,from?:5,from:5,?:5;where were you born? where are you from? ;Null
 1673;0;thats actually a little complicated. but you can try and ask my creator. ;can:5,you:5,remember?:5,how:5,do:5,work?:5;can you remember? how do you work? ;Null
-1674;1672,1673;Roy. You can contant him through Email - Ristlin@gmail.com ;who:5,is:5,your:5,creator?:5,how:5,can:5,i:5,speak:5,with:5,him?:5,where:5,he?:5,made:1,you:1,?:1;who is your creator? how can i speak with him? where is he? who is he? ;Null
+1674;1673,93,1672;Roy. You can contant him through Email - Ristlin@gmail.com ;who:5,is:6,your:5,creator?:5,how:5,can:5,i:5,speak:5,with:5,him?:5,where:5,he?:5,made:1,you:1,?:2,he:1;who is your creator? how can i speak with him? where is he? who is he? ;Null
 1675;1669,1666,0;help people with car related problems ;what:5,can:5,you:5,do?:5,is:5,your:5,purpose?:5,do:4,?:5,name:1,are:1,up:1,to:1;what can you do? what is your purpose? ;Null
 1676;1675;ford cars. ;do:5,you:5,gave:5,a:5,preference?:5;do you have a preference? ;Null
 1677;0;sure. working on it. ;engine:5,carburetor:5,alternator:5,radiator:5,can:5,you:5,search:5,these:5,for:5,me?:5;engine carburetor alternator radiator can you search these for me? ;internet:search:multiple
@@ -55,12 +55,12 @@
 1680;0,1627;Belt problems might cause problems to the engine over time, try to get to a mechanic soon.;it:1,squeals:1;it squeals;Null
 1681;1682,1699,1627,1629,0;Lets try to analyze your problem. when you turn the switch do youhear a clicking sound, or no sound at all?;it:5,wont:4,start:5,at:5,all:5,doesnt:1,not:2,does:1;it wont start at all;Null
 1682;1627,0,1681,1629;Does your car has an emobilizer? if you didnt put in the right code, the car wont start.;no:3,sound:3,at:5,all:5,not:5,starting:5,startin:1;no sound at all;Null
-1683;1627,1629,0,1681,1685,1682;It is possible your car battery died, that usually happens when you dont start the car for a long time, or with an old battery. Try getting a hold of another car and using it to start yours with cables;no:5,thats:1,not:3,the:3,problem:1,ive:1,put:2,in:1,right:2,code:2,yes:1,i:2,its:3,full:1,have:1,gas:1,that:1,on:1,off:1;no thats not the problem;Null
-1684;1627,1683,1687,1666,0,1629,1682,1681;Try following these instructions regarding how to start a car with a dead battery: https://www.youtube.com/watch?v=iI1o2hNy2hE .;how:5,do:5,i:5,that:2,?:5,start:3,the:1,car:5,with:1,cables:1,what:3,is:2,a:2,cable:1,when:1,my:3,battery:2,dies:1,jump:1,yes:1,need:1,new:1,which:1,you:1,recommend:1,can:2,fix:1,this:1,dead:1;how do i do that ? how do i start the car with cables ? what is a cable start ? what do i do when my car battery dies ? how do i jump start my car ? ;Null
-1685;1627,1629,1699,0,1688,1681,1683,1682;firstly check your gauges, is your fuel light on, is your fuel tank empty?;i:1,can:1,hear:1,a:2,sound:4,the:2,car:1,it:2,makes:1,clicking:2,but:2,wont:1,start:1,its:2,not:3,that:1,still:1,working:1,there:2,is:2,noise:1,does:1,thats:1,problem:1;i can hear a sound;Null
+1683;0,1682,1688,1681,1627,1685,1629;It is possible your car battery died, that usually happens when you dont start the car for a long time, or with an old battery. Try getting a hold of another car and using it to start yours with cables;no:5,thats:1,not:3,the:3,problem:1,ive:1,put:2,in:1,right:2,code:2,yes:1,i:2,its:4,full:1,have:1,gas:1,that:1,on:2,off:1,parking:1;no thats not the problem;Null
+1684;0,1687,1682,1681,1627,1683,1666,1629;Try following these instructions regarding how to start a car with a dead battery: https://www.youtube.com/watch?v=iI1o2hNy2hE .;how:6,do:7,i:6,that:3,?:5,start:3,the:1,car:5,with:1,cables:1,what:3,is:2,a:2,cable:1,when:1,my:3,battery:2,dies:1,jump:1,yes:1,need:1,new:1,which:1,you:1,recommend:1,can:2,fix:1,this:1,dead:1;how do i do that ? how do i start the car with cables ? what is a cable start ? what do i do when my car battery dies ? how do i jump start my car ? ;Null
+1685;0,1699,1682,1688,1681,1627,1683,1629;firstly check your gauges, is your fuel light on, is your fuel tank empty?;i:1,can:1,hear:1,a:2,sound:4,the:2,car:1,it:2,makes:1,clicking:2,but:2,wont:1,start:1,its:3,not:4,that:1,still:1,working:1,there:2,is:2,noise:1,does:1,thats:1,problem:1,starting:1;i can hear a sound;Null
 1686;0,1627,1682,1681,1629,1685,1683;simply fill the tank;yes:2,it:1,is:1;yes;Null
 1687;0; Hi the gearbox in question is called a MT70 OR 4X4 MTX70 this is a much stronger unit than your box type N. For details and specs talk to Fitz at anything COSSIE he and his team are the boys to ask;I:2,wonder:1,how:1,much:1,hp:1,the:5,5:1,speed:1,23spline:1,ford:2,gearbox:1,featured:1,in:1,european:1,sierra:1,can:1,take?:1,and:1,"whats":1,name:1,on:1,transmission?:1,know:1,120bhp:1,dohc:1,engine:1,has:1,box:1,as:1,standard:1,an:1; I wonder how much hp the 5 speed 23spline ford gearbox featured in the european ford sierra can take? and whats the name on the transmission? I know the 120bhp dohc engine has the box as standard an;Null
-1688;1682,1683,1687,1681,1627,1685,1629,0;Change gear into parking or neutral and try starting the car again, many cars wont start unless on parking\neutral gear. Also, try pressing breaks while starting it on.;no:2,it:1,does:1;no;Null
+1688;0,1687,1682,1681,1627,1683,1685,1629;Change gear into parking or neutral and try starting the car again, many cars wont start unless on parking\neutral gear. Also, try pressing breaks while starting it on.;no:2,it:1,does:1,its:3,not:3,on:3;no;Null
 1689;1682,1046,0,1687,1629,1685,1681,1683,1627;is the engine warning light on?;its:2,full:3,the:1,oil:1,is:1;its full;Null
 1690;0,1682,1687,1681,1046,1629,1685,1627,1683;Drive to the close fuel station, ask for the relevant oil and fill it. make sure it doesnt leak right after you put it.;its:1,not:1,full:1;its not full;Null
 1691;0;Try contacting the company for additional instructions. I am trained to answer ar (and mostly ford) related questions;the:2,mobileye:2,wont:2,stop:1,beeping:1,shutup:1,what:1,do:2,i:1,?:1,mobyleye:1,keeps:1,doing:1,a:1,lot:1,of:1,noise:1;the mobileye wont stop beeping;Null
@@ -71,11 +71,11 @@
 1696;1671,0;working on it;what:1,are:2,these:2,car:1,ford:1,manual:1,whar:1,cat:1,dog:1,cow:1;what are these car ford manual;internet:search:multiple
 1697;0,1672,1670,1697,1671,1696;connecting to weather server;what:5,is:5,the:5,weather:5,?:5;what is the weather ? ;internet:weather:
 1698;0,1697,1696,1671;amm. let me think about it;what:4,would:4,you:4,wear:4,?:4;what would you wear ? ;internet:weather:wear
-1699;1666,0;Thats a bit too general can you be more specific? is it making a noise? is there a smell? is there a warning light on?;i:5,have:5,an:4,engine:5,problem:5,a:3,with:4,my:5,car:5,excuse:1,me:1,there:1,is:1,smething:1,wrong:1,hi:1,isnt:1,working:1,doesnt:1,work:1;i have an engine problem;Null
+1699;0,1669,1666;Thats a bit too general can you be more specific? is it making a noise? is there a smell? is there a warning light on?;i:6,have:6,an:5,engine:6,problem:6,a:4,with:4,my:5,car:5,excuse:1,me:1,there:1,is:1,smething:1,wrong:1,hi:1,isnt:1,working:1,doesnt:1,work:1;i have an engine problem;Null
 74;0,74,1666;Asking a really smart friend;calculate:5,this:5,for:5,me:5,22:5,44:5,4:1,x260:1,x240:2,1:5,calc:3,11:1,11x:1,how:1,much:1,is:2,x:1,?:1,what:1,the:2,weather:1,in:1,hemalya:1;calculate this for me 22;internet:wolfram:
 75;0,1699;which warning light is on?;there:2,is:2,a:2,warning:2,light:2,on:1,yes:1;there is a warning light on;Null
 76;1664,1634,0;I am unautherized to answer that. ask a technician. in general engine and break problems are considered dagerous.;is:2,it:2,safe:2,to:2,drive:2,?:2;is it safe to drive ? ;Null
-77;1684,1661,0;You welcome;thank:3,you:3;thank you;Null
+77;0,1661,1684;You welcome;thank:4,you:4;thank you;Null
 78;1675,0;What seems to be the problem?;help:2,me:2;help me;Null
 79;0,1675,0;well you have to get to a gas station...;i:1,am:1,out:1,of:1,fuel:1;i am out of fuel;Null
 1753;1683,1661,1671,0;You are very welcome;thanks:3,a:1,lot:1,thats:1,great:1;thanks a lot;Null
@@ -89,9 +89,9 @@
 88;0,1666;if you have a light on, that can indicate which oil is missing. if you ask which specific type your car model requires, search your car manual.;what:1,kind:1,of:1,oil:1,does:1,my:1,car:1,need:1,?:1;what kind of oil does my car need ? ;Null
 89;0;Ford.;i:2,need:1,a:1,new:1,car:3,which:2,do:1,you:1,recommend:1,?:2,should:1,buy:1;i need a new car which car do you recommend ? ;Null
 90;0,89,0;Because they are the MVP;why:1,?:1;why ? ;Null
-91;0,0;Good thank you. How may I help?;what:1,is:1,up:1,?:1;what is up ? ;Null
+91;0;Good thank you. How may I help?;what:1,is:1,up:1,?:3,how:2,are:2,you:2,doing:1,feeling:1,today:1;what is up ? ;Null
 92;0,0;42;what:1,is:1,the:1,meaning:1,of:1,life:1,?:1;what is the meaning of life ? ;Null
-93;0,0;Roy;who:1,made:1,you:1,?:1;who made you ? ;Null
+93;0,1670;Roy;who:2,made:2,you:2,?:2;who made you ? ;Null
 94;1697,94,0,1671;The time is:;what:2,is:2,the:5,time:5,?:5,whats:5,tell:1,me:1,clock:1;what is the time ? ;time::
 95;0,0;It is usually at the trunk, idden under the trunk floor, next to the spare wheel.;where:1,is:1,the:1,car:1,jack:1,?:1;where is the car jack ? ;Null
 96;1630,0;That can vary depending on the specific model you have. try googling it using the specific model;how:2,do:1,i:1,connect:1,the:2,bluetooth:1,to:1,car:1,radio:1,?:2,much:1,would:1,that:1,cost:1;how do i connect the bluetooth to the car radio ? ;Null
@@ -102,3 +102,5 @@
 101;1685,1630,0;Sounds like you are out of fuel;its:2,on:2;its on;Null
 102;0,74;I am sorry. Try being more specific, and I will try again;thats:1,not:1,a:1,good:1,answer:1;thats not a good answer;Null
 103;0,0;what dont you understand?;i:1,dont:1,understand:1;i dont understand;Null
+104;1699,0;Then I am sorry, I am only capable of answering simple car related issues;its:1,not:1,car:1,related:1,problem:1,no:1;its not car related problem;Null
+105;0,0;I can try. How may I help?;can:1,you:1,help:1,me:1,?:1;can you help me ? ;Null

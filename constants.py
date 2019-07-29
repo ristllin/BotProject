@@ -1,7 +1,8 @@
 FILEPATH = r"./StatesDB.txt"
-DEBUG = False
-LEARNINGMODE = False #Main operating mode
-STRONGMODE = False #Every sentence taught is repeated until it is first result in score for given input
+INI = r"./Startup.ini"
+DEBUG = True
+LEARNINGMODE = True #Main operating mode
+STRONGMODE = True #Every sentence taught is repeated until it is first result in score for given input
 HITSCONST = 4  # Factor in scoring algo, how many points each hit worths
 RELATIONCONST = 3  # connection exists between nodes
 SCORECONST = 1  # adding up matching words weight

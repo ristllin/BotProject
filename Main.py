@@ -7,6 +7,7 @@ from SpecialAPI import *
 from tools import *
 from math import *
 from nltk.corpus import wordnet
+import json
 
 #----------libraries----------
 import wikipedia
@@ -194,6 +195,39 @@ def correct():
     RESPONSEOPTIONS[0].updateStateResponse(response)
     writeState(RESPONSEOPTIONS[0])
 
+def createInitFile():
+    if DEBUG: print("debug: recreating init file")
+    initVar = {"count":1,"avg_score":5}
+    with open(INI, "w") as file:
+        file.write(json.dumps(initVar))
+    if DEBUG: print("debug: Auto init file corruption finished successfully")
+    return initVar
+
+def readWriteIni(count = 0,avg_score = 0):
+    try:
+        if count==0 and avg_score == 0: #read
+            failed = False
+            with open(INI,"r") as file:
+                Var = file.read()
+                if Var == "":
+                    failed = True
+                if not failed:
+                    StartupVar = json.loads(Var)
+            if failed:
+                StartupVar = createInitFile() #recreates file and returns default values
+            return StartupVar["count"], StartupVar["avg_score"]
+        else : #write
+            with open(INI,"r+") as file:
+                Var = file.read()
+                StartupVar = json.loads(Var)
+                StartupVar["count"] = count
+                StartupVar["avg_score"] = avg_score
+                file.truncate(0)
+                file.seek(0)
+                file.write(json.dumps(StartupVar))
+    except Exception as e:
+        print("readWriteIni() Failed, probaby corrupt ini file \n",e)
+
 def importDataSet(dataset,STRENGTHFACTOR = 1):
     """
     teaches bot (updates stateDB) according to given dataset in proper format
@@ -260,30 +294,31 @@ def importDataSet(dataset,STRENGTHFACTOR = 1):
             except Exception as e:
                 print("Error on thread:",thread)
 
-def calcCertainty(input_length,avgCmp,current_score,avg_score_per_word):
+def calcCertainty(input_length,current_score,avg_score_per_word, closest_score = 0):
     """
 
     :param input_length: int - amount of words in current sentence
     :param avgCmp: amount of inputs calculated for given average
     :param current_score: ambiguous Score from scoring algo
-    :param avg_score_per_word:
     :return:
     """
-    TOLERANCE = 0.2
-    avg_score_per_word = (avg_score_per_word * avgCmp + (current_score / input_length)) / (avgCmp + 1)
-    avgCmp += 1
+    TOLERANCE = 0.1
+    certainty = 0
     current_avg_per_word = current_score / input_length
+    if ((current_score - closest_score)/current_score) < TOLERANCE: #close alternative states results certainty penalty
+        if DEBUG: print("debug: Close Results - certainty penalty")
+        certainty -= 1
     if current_avg_per_word > avg_score_per_word * (1 + TOLERANCE * 3):
-        certainty = 4 #very good
+        certainty += 4 #very good
     elif current_avg_per_word > avg_score_per_word * (1 + TOLERANCE):
-        certainty = 3 #good
+        certainty += 3 #good
     elif (current_avg_per_word) * (1 + TOLERANCE) < avg_score_per_word:
-        certainty = 1 #bad
+        certainty += 1 #bad
     elif (current_avg_per_word) * (1 + TOLERANCE * 3) < avg_score_per_word:
         certainty = 0 #very bad
     else:
-        certainty = 2 #Medium
-    return certainty,avgCmp,current_score,avg_score_per_word
+        certainty += 2 #Medium
+    return certainty,current_score
 
 
 def EnhanceResults(user_input, DB):
@@ -338,8 +373,10 @@ def main():
     #--------init---------------
     print("-------Initializing-------")
     DB = AllKnownWords()
-    avg_score_per_word = 5 #<<<<<>>>>> need to build algo for that
-    avgCmp = 1
+    count,avg_score = readWriteIni()
+    avg_score_per_word = avg_score #<<<<<>>>>> need to build algo for that
+    avgCmp = count
+    if DEBUG: print("debug: Program loaded with count: ",avgCmp," and avg score: ",avg_score_per_word)
     CurrentState = getState(0) #set state to init
     # importDataSet(r"D:\projects\BotProject\basicCarQuestions.txt",3) #add new dataset
     # importDataSet(r"D:\projects\BotProject\fordForums.txt",1 )  # add new dataset
@@ -361,7 +398,14 @@ def main():
             #analyze Chosen state
             input_length = len(CurrentInput.split(" "))
             current_score = calcTotalScore(RESPONSEOPTIONS[0], CurrentInput, CurrentState)
-            certainty,avgCmp,current_score,avg_score_per_word = calcCertainty(input_length,avgCmp,current_score,avg_score_per_word)
+            closest_score = 0
+            if len(RESPONSEOPTIONS) > 1:
+                closest_score = calcTotalScore(RESPONSEOPTIONS[1], CurrentInput, CurrentState)
+            certainty,current_score= calcCertainty(input_length,current_score,avg_score_per_word,closest_score)
+            avgCmp += 1
+            avg_score_per_word = (avg_score_per_word * avgCmp + (current_score / input_length)) / (avgCmp + 1)  # update avg_score_per_word
+            readWriteIni(count = avgCmp, avg_score = avg_score_per_word) #updating ini
+            # Enchancement tools
             if certainty < 2:
                 if DEBUG: print("debug: Activating Enhancement tools")
                 new_sentance = EnhanceResults(CurrentInput,DB) #find unknown words, get alternative for each, create new sentance with them
@@ -372,15 +416,18 @@ def main():
                 if alt_score > current_score:
                     if DEBUG: print("debug: adopting new sentence.")
                     RESPONSEOPTIONS.insert(0, alternative_state) #if higher than current score, push to RESPONSEOPTIONS
-                certainty, avgCmp, current_score, avg_score_per_word = calcCertainty(input_length, avgCmp, current_score,avg_score_per_word)
+                certainty, current_score = calcCertainty(input_length, current_score,avg_score_per_word)
             if certainty < 1: #still bad
                 print("I am sorry, I am not sure how to answer that. Please try to rephrase.")
                 continue
+            #<<<<<<<<<<<<<<<<-------------Learning mode----------->>>>>>>>>>>>>>>>>>>
             if LEARNINGMODE:
                 command = ""
                 while command != 'fix' or command != 'restart' or command != 'y':
                     if RESPONSEOPTIONS != []: #no options
+                        certainty, current_score = calcCertainty(input_length, current_score, avg_score_per_word) #recalculate for prints
                         print("<<<",RESPONSEOPTIONS[0].response,"\nIs State: ",RESPONSEOPTIONS[0].id," good? Origin: ",RESPONSEOPTIONS[0].origin)
+                        print("Total Score:",calcTotalScore(RESPONSEOPTIONS[0],CurrentInput, CurrentState))
                         print("CurrentScorePerWord: ",current_score/input_length," TotalAvgScorePerWord:",avg_score_per_word," certainty:",certainty)
                         print("<y>-yes,<n>-no/next,<r>-fix response,'create', 'connect <id#>', 'search <string>'")
                     else:
@@ -423,6 +470,8 @@ def main():
         except Exception as e:
             if LEARNINGMODE:
                print("<<<Error: Main crashed >_< >>>",e)
+               if hasattr(e, 'message'):
+                   print(e.message)
             else:
                 print("Ohh boy, I am not feeling so well, lets try again")
                 CurrentState = getState(0)
