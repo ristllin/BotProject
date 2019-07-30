@@ -14,10 +14,13 @@ class State:
         self.special = special #<api name>:<command>:<data>
 
     def __repr__(self):
-        return "ID: "+str(self.id)+"; Response: "+self.response+"; Origin Sentance:"+self.origin+" special: "+self.special
+        return "ID: "+str(self.id)+"; Response: "+str(self.response)+"; Origin Sentance:"+str(self.origin)+" special: "+str(self.special)
 
     def printFullState(self):
-        print("ID: "+str(self.id)+"; Response: "+self.response+"; Origin Sentance:"+self.origin+";\n Words:"+str(self.words)+"\n Incoming State:"+str(self.incomingStates))+"\n Special:"+str(self.special)
+        print("ID: "+str(self.id)+"; Response: "+str(self.response)+"; Origin Sentance:"+str(self.origin)+\
+              ";\n Words:"+str(self.words)+\
+              "\n Incoming State:"+str(self.incomingStates)+\
+              "\n Special:"+str(self.special))
 
     def updateStateResponse(self,response):
         # print("response changed from: ",self.response," to:",response)

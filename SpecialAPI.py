@@ -5,6 +5,8 @@ import random
 import datetime
 import requests
 import re
+import urllib
+from urllib.request import urlopen
 #------imported modules--------
 from BadDb import *
 from tools import *
@@ -84,7 +86,17 @@ def internet(command,data,userInput,RawInput):
         internetWeather(command,data,userInput)
     if command == "wolfram": #gets raw user input
         internetWolfram(RawInput)
+    if command == "checkConnectivity": #checks connection to internet
+        checkConnectivity()
 
+def checkConnectivity(vrbs = True):
+    try:
+        urlopen('https://www.google.com', timeout=1)
+        if vrbs: print("It seems I am connected to the internet")
+        return True
+    except urllib.error.URLError as Error:
+        if vrbs: print("It seems I am NOT connected to the internet")
+        return False
 
 def internetSearch(userInput):
     """

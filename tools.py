@@ -6,7 +6,7 @@ import operator
 from BadDb import *
 from SpecialAPI import *
 
-def normalize():
+def setMaxLimit():
     """
     goes over every word in db and sets it's value to max value set
     run in Main to activate
@@ -51,6 +51,7 @@ def analysis(vrbs=False):
      Rarity factor value is set from 1 to DIFVALUE, normalized\mapped to the amount of appearances
     :return:
     """
+    print("Analyzing DB")
     DIFVALUE = 10 #max value a word can get for being rare
     DB = getStatesDb()
     wordDB = {} #{"word":[appearances,rarity_factor]..."last_word":[appr,rarty_fctr]}
@@ -75,10 +76,10 @@ def analysis(vrbs=False):
     if vrbs:
         print("total of: ", len(wordDB), " different words.")
         print("total of: ", total_word_count, " words altogether.")
-        for i in range(10):
-            print("rarity: ",i,": ",sorted_list[i])
-        for i in range(10):
-            print("rarity: ",length-i, ": ", sorted_list[(length-10)+i])
+        for i in range(5):
+            print("rarity: ",i,": ",sorted_list[i][0], "appearances of: ",sorted_list[i][1])
+        for i in range(5):
+            print("rarity: ",length-i, ": ", sorted_list[(length-10)+i][0], " appearances of:", sorted_list[(length-10)+i][1])
     return wordDB
 
 def removeBadWords(userinput):
@@ -104,6 +105,7 @@ def normalizeByRarity(DB):
         for word in state.words:
             state.words[word] += int(DB[word.lower()][1])
             writeState(state)
+
 # normalize()
-# db = analysis()
-# normalizeByRarity(db)
+db = analysis(vrbs=True)
+normalizeByRarity(db)

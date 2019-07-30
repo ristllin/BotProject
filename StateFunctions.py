@@ -150,8 +150,7 @@ def sortStates(currentInput,former_state):
             tempStatesDb.append(parseDbLine(line))
     rslt.append(tempStatesDb.pop(0)) #adding
     for new_state in tempStatesDb: #insert all good states
-        hits = \
-            lcHits(new_state,currentInput)
+        hits = calcHits(new_state,currentInput)
         final_score = calcTotalScore(new_state,currentInput,former_state)
         if hits > 0:
             inserted = False

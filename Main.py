@@ -22,8 +22,6 @@ RawInput = None #String
 RESPONSEOPTIONS = [] #[state123,state34...] ordered
 TempMemory = [("name","user")] #saving temporary data
 
-normalize()
-
 def create(crnt_state_id = None,crnt_input = None,rspns = None,strength_factor = 1):
     """
     creates new node and updates DB
@@ -164,7 +162,9 @@ def yes():
     global RESPONSEOPTIONS
     state = RESPONSEOPTIONS[0]
     state.updateStateIncoming(CurrentState.id)
+    print("debug:",state.printFullState())
     state.updateStateWords(CurrentInput)
+    print("debug:", state.printFullState())
     writeState(state)
     if STRONGMODE: #strengthen until first
         RESPONSEOPTIONS = sortStates(CurrentInput, CurrentState)
@@ -427,10 +427,13 @@ def main():
                 while command != 'fix' or command != 'restart' or command != 'y':
                     if RESPONSEOPTIONS != []: #no options
                         certainty, current_score = calcCertainty(input_length, current_score, avg_score_per_word) #recalculate for prints
-                        print("<<<",RESPONSEOPTIONS[0].response,"\nIs State: ",RESPONSEOPTIONS[0].id," good? Origin: ",RESPONSEOPTIONS[0].origin)
-                        print("Total Score:",calcTotalScore(RESPONSEOPTIONS[0],CurrentInput, CurrentState))
-                        print("CurrentScorePerWord: ",current_score/input_length," TotalAvgScorePerWord:",avg_score_per_word," certainty:",certainty)
-                        print("<y>-yes,<n>-no/next,<r>-fix response,'create', 'connect <id#>', 'search <string>'")
+                        print("<<<",RESPONSEOPTIONS[0].response)
+                        print("-------------")
+                        print("|Is State: ",RESPONSEOPTIONS[0].id," good? Origin: ",RESPONSEOPTIONS[0].origin,\
+                                "Total Score:",calcTotalScore(RESPONSEOPTIONS[0],CurrentInput, CurrentState))
+                        print("|CurrentScorePerWord: ",current_score/input_length," TotalAvgScorePerWord:",avg_score_per_word," certainty:",certainty)
+                        print("|<y>-yes,<n>-no/next,<r>-fix response,'create', 'connect <id#>', 'search <string>'")
+                        print("-------------")
                     else:
                         print("I'm ClueLess...\n'fix' text, 'restart', 'connect #' to add a known state or 'create' new state?")
                     command = input(">")
