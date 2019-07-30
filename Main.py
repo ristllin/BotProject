@@ -372,6 +372,7 @@ def main():
     global TempMemory
     #--------init---------------
     print("-------Initializing-------")
+    print(DISCLAIMER)
     DB = AllKnownWords()
     count,avg_score = readWriteIni()
     avg_score_per_word = avg_score #<<<<<>>>>> need to build algo for that

@@ -1,5 +1,6 @@
 FILEPATH = r"./StatesDB.txt"
 INI = r"./Startup.ini"
+DISCLAIMER = "Disclaimer - Nombot is not a professional consultant..."
 DEBUG = True
 LEARNINGMODE = True #Main operating mode
 STRONGMODE = True #Every sentence taught is repeated until it is first result in score for given input
