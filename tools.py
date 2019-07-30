@@ -107,5 +107,5 @@ def normalizeByRarity(DB):
             writeState(state)
 
 # normalize()
-db = analysis(vrbs=True)
-normalizeByRarity(db)
+# db = analysis(vrbs=True)
+# normalizeByRarity(db)

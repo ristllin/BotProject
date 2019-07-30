@@ -162,9 +162,7 @@ def yes():
     global RESPONSEOPTIONS
     state = RESPONSEOPTIONS[0]
     state.updateStateIncoming(CurrentState.id)
-    print("debug:",state.printFullState())
     state.updateStateWords(CurrentInput)
-    print("debug:", state.printFullState())
     writeState(state)
     if STRONGMODE: #strengthen until first
         RESPONSEOPTIONS = sortStates(CurrentInput, CurrentState)
