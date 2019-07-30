@@ -302,6 +302,7 @@ def calcCertainty(input_length,current_score,avg_score_per_word, closest_score =
     """
     TOLERANCE = 0.1
     certainty = 0
+    if current_score == 0: current_score = 1
     current_avg_per_word = current_score / input_length
     if ((current_score - closest_score)/current_score) < TOLERANCE: #close alternative states results certainty penalty
         if DEBUG: print("debug: Close Results - certainty penalty")
@@ -316,7 +317,7 @@ def calcCertainty(input_length,current_score,avg_score_per_word, closest_score =
         certainty = 0 #very bad
     else:
         certainty += 2 #Medium
-    return certainty,current_score
+    return certainty
 
 
 def EnhanceResults(user_input, DB):
@@ -329,10 +330,12 @@ def EnhanceResults(user_input, DB):
     words = user_input.split(" ")
     alternative_sentance = ""
     for word in words:
+        alternative_sentance += " "
         if word in DB: #word contributes to score
-            alternative_sentance += word + " "
+            alternative_sentance += word
         else: #unknown word
-            alternative_sentance += GetAlternative(word,DB) + " "
+            alternative_sentance += GetAlternative(word,DB)
+    alternative_sentance = alternative_sentance[1:]
     if DEBUG: print("debug: alternative sentance created: ",alternative_sentance)
     return alternative_sentance
 
@@ -400,7 +403,7 @@ def main():
             closest_score = 0
             if len(RESPONSEOPTIONS) > 1:
                 closest_score = calcTotalScore(RESPONSEOPTIONS[1], CurrentInput, CurrentState)
-            certainty,current_score= calcCertainty(input_length,current_score,avg_score_per_word,closest_score)
+            certainty = calcCertainty(input_length,current_score,avg_score_per_word,closest_score)
             avgCmp += 1
             avg_score_per_word = (avg_score_per_word * avgCmp + (current_score / input_length)) / (avgCmp + 1)  # update avg_score_per_word
             readWriteIni(count = avgCmp, avg_score = avg_score_per_word) #updating ini
@@ -410,12 +413,13 @@ def main():
                 new_sentance = EnhanceResults(CurrentInput,DB) #find unknown words, get alternative for each, create new sentance with them
                 alternative_state = sortStates(new_sentance, CurrentState)[0]
                 alt_score = calcTotalScore(alternative_state, new_sentance, CurrentState)
+                if DEBUG: print("same senatance? ",new_sentance == CurrentInput,"\nnew:",new_sentance,"\nold:",CurrentInput)#debug
                 if DEBUG: print("debug: alt_score: ",alt_score)
                 if DEBUG: print("debug: current_score: ",current_score)
                 if alt_score > current_score:
                     if DEBUG: print("debug: adopting new sentence.")
                     RESPONSEOPTIONS.insert(0, alternative_state) #if higher than current score, push to RESPONSEOPTIONS
-                certainty, current_score = calcCertainty(input_length, current_score,avg_score_per_word)
+                certainty = calcCertainty(input_length, current_score,avg_score_per_word)
             if certainty < 1: #still bad
                 print("I am sorry, I am not sure how to answer that. Please try to rephrase.")
                 continue
@@ -424,7 +428,7 @@ def main():
                 command = ""
                 while command != 'fix' or command != 'restart' or command != 'y':
                     if RESPONSEOPTIONS != []: #no options
-                        certainty, current_score = calcCertainty(input_length, current_score, avg_score_per_word) #recalculate for prints
+                        certainty = calcCertainty(input_length, current_score, avg_score_per_word) #recalculate for prints
                         print("<<<",RESPONSEOPTIONS[0].response)
                         print("-------------")
                         print("|Is State: ",RESPONSEOPTIONS[0].id," good? Origin: ",RESPONSEOPTIONS[0].origin,\
