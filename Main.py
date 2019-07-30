@@ -410,10 +410,10 @@ def main():
             # Enchancement tools
             if certainty < 2:
                 if DEBUG: print("debug: Activating Enhancement tools")
-                new_sentance = EnhanceResults(CurrentInput,DB) #find unknown words, get alternative for each, create new sentance with them
-                alternative_state = sortStates(new_sentance, CurrentState)[0]
-                alt_score = calcTotalScore(alternative_state, new_sentance, CurrentState)
-                if DEBUG: print("same senatance? ",new_sentance == CurrentInput,"\nnew:",new_sentance,"\nold:",CurrentInput)#debug
+                new_sentence = EnhanceResults(CurrentInput,DB) #find unknown words, get alternative for each, create new sentance with them
+                alternative_state = sortStates(new_sentence, CurrentState)[0]
+                alt_score = calcTotalScore(alternative_state, new_sentence, CurrentState)
+                if DEBUG: print("new sentence:",new_sentence,"\nold sentence:",CurrentInput)#debug
                 if DEBUG: print("debug: alt_score: ",alt_score)
                 if DEBUG: print("debug: current_score: ",current_score)
                 if alt_score > current_score:

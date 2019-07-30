@@ -10,6 +10,7 @@ from urllib.request import urlopen
 #------imported modules--------
 from BadDb import *
 from tools import *
+from RoboHandTerminal import *
 
 def executeSpecial(command,userInput,TempMemory,RawInput):
     """
@@ -30,6 +31,16 @@ def executeSpecial(command,userInput,TempMemory,RawInput):
             time(command,data,userInput)
         elif "memory" in api:
             memory(command,data,userInput,TempMemory)
+        elif "robot" in api:
+            robot(command,data)
+
+def robot(command,data):
+    if command == "ok":
+        sendCommand(4)
+    if command == "fuckoff":
+        sendCommand(5)
+    if command == "hi":
+        sendCommand(3)
 
 def time(command,data,userInput):
     """
